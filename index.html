@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AL HIKMA | Professional Art Competition Judging Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-blue: #1a5fb4;
+            --primary-dark: #0a3d7a;
+            --accent-orange: #ff6b35;
+            --accent-teal: #00b4d8;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --dark-gray: #495057;
+            --text-dark: #212529;
+            --text-light: #ffffff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--light-gray);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-main {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--primary-blue);
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-sub {
+            font-size: 12px;
+            color: var(--accent-orange);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 3px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            padding: 8px 0;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-teal));
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary-blue);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(26, 95, 180, 0.95), rgba(10, 61, 122, 0.95)), 
+                        url('https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-light);
+            padding: 200px 0 150px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .hero-tagline {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.85);
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--accent-orange), #ff8c42);
+            color: white;
+            padding: 18px 45px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            margin: 10px;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+            animation: fadeInUp 1s ease-out 0.7s both;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4);
+            background: linear-gradient(90deg, #ff8c42, var(--accent-orange));
+        }
+        
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            box-shadow: none;
+        }
+        
+        .cta-button.secondary:hover {
+            background: white;
+            color: var(--primary-blue);
+            border-color: white;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            background: white;
+            padding: 80px 0;
+            margin-top: -60px;
+            position: relative;
+            z-index: 3;
+            border-radius: 20px 20px 0 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: 30px;
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .stat-label {
+            color: var(--dark-gray);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        /* Sections */
+        section {
+            padding: 120px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-teal));
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--dark-gray);
+            max-width: 800px;
+            margin: 50px auto 60px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: var(--primary-dark);
+        }
+        
+        .feature-box {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--accent-orange);
+            margin-top: 40px;
+            transition: transform 0.3s;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-box h4 {
+            color: var(--primary-blue);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Services Section */
+        .services-section {
+            background: var(--light-gray);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid var(--primary-blue);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .service-icon {
+            font-size: 3.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+        }
+        
+        .service-list {
+            text-align: left;
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid var(--medium-gray);
+        }
+        
+        .service-list h4 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .service-list ul {
+            list-style: none;
+        }
+        
+        .service-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .service-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
+        
+        /* Criteria Section */
+        .criteria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            margin-top: 60px;
+        }
+        
+        .criterion-card {
+            background: white;
+            padding: 40px 35px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .criterion-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .criterion-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-teal));
+        }
+        
+        .criterion-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0 auto 25px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .criterion-card h4 {
+            color: var(--primary-dark);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Team Section */
+        .team-section {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
+            color: white;
+        }
+        
+        .team-section .section-title {
+            color: white;
+        }
+        
+        .team-section .section-title:after {
+            background: white;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .team-member {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        
+        .member-header {
+            padding: 40px 30px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .member-avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-teal));
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3.5rem;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .member-body {
+            padding: 35px;
+        }
+        
+        .member-name {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .member-role {
+            color: var(--accent-orange);
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: block;
+            font-size: 1.1rem;
+        }
+        
+        .member-expertise {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        /* Process Section */
+        .process-section {
+            background: white;
+        }
+        
+        .process-timeline {
+            max-width: 900px;
+            margin: 80px auto 0;
+            position: relative;
+        }
+        
+        .process-timeline:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary-blue), var(--accent-teal));
+            transform: translateX(-50%);
+        }
+        
+        .process-step {
+            position: relative;
+            margin-bottom: 80px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .process-step:nth-child(odd) {
+            justify-content: flex-start;
+            padding-right: calc(50% + 40px);
+        }
+        
+        .process-step:nth-child(even) {
+            justify-content: flex-end;
+            padding-left: calc(50% + 40px);
+        }
+        
+        .step-content {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            border-top: 4px solid var(--accent-orange);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border: 4px solid white;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .step-title {
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+        
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .gallery-item {
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(26, 95, 180, 0.9), rgba(255, 107, 53, 0.9));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: var(--light-gray);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-top: 60px;
+        }
+        
+        .contact-info h3 {
+            color: var(--primary-dark);
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 35px;
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal));
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 25px;
+            flex-shrink: 0;
+            font-size: 1.5rem;
+        }
+        
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 18px;
+            margin-bottom: 25px;
+            border: 2px solid var(--medium-gray);
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            border-color: var(--primary-blue);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(26, 95, 180, 0.1);
+        }
+        
+        .contact-form button {
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-teal));
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(26, 95, 180, 0.3);
+        }
+        
+        .contact-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(26, 95, 180, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 100px 0 50px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+        
+        .footer-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 25px;
+        }
+        
+        .footer-tagline {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 30px;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent-orange);
+            transform: translateY(-5px);
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-orange);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .footer-links a:before {
+            content: '›';
+            color: var(--accent-orange);
+            font-size: 1.2rem;
+        }
+        
+        .newsletter-form input {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .newsletter-form button {
+            width: 100%;
+            padding: 18px;
+            background: var(--accent-orange);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background: #ff8c42;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        
+        .designer-credit {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .designer-credit i {
+            color: var(--accent-orange);
+        }
+        
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+            
+            .process-timeline:before {
+                left: 30px;
+            }
+            
+            .process-step:nth-child(odd),
+            .process-step:nth-child(even) {
+                justify-content: flex-start;
+                padding-left: 80px;
+                padding-right: 0;
+            }
+            
+            .step-content {
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 30px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                border-top: 1px solid var(--medium-gray);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .cta-button {
+                padding: 16px 35px;
+                font-size: 1rem;
+                display: block;
+                margin: 15px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="nav-container">
+                <div class="logo-container">
+                    <div class="logo">
+                        <div class="logo-main">AL HIKMA</div>
+                        <div class="logo-sub">PROFESSIONAL JUDGING PANEL</div>
+                    </div>
+                </div>
+                <div class="mobile-menu" id="mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#criteria">Criteria</a></li>
+                    <li><a href="#team">Judges</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact" class="cta-button" style="padding: 12px 30px; margin-left: 20px;">Request Judges</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Professional Art Competition Judging</h1>
+                <div class="hero-tagline">Expert Evaluation for Educational Institutions</div>
+                <div class="hero-description">
+                    AL HIKMA provides professional judging services for art competitions in schools, 
+                    madrasas, and educational organizations. Our expert panel ensures fair, 
+                    constructive, and educational evaluation of student artwork.
+                </div>
+                
+                <div>
+                    <a href="#contact" class="cta-button">Request Our Judges</a>
+                    <a href="#services" class="cta-button secondary">View Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">300+</div>
+                    <div class="stat-label">Competitions Judged</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Institutions Served</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">12+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">25k+</div>
+                    <div class="stat-label">Artworks Evaluated</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About AL HIKMA</h2>
+            <div class="section-subtitle">
+                We specialize in professional art competition judging for educational institutions, 
+                combining artistic expertise with educational insight to provide fair and constructive evaluation.
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Expert Judging Services</h3>
+                    <p>Founded in 2010, AL HIKMA has established itself as the leading authority in 
+                       educational art competition judging. Our panel consists of experienced professionals 
+                       who understand both artistic excellence and educational values.</p>
+                    <p>We work with schools, madrasas, and educational organizations to provide 
+                       professional judging that encourages creativity while maintaining appropriate 
+                       standards for each age group.</p>
+                    
+                    <div class="feature-box">
+                        <h4><i class="fas fa-medal" style="color: var(--accent-orange);"></i> Our Commitment</h4>
+                        <p>We are committed to providing fair, transparent, and constructive judging 
+                           that helps young artists develop their skills while recognizing excellence 
+                           in creative expression.</p>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div style="background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal)); 
+                                height: 500px; border-radius: 20px; display: flex; align-items: center; 
+                                justify-content: center; color: white; padding: 40px; box-shadow: var(--shadow);">
+                        <div style="text-align: center;">
+                            <i class="fas fa-gavel" style="font-size: 5rem; color: white; margin-bottom: 30px; opacity: 0.9;"></i>
+                            <h3 style="font-size: 2rem; margin-bottom: 20px;">Professional Excellence</h3>
+                            <p style="font-size: 1.1rem; opacity: 0.9;">
+                                Trusted by educational institutions for professional, 
+                                ethical, and knowledgeable competition judging.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2 class="section-title">Our Judging Services</h2>
+            <div class="section-subtitle">
+                We provide comprehensive judging services for various types of art competitions 
+                in educational settings
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <h3>School Competitions</h3>
+                    <p>Professional judging for school art competitions, exhibitions, 
+                       and annual art events across all age groups.</p>
+                    
+                    <div class="service-list">
+                        <h4>Competition Types:</h4>
+                        <ul>
+                            <li>Annual Art Exhibitions</li>
+                            <li>School-wide Competitions</li>
+                            <li>Inter-school Art Events</li>
+                            <li>Age-group Specific Contests</li>
+                            <li>Art & Design Competitions</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Madrasa Competitions</h3>
+                    <p>Specialized judging for traditional educational institutions, 
+                       focusing on culturally appropriate art forms and themes.</p>
+                    
+                    <div class="service-list">
+                        <h4>Competition Types:</h4>
+                        <ul>
+                            <li>Calligraphy Contests</li>
+                            <li>Traditional Pattern Design</li>
+                            <li>Cultural Art Competitions</li>
+                            <li>Educational Theme Contests</li>
+                            <li>Traditional Art Forms</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Organization Events</h3>
+                    <p>Judging for educational organizations, community centers, 
+                       and cultural events with educational focus.</p>
+                    
+                    <div class="service-list">
+                        <h4>Competition Types:</h4>
+                        <ul>
+                            <li>Community Art Exhibitions</li>
+                            <li>Youth Art Competitions</li>
+                            <li>Cultural Festival Events</li>
+                            <li>Educational Campaigns</li>
+                            <li>Charity Art Events</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Criteria Section -->
+    <section id="criteria">
+        <div class="container">
+            <h2 class="section-title">Judging Criteria</h2>
+            <div class="section-subtitle">
+                Our comprehensive evaluation criteria ensure fair and constructive assessment 
+                of all artwork entries
+            </div>
+            
+            <div class="criteria-grid">
+                <div class="criterion-card">
+                    <div class="criterion-number">1</div>
+                    <h4>Technical Skill</h4>
+                    <p>Assessment of artistic technique, craftsmanship, and proficiency 
+                       with chosen medium and materials.</p>
+                </div>
+                
+                <div class="criterion-card">
+                    <div class="criterion-number">2</div>
+                    <h4>Creativity</h4>
+                    <p>Evaluation of originality, innovative approach, and unique 
+                       creative expression in the artwork.</p>
+                </div>
+                
+                <div class="criterion-card">
+                    <div class="criterion-number">3</div>
+                    <h4>Composition</h4>
+                    <p>Analysis of visual organization, balance, harmony, and 
+                       effective use of design principles.</p>
+                </div>
+                
+                <div class="criterion-card">
+                    <div class="criterion-number">4</div>
+                    <h4>Thematic Relevance</h4>
+                    <p>How effectively the artwork addresses the competition 
+                       theme and communicates intended concepts.</p>
+                </div>
+                
+                <div class="criterion-card">
+                    <div class="criterion-number">5</div>
+                    <h4>Emotional Impact</h4>
+                    <p>Ability to evoke appropriate emotional response, 
+                       reflection, or intellectual engagement.</p>
+                </div>
+                
+                <div class="criterion-card">
+                    <div class="criterion-number">6</div>
+                    <h4>Educational Value</h4>
+                    <p>Assessment of learning demonstrated and appropriate 
+                       content for educational setting.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team-section">
+        <div class="container">
+            <h2 class="section-title">Our Expert Judges</h2>
+            <div class="section-subtitle">
+                Meet our panel of professional judges with expertise in art and education
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-header">
+                        <div class="member-avatar">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3 class="member-name">Dr. Sarah Johnson</h3>
+                        <span class="member-role">Lead Judge & Art Educator</span>
+                    </div>
+                    <div class="member-body">
+                        <p class="member-expertise">PhD in Art Education with 15+ years of experience in 
+                           judging educational art competitions. Specializes in age-appropriate 
+                           evaluation and artistic development.</p>
+                        <p><strong>Areas:</strong> Painting, Drawing, Mixed Media</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-header">
+                        <div class="member-avatar">
+                            <i class="fas fa-pen-nib"></i>
+                        </div>
+                        <h3 class="member-name">Prof. Michael Chen</h3>
+                        <span class="member-role">Educational Consultant</span>
+                    </div>
+                    <div class="member-body">
+                        <p class="member-expertise">Professor of Art History with 12 years experience 
+                           in educational assessment. Focuses on thematic relevance and 
+                           educational appropriateness in student artwork.</p>
+                        <p><strong>Areas:</strong> Art History, Composition, Thematic Analysis</p>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-header">
+                        <div class="member-avatar">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3 class="member-name">Dr. Elena Rodriguez</h3>
+                        <span class="member-role">Contemporary Art Specialist</span>
+                    </div>
+                    <div class="member-body">
+                        <p class="member-expertise">MFA in Fine Arts with expertise in contemporary 
+                           art forms. Professional artist with focus on creative expression 
+                           and technical innovation.</p>
+                        <p><strong>Areas:</strong> Digital Art, Sculpture, Installation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="process-section">
+        <div class="container">
+            <h2 class="section-title">Our Judging Process</h2>
+            <div class="section-subtitle">
+                A systematic, transparent approach to ensure fair evaluation of all entries
+            </div>
+            
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4 class="step-title">Initial Submission Review</h4>
+                        <p>All entries are received and organized anonymously to ensure 
+                           impartial evaluation from the beginning.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4 class="step-title">Criteria-Based Assessment</h4>
+                        <p>Each artwork is evaluated by multiple judges using our 
+                           standardized criteria scoring system.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4 class="step-title">Panel Deliberation</h4>
+                        <p>Judges discuss all entries, compare evaluations, and reach 
+                           consensus on rankings and awards.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4 class="step-title">Feedback Development</h4>
+                        <p>Constructive feedback is prepared for all participants to 
+                           support artistic growth and development.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h4 class="step-title">Results & Recognition</h4>
+                        <p>Final results are announced with clear explanations of 
+                           selection criteria and artistic merit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="container">
+            <h2 class="section-title">Recent Competitions</h2>
+            <div class="section-subtitle">
+                A selection of competitions we have recently judged for educational institutions
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="School Art Competition">
+                    <div class="gallery-overlay">
+                        <h3>National School Art Exhibition 2023</h3>
+                        <p>200+ entries from 25 schools nationwide</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Calligraphy Competition">
+                    <div class="gallery-overlay">
+                        <h3>Annual Calligraphy Contest</h3>
+                        <p>Traditional art competition for madrasa students</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Art Exhibition">
+                    <div class="gallery-overlay">
+                        <h3>Youth Art Festival 2023</h3>
+                        <p>Community organization annual art event</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Request Our Judges</h2>
+            <div class="section-subtitle">
+                Invite AL HIKMA Judging Panel for your next art competition
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--primary-dark); margin-bottom: 5px;">Office Address</h4>
+                            <p>123 Professional Plaza<br>
+                            Education District, City 10101</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--primary-dark); margin-bottom: 5px;">Contact Numbers</h4>
+                            <p>Main Office: (123) 456-7890<br>
+                            Judging Coordinator: (123) 456-7891</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--primary-dark); margin-bottom: 5px;">Email Addresses</h4>
+                            <p>Judging Requests: judges@alhikma.org<br>
+                            General Inquiries: info@alhikma.org</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--primary-dark); margin-bottom: 5px;">Office Hours</h4>
+                            <p>Monday - Friday: 9:00 AM - 6:00 PM<br>
+                            Saturday: 10:00 AM - 4:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="judgingRequestForm">
+                        <select required>
+                            <option value="">Select Institution Type</option>
+                            <option value="school">School</option>
+                            <option value="madrasa">Madrasa/Educational Institution</option>
+                            <option value="organization">Educational Organization</option>
+                            <option value="community">Community Center</option>
+                            <option value="other">Other Institution</option>
+                        </select>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <input type="text" placeholder="Institution Name" required>
+                            <input type="text" placeholder="Contact Person" required>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <input type="email" placeholder="Email Address" required>
+                            <input type="tel" placeholder="Phone Number">
+                        </div>
+                        
+                        <select required>
+                            <option value="">Competition Type</option>
+                            <option value="annual">Annual Art Competition</option>
+                            <option value="calligraphy">Calligraphy Contest</option>
+                            <option value="thematic">Thematic Art Contest</option>
+                            <option value="exhibition">Art Exhibition</option>
+                            <option value="other">Other Competition Type</option>
+                        </select>
+                        
+                        <input type="text" placeholder="Competition Theme" required>
+                        
+                        <textarea placeholder="Additional Information (Age groups, number of participants, special requirements)" rows="6"></textarea>
+                        
+                        <button type="submit">Submit Judging Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">AL HIKMA</div>
+                    <div class="footer-tagline">
+                        Professional art competition judging for educational institutions. 
+                        Providing fair, constructive, and educational evaluation since 2010.
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Judging Services</a></li>
+                        <li><a href="#criteria">Judging Criteria</a></li>
+                        <li><a href="#team">Our Judges</a></li>
+                        <li><a href="#process">Judging Process</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">School Art Competitions</a></li>
+                        <li><a href="#">Madrasa Art Judging</a></li>
+                        <li><a href="#">Educational Events</a></li>
+                        <li><a href="#">Youth Art Exhibitions</a></li>
+                        <li><a href="#">Calligraphy Contests</a></li>
+                        <li><a href="#">Community Art Projects</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px; line-height: 1.6;">
+                        Subscribe to receive updates on judging services, educational resources, 
+                        and art competition announcements.
+                    </p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Your email address">
+                        <button type="button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 AL HIKMA Professional Judging Panel. All rights reserved.</p>
+                <p style="margin-top: 10px;">Providing professional art competition judging services to educational institutions worldwide</p>
+                
+                <!-- Designer Credit Added Here -->
+                <div class="designer-credit">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>Designed by Suhail Kerala</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if(navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+            });
+        });
+        
+        // Form Submission for Judging Request
+        const judgingForm = document.getElementById('judgingRequestForm');
+        if(judgingForm) {
+            judgingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const institutionName = this.querySelector('input[placeholder="Institution Name"]').value;
+                const contactPerson = this.querySelector('input[placeholder="Contact Person"]').value;
+                const competitionType = this.querySelectorAll('select')[1].value;
+                
+                // Competition type labels
+                const compLabels = {
+                    'annual': 'Annual Art Competition',
+                    'calligraphy': 'Calligraphy Contest',
+                    'thematic': 'Thematic Art Contest',
+                    'exhibition': 'Art Exhibition',
+                    'other': 'Art Competition'
+                };
+                
+                // Show success message
+                const successMsg = document.createElement('div');
+                successMsg.innerHTML = `
+                    <div style="background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal)); color: white; padding: 25px; 
+                                border-radius: 15px; margin-top: 20px; text-align: center; font-weight: 600; box-shadow: var(--shadow);">
+                        <i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 15px; display: block;"></i>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Request Received!</h3>
+                        <p style="opacity: 0.9; line-height: 1.6;">
+                            Thank you ${contactPerson} from ${institutionName}!<br>
+                            Your request for ${compLabels[competitionType] || 'art competition'} judging has been received.
+                        </p>
+                        <p style="margin-top: 15px; font-size: 0.9rem; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.2);">
+                            <i class="fas fa-envelope"></i> A confirmation email has been sent. Our coordinator will contact you within 48 hours.
+                        </p>
+                    </div>
+                `;
+                
+                this.parentNode.insertBefore(successMsg, this.nextSibling);
+                this.reset();
+                
+                // Remove message after 8 seconds
+                setTimeout(() => {
+                    successMsg.remove();
+                }, 8000);
+            });
+        }
+        
+        // Gallery item click simulation
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const overlay = this.querySelector('.gallery-overlay');
+                const title = overlay.querySelector('h3').textContent;
+                const details = overlay.querySelector('p').textContent;
+                
+                alert(`${title}\n${details}\n\nThis competition was professionally judged by AL HIKMA Panel.`);
+            });
+        });
+        
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.05)';
+            }
+        });
+        
+        // Newsletter subscription
+        document.querySelector('.newsletter-form button').addEventListener('click', function() {
+            const emailInput = this.previousElementSibling;
+            if(emailInput.value && emailInput.value.includes('@')) {
+                alert('Thank you for subscribing to our newsletter!');
+                emailInput.value = '';
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        });
+    </script>
+</body>
+</html>
