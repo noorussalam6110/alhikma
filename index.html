@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AL HIKMA Professional Art Competition Judging Panel - Expert evaluation for educational institutions, schools, and madrasas">
+    <meta name="keywords" content="art competition judging, school art competitions, madrasa judging, educational art events, professional judges">
     <title>AL HIKMA | Professional Art Competition Judging Panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
@@ -26,6 +28,8 @@
             --text-light: #ffffff;
             --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             --shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --success-green: #28a745;
+            --error-red: #dc3545;
         }
         
         body {
@@ -700,12 +704,23 @@
             font-size: 1.5rem;
         }
         
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
         .contact-form input,
         .contact-form textarea,
         .contact-form select {
             width: 100%;
             padding: 18px;
-            margin-bottom: 25px;
+            margin-bottom: 0;
             border: 2px solid var(--medium-gray);
             border-radius: 10px;
             font-family: 'Inter', sans-serif;
@@ -722,6 +737,12 @@
             box-shadow: 0 0 0 3px rgba(26, 95, 180, 0.1);
         }
         
+        .contact-form input.error,
+        .contact-form textarea.error,
+        .contact-form select.error {
+            border-color: var(--error-red);
+        }
+        
         .contact-form button {
             background: linear-gradient(90deg, var(--primary-blue), var(--accent-teal));
             color: white;
@@ -736,9 +757,94 @@
             box-shadow: 0 4px 15px rgba(26, 95, 180, 0.3);
         }
         
-        .contact-form button:hover {
+        .contact-form button:hover:not(:disabled) {
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(26, 95, 180, 0.4);
+        }
+        
+        .contact-form button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        
+        /* Form Messages */
+        .form-message {
+            display: none;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        .form-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        
+        .form-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        
+        .success-message {
+            text-align: center;
+        }
+        
+        .success-icon {
+            font-size: 3rem;
+            color: var(--success-green);
+            margin-bottom: 15px;
+        }
+        
+        .success-details {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        
+        .next-steps {
+            background: #e6f7ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        
+        .next-steps ol {
+            margin: 10px 0 0 20px;
+        }
+        
+        .next-steps li {
+            margin-bottom: 8px;
+        }
+        
+        .contact-reminder {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .terms-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .terms-checkbox input {
+            width: auto;
+        }
+        
+        .terms-checkbox label {
+            font-size: 0.9rem;
+            color: var(--dark-gray);
         }
         
         /* Footer */
@@ -902,6 +1008,11 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
         /* Responsive */
         @media (max-width: 992px) {
             .hero h1 {
@@ -946,6 +1057,7 @@
                 padding: 30px;
                 box-shadow: 0 10px 30px rgba(0,0,0,0.1);
                 border-top: 1px solid var(--medium-gray);
+                z-index: 1000;
             }
             
             .nav-links.active {
@@ -970,6 +1082,10 @@
             
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -1018,7 +1134,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#criteria">Criteria</a></li>
-                    <li><a href="judges.html">Judges</a></li>
+                    <li><a href="#team">Judges</a></li>
                     <li><a href="#process">Process</a></li>
                     <li><a href="#gallery">Gallery</a></li>
                     <li><a href="#contact" class="cta-button" style="padding: 12px 30px; margin-left: 20px;">Request Judges</a></li>
@@ -1136,13 +1252,13 @@
                     <div class="service-list">
                         <h4>Competition Types:</h4>
                         <ul>
-                            <li>Musabaqa Islamic Compatition</li>
+                            <li>Musabaqa Islamic Competition</li>
                             <li>SKSSF Sargalayam</li>
                             <li>Inter-school Art Events</li>
                             <li>School-wide Competitions</li>
                             <li>Kerala School Kalothsav</li>
                             <li>College Fest</li>
-                            <li>Madrasa-wide Compatitions</li>
+                            <li>Madrasa-wide Competitions</li>
                             <li>Art & Design Competitions</li>
                         </ul>
                     </div>
@@ -1279,13 +1395,13 @@
                             <i class="fas fa-pen-nib"></i>
                         </div>
                         <h3 class="member-name">Ashrafi</h3>
-                        <span class="member-role">Judge & Ats Educator</span>
+                        <span class="member-role">Judge & Arts Educator</span>
                     </div>
                     <div class="member-body">
                         <p class="member-expertise">12 years experience 
                            in educational assessment. Focuses on thematic relevance and 
                            educational appropriateness in student artwork.</p>
-                        <p><strong>Areas:</strong> Mappilappattu, Duff mutt and others</p>
+                        <p><strong>Areas:</strong> Mappilappattu, Duff Mutt and others</p>
                     </div>
                 </div>
                 
@@ -1374,26 +1490,26 @@
             
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="School Art Competition">
+                    <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="School Art Competition" loading="lazy">
                     <div class="gallery-overlay">
-                        <h3>Jamiya Nooriyya Arabic college Fest</h3>
-                        <p>funoon Fista</p>
+                        <h3>Jamiya Nooriyya Arabic College Fest</h3>
+                        <p>Funoon Fista</p>
                     </div>
                 </div>
                 
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1565688534245-05d6b584a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Calligraphy Competition">
-                    <div class="gallery-overlay">
-                        <h3>Asmi fest</h3>
-                        <p>Asmi fest</p>
-                    </div>
-                </div>
-                
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1542744095-fcf48d80ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Art Exhibition">
+                    <img src="https://images.unsplash.com/photo-1565688534245-05d6b584a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Calligraphy Competition" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Asmi Fest</h3>
-                        <p>annual art event</p>
+                        <p>Art and Cultural Competition</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1542744095-fcf48d80ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Art Exhibition" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3>Annual Art Exhibition</h3>
+                        <p>Student Art Competition</p>
                     </div>
                 </div>
             </div>
@@ -1429,7 +1545,7 @@
                         </div>
                         <div>
                             <h4 style="color: var(--primary-dark); margin-bottom: 5px;">Contact Numbers</h4>
-                            <p> Office:9846843138 <br>
+                            <p>Office: 9846843138 <br>
                             Judging Coordinator: 9846 843138</p>
                         </div>
                     </div>
@@ -1446,93 +1562,97 @@
                     </div>
                 </div>
                 
-<form id="judgingRequestForm">
-    <!-- Institution Details -->
-    <div class="form-group">
-        <select name="institutionType" required>
-            <option value="">Select Institution Type *</option>
-            <option value="school">School</option>
-            <option value="madrasa">Madrasa / Islamic School</option>
-            <option value="organization">Educational Organization</option>
-            <option value="community">Community Center</option>
-            <option value="college">College / University</option>
-            <option value="other">Other</option>
-        </select>
-    </div>
-    
-    <div class="form-group">
-        <input type="text" name="institutionName" placeholder="Institution Name *" required>
-    </div>
-    
-    <!-- Contact Details -->
-    <div class="form-row">
-        <div class="form-group">
-            <input type="text" name="contactPerson" placeholder="Contact Person Name *" required>
+                <form id="judgingRequestForm" class="contact-form">
+                    <!-- Institution Details -->
+                    <div class="form-group">
+                        <select name="institutionType" id="institutionType" required>
+                            <option value="">Select Institution Type *</option>
+                            <option value="school">School</option>
+                            <option value="madrasa">Madrasa / Islamic School</option>
+                            <option value="organization">Educational Organization</option>
+                            <option value="community">Community Center</option>
+                            <option value="college">College / University</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" name="institutionName" id="institutionName" placeholder="Institution Name *" required>
+                    </div>
+                    
+                    <!-- Contact Details -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" name="contactPerson" id="contactPerson" placeholder="Contact Person Name *" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="contactEmail" id="contactEmail" placeholder="Email Address *" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="tel" name="phone" id="phone" placeholder="Phone Number">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="participants" id="participants" placeholder="Expected Participants">
+                        </div>
+                    </div>
+                    
+                    <!-- Competition Details -->
+                    <div class="form-group">
+                        <select name="competitionType" id="competitionType" required>
+                            <option value="">Select Competition Type *</option>
+                            <option value="annual">Annual Art Competition</option>
+                            <option value="calligraphy">Calligraphy Contest</option>
+                            <option value="painting">Painting Competition</option>
+                            <option value="digital">Digital Art Contest</option>
+                            <option value="sculpture">Sculpture Competition</option>
+                            <option value="mixed">Mixed Media Exhibition</option>
+                            <option value="thematic">Thematic Art Contest</option>
+                            <option value="exhibition">Art Exhibition</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" name="theme" id="theme" placeholder="Competition Theme / Topic *" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="date" name="date" id="date" placeholder="Competition Date">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="ageGroups" id="ageGroups" placeholder="Age Groups (e.g., 10-15 years)">
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Information -->
+                    <div class="form-group">
+                        <textarea name="details" id="details" placeholder="Additional Information (Judges needed, special requirements, budget, etc.)" rows="5"></textarea>
+                    </div>
+                    
+                    <!-- Terms & Submission -->
+                    <div class="form-group">
+                        <div class="terms-checkbox">
+                            <input type="checkbox" id="terms" required>
+                            <label for="terms">
+                                I agree to the processing of this information for judging coordination purposes
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i> Submit Judging Request
+                    </button>
+                    
+                    <div id="formMessage" class="form-message"></div>
+                </form>
+            </div>
         </div>
-        <div class="form-group">
-            <input type="email" name="contactEmail" placeholder="Email Address *" required>
-        </div>
-    </div>
-    
-    <div class="form-row">
-        <div class="form-group">
-            <input type="tel" name="phone" placeholder="Phone Number">
-        </div>
-        <div class="form-group">
-            <input type="number" name="participants" placeholder="Expected Participants">
-        </div>
-    </div>
-    
-    <!-- Competition Details -->
-    <div class="form-group">
-        <select name="competitionType" required>
-            <option value="">Select Competition Type *</option>
-            <option value="annual">Annual Art Competition</option>
-            <option value="calligraphy">Calligraphy Contest</option>
-            <option value="painting">Painting Competition</option>
-            <option value="digital">Digital Art Contest</option>
-            <option value="sculpture">Sculpture Competition</option>
-            <option value="mixed">Mixed Media Exhibition</option>
-            <option value="thematic">Thematic Art Contest</option>
-            <option value="exhibition">Art Exhibition</option>
-            <option value="other">Other</option>
-        </select>
-    </div>
-    
-    <div class="form-group">
-        <input type="text" name="theme" placeholder="Competition Theme / Topic *" required>
-    </div>
-    
-    <div class="form-row">
-        <div class="form-group">
-            <input type="date" name="date" placeholder="Competition Date">
-        </div>
-        <div class="form-group">
-            <input type="text" name="ageGroups" placeholder="Age Groups (e.g., 10-15 years)">
-        </div>
-    </div>
-    
-    <!-- Additional Information -->
-    <div class="form-group">
-        <textarea name="details" placeholder="Additional Information (Judges needed, special requirements, budget, etc.)" rows="5"></textarea>
-    </div>
-    
-    <!-- Terms & Submission -->
-    <div class="form-group" style="margin-top: 30px;">
-        <div class="terms-checkbox">
-            <input type="checkbox" id="terms" required>
-            <label for="terms">
-                I agree to the processing of this information for judging coordination purposes
-            </label>
-        </div>
-    </div>
-    
-    <button type="submit" id="submitBtn" class="submit-button">
-        <i class="fas fa-paper-plane"></i> Submit Judging Request
-    </button>
-    
-    <div id="formMessage" style="display: none;"></div>
-</form>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1566,12 +1686,12 @@
                 <div class="footer-section">
                     <h3>Our Services</h3>
                     <ul class="footer-links">
-                        <li><a href="#">School Art Competitions</a></li>
-                        <li><a href="#">Madrasa Art Judging</a></li>
-                        <li><a href="#">Educational Events</a></li>
-                        <li><a href="#">Youth Art Exhibitions</a></li>
-                        <li><a href="#">Calligraphy Contests</a></li>
-                        <li><a href="#">Community Art Projects</a></li>
+                        <li><a href="#services">School Art Competitions</a></li>
+                        <li><a href="#services">Madrasa Art Judging</a></li>
+                        <li><a href="#services">Educational Events</a></li>
+                        <li><a href="#services">Youth Art Exhibitions</a></li>
+                        <li><a href="#services">Calligraphy Contests</a></li>
+                        <li><a href="#services">Community Art Projects</a></li>
                     </ul>
                 </div>
                 
@@ -1582,8 +1702,8 @@
                         and art competition announcements.
                     </p>
                     <div class="newsletter-form">
-                        <input type="email" placeholder="Your email address">
-                        <button type="button">Subscribe</button>
+                        <input type="email" id="newsletterEmail" placeholder="Your email address">
+                        <button type="button" id="subscribeBtn">Subscribe</button>
                     </div>
                 </div>
             </div>
@@ -1592,7 +1712,7 @@
                 <p>&copy; 2023 AL HIKMA Professional Judging Panel. All rights reserved.</p>
                 <p style="margin-top: 10px;">Providing professional art competition judging services to educational institutions worldwide</p>
                 
-                <!-- Designer Credit Added Here -->
+                <!-- Designer Credit -->
                 <div class="designer-credit">
                     <i class="fas fa-paint-brush"></i>
                     <span>Designed by Suhail Kerala</span>
@@ -1602,214 +1722,256 @@
     </footer>
 
     <!-- JavaScript -->
-    // Google Apps Script Endpoint (Replace with your URL)
-const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyrFb9EUgu1aVJU-CQlQYkO7ZV9ogjeo6uGJrK7cyEnNT9yN9cuhqPw2rjSgJECFVH9/exec';
-
-// Form Submission Handler
-document.getElementById('judgingRequestForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    const form = this;
-    const submitBtn = document.getElementById('submitBtn');
-    const formMessage = document.getElementById('formMessage');
-    const originalBtnText = submitBtn.innerHTML;
-    
-    // Collect form data
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
-    
-    // Validate
-    if (!validateForm(data)) {
-        return;
-    }
-    
-    // Show loading state
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-    formMessage.style.display = 'none';
-    
-    try {
-        // Send to Google Apps Script
-        const response = await fetch(GAS_ENDPOINT, {
-            method: 'POST',
-            mode: 'no-cors', // Important for GAS
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenu').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
         });
-        
-        // Since we use no-cors, we can't read response directly
-        // Show success message based on assumption
-        showSuccessMessage(data);
-        
-        // Reset form
-        form.reset();
-        
-        // Log to console for debugging
-        console.log('Form submitted:', data);
-        
-    } catch (error) {
-        console.error('Error:', error);
-        showErrorMessage();
-    } finally {
-        // Reset button
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalBtnText;
-    }
-});
 
-// Form Validation
-function validateForm(data) {
-    const required = ['institutionName', 'contactPerson', 'contactEmail', 'institutionType', 'competitionType', 'theme'];
-    
-    for (const field of required) {
-        if (!data[field] || data[field].trim() === '') {
-            showValidationError(`Please fill in the ${field.replace(/([A-Z])/g, ' $1').toLowerCase()}`);
-            return false;
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        // Form submission handling
+        document.getElementById('judgingRequestForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            const submitBtn = document.getElementById('submitBtn');
+            const formMessage = document.getElementById('formMessage');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            // Validate form
+            if (!validateForm()) {
+                return;
+            }
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            formMessage.style.display = 'none';
+            
+            // Collect form data
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            
+            try {
+                // Google Apps Script Endpoint (Replace with your actual GAS URL)
+                const GAS_ENDPOINT = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+                
+                // Send data to Google Apps Script
+                const response = await fetch(GAS_ENDPOINT, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                // Show success message (we use no-cors so we can't read response)
+                showSuccessMessage(data);
+                
+                // Reset form
+                form.reset();
+                
+            } catch (error) {
+                console.error('Error:', error);
+                showErrorMessage();
+            } finally {
+                // Reset button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            }
+        });
+
+        // Newsletter subscription
+        document.getElementById('subscribeBtn').addEventListener('click', function() {
+            const email = document.getElementById('newsletterEmail').value;
+            
+            if (!email || !validateEmail(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            this.disabled = true;
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
+            
+            // Simulate subscription (replace with actual API call)
+            setTimeout(() => {
+                alert('Thank you for subscribing to our newsletter!');
+                document.getElementById('newsletterEmail').value = '';
+                this.disabled = false;
+                this.innerHTML = 'Subscribe';
+            }, 1500);
+        });
+
+        // Form validation
+        function validateForm() {
+            let isValid = true;
+            const requiredFields = document.querySelectorAll('#judgingRequestForm [required]');
+            
+            // Reset error styles
+            document.querySelectorAll('.contact-form input, .contact-form select, .contact-form textarea').forEach(field => {
+                field.classList.remove('error');
+            });
+            
+            // Check required fields
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.classList.add('error');
+                    isValid = false;
+                }
+            });
+            
+            // Check email format
+            const emailField = document.getElementById('contactEmail');
+            if (emailField.value && !validateEmail(emailField.value)) {
+                emailField.classList.add('error');
+                showValidationError('Please enter a valid email address');
+                isValid = false;
+            }
+            
+            // Check terms checkbox
+            const termsCheckbox = document.getElementById('terms');
+            if (!termsCheckbox.checked) {
+                showValidationError('Please accept the terms to proceed');
+                isValid = false;
+            }
+            
+            if (!isValid) {
+                showValidationError('Please fill in all required fields correctly');
+            }
+            
+            return isValid;
         }
-    }
-    
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(data.contactEmail)) {
-        showValidationError('Please enter a valid email address');
-        return false;
-    }
-    
-    // Terms checkbox
-    if (!document.getElementById('terms').checked) {
-        showValidationError('Please accept the terms to proceed');
-        return false;
-    }
-    
-    return true;
-}
 
-// Success Message
-function showSuccessMessage(data) {
-    const formMessage = document.getElementById('formMessage');
-    const requestId = 'HKM' + Date.now().toString().slice(-9);
-    
-    formMessage.innerHTML = `
-        <div class="success-message">
-            <div class="success-icon">
-                <i class="fas fa-check-circle"></i>
-            </div>
-            <h3>Request Submitted Successfully!</h3>
-            <div class="success-details">
-                <p><strong>Request ID:</strong> ${requestId}</p>
-                <p><strong>Institution:</strong> ${data.institutionName}</p>
-                <p><strong>Contact Person:</strong> ${data.contactPerson}</p>
-                <p>A confirmation email has been sent to <strong>${data.contactEmail}</strong></p>
-            </div>
-            <div class="next-steps">
-                <h4>What happens next?</h4>
-                <ol>
-                    <li>Our judging coordinator will contact you within 48 hours</li>
-                    <li>We'll discuss your competition requirements in detail</li>
-                    <li>You'll receive a customized judging proposal</li>
-                    <li>We'll handle all logistics for your event</li>
-                </ol>
-            </div>
-            <div class="contact-reminder">
-                <p><i class="fas fa-info-circle"></i> Need immediate assistance? Email: judges@alhikma.org</p>
-            </div>
-        </div>
-    `;
-    
-    formMessage.style.display = 'block';
-    formMessage.style.backgroundColor = '#d4edda';
-    formMessage.style.color = '#155724';
-    formMessage.style.padding = '20px';
-    formMessage.style.borderRadius = '8px';
-    formMessage.style.marginTop = '20px';
-    
-    // Scroll to message
-    formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
 
-// Error Messages
-function showValidationError(message) {
-    const formMessage = document.getElementById('formMessage');
-    formMessage.innerHTML = `
-        <div class="error-message">
-            <i class="fas fa-exclamation-circle"></i>
-            ${message}
-        </div>
-    `;
-    formMessage.style.display = 'block';
-    formMessage.style.backgroundColor = '#f8d7da';
-    formMessage.style.color = '#721c24';
-    formMessage.style.padding = '15px';
-    formMessage.style.borderRadius = '5px';
-    formMessage.style.marginTop = '15px';
-}
+        function showSuccessMessage(data) {
+            const formMessage = document.getElementById('formMessage');
+            const requestId = 'HKM' + Date.now().toString().slice(-9);
+            
+            formMessage.innerHTML = `
+                <div class="success-message">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Request Submitted Successfully!</h3>
+                    <div class="success-details">
+                        <p><strong>Request ID:</strong> ${requestId}</p>
+                        <p><strong>Institution:</strong> ${data.institutionName}</p>
+                        <p><strong>Contact Person:</strong> ${data.contactPerson}</p>
+                        <p>A confirmation email has been sent to <strong>${data.contactEmail}</strong></p>
+                    </div>
+                    <div class="next-steps">
+                        <h4>What happens next?</h4>
+                        <ol>
+                            <li>Our judging coordinator will contact you within 48 hours</li>
+                            <li>We'll discuss your competition requirements in detail</li>
+                            <li>You'll receive a customized judging proposal</li>
+                            <li>We'll handle all logistics for your event</li>
+                        </ol>
+                    </div>
+                    <div class="contact-reminder">
+                        <p><i class="fas fa-info-circle"></i> Need immediate assistance? Email: alhikma@gmail.com</p>
+                    </div>
+                </div>
+            `;
+            
+            formMessage.className = 'form-message success';
+            formMessage.style.display = 'block';
+            
+            // Scroll to message
+            formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
 
-function showErrorMessage() {
-    const formMessage = document.getElementById('formMessage');
-    formMessage.innerHTML = `
-        <div class="error-message">
-            <i class="fas fa-exclamation-triangle"></i>
-            There was an error submitting your request. Please try again or contact us directly at judges@alhikma.org
-        </div>
-    `;
-    formMessage.style.display = 'block';
-    formMessage.style.backgroundColor = '#f8d7da';
-    formMessage.style.color = '#721c24';
-    formMessage.style.padding = '15px';
-    formMessage.style.borderRadius = '5px';
-    formMessage.style.marginTop = '15px';
-}
+        function showValidationError(message) {
+            const formMessage = document.getElementById('formMessage');
+            formMessage.innerHTML = `
+                <div class="error-message">
+                    <i class="fas fa-exclamation-circle"></i>
+                    ${message}
+                </div>
+            `;
+            formMessage.className = 'form-message error';
+            formMessage.style.display = 'block';
+        }
 
-// Add this CSS to your page
-const backendCSS = `
-.success-message {
-    animation: fadeIn 0.5s ease-in;
-}
+        function showErrorMessage() {
+            const formMessage = document.getElementById('formMessage');
+            formMessage.innerHTML = `
+                <div class="error-message">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    There was an error submitting your request. Please try again or contact us directly at alhikma@gmail.com
+                </div>
+            `;
+            formMessage.className = 'form-message error';
+            formMessage.style.display = 'block';
+        }
 
-.success-icon {
-    font-size: 3rem;
-    color: #28a745;
-    margin-bottom: 15px;
-}
+        // Real-time validation
+        document.querySelectorAll('#judgingRequestForm input, #judgingRequestForm select, #judgingRequestForm textarea').forEach(field => {
+            field.addEventListener('blur', function() {
+                if (this.hasAttribute('required') && !this.value.trim()) {
+                    this.classList.add('error');
+                } else {
+                    this.classList.remove('error');
+                }
+                
+                // Email validation on blur
+                if (this.type === 'email' && this.value) {
+                    if (!validateEmail(this.value)) {
+                        this.classList.add('error');
+                    } else {
+                        this.classList.remove('error');
+                    }
+                }
+            });
+            
+            field.addEventListener('input', function() {
+                if (this.value.trim()) {
+                    this.classList.remove('error');
+                }
+            });
+        });
 
-.success-details {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    margin: 20px 0;
-}
-
-.next-steps {
-    background: #e6f7ff;
-    padding: 20px;
-    border-radius: 8px;
-    margin: 20px 0;
-}
-
-.next-steps ol {
-    margin: 10px 0 0 20px;
-}
-
-.next-steps li {
-    margin-bottom: 8px;
-}
-
-.contact-reminder {
-    background: #fff3cd;
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 20px;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-`;
-
-// Inject CSS
-const style = document.createElement('style');
-style.textContent = backendCSS;
-document.head.appendChild(style);
+        // Set minimum date to today for competition date
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').min = today;
+        
+        // Phone number formatting
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 10) value = value.substring(0, 10);
+            
+            if (value.length > 3 && value.length <= 6) {
+                value = value.substring(0, 3) + ' ' + value.substring(3);
+            } else if (value.length > 6) {
+                value = value.substring(0, 3) + ' ' + value.substring(3, 6) + ' ' + value.substring(6);
+            }
+            
+            e.target.value = value;
+        });
+    </script>
+</body>
+</html>
