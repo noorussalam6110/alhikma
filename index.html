@@ -1446,47 +1446,93 @@
                     </div>
                 </div>
                 
-                <div class="contact-form">
-                    <form id="judgingRequestForm">
-                        <select required>
-                            <option value="">Select Institution Type</option>
-                            <option value="school">School</option>
-                            <option value="madrasa">Madrasa/Educational Institution</option>
-                            <option value="organization">Educational Organization</option>
-                            <option value="community">Community Center</option>
-                            <option value="other">Other Institution</option>
-                        </select>
-                        
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                            <input type="text" placeholder="Institution Name" required>
-                            <input type="text" placeholder="Contact Person" required>
-                        </div>
-                        
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                            <input type="email" placeholder="Email Address" required>
-                            <input type="tel" placeholder="Phone Number">
-                        </div>
-                        
-                        <select required>
-                            <option value="">Competition Type</option>
-                            <option value="annual">Annual Art Competition</option>
-                            <option value="calligraphy">Calligraphy Contest</option>
-                            <option value="thematic">Thematic Art Contest</option>
-                            <option value="exhibition">Art Exhibition</option>
-                            <option value="other">Other Competition Type</option>
-                        </select>
-                        
-                        <input type="text" placeholder="Competition Theme" required>
-                        
-                        <textarea placeholder="Additional Information (Age groups, number of participants, special requirements)" rows="6"></textarea>
-                        
-                        <button type="submit">Submit Judging Request</button>
-                    </form>
-                </div>
-            </div>
+<form id="judgingRequestForm">
+    <!-- Institution Details -->
+    <div class="form-group">
+        <select name="institutionType" required>
+            <option value="">Select Institution Type *</option>
+            <option value="school">School</option>
+            <option value="madrasa">Madrasa / Islamic School</option>
+            <option value="organization">Educational Organization</option>
+            <option value="community">Community Center</option>
+            <option value="college">College / University</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <input type="text" name="institutionName" placeholder="Institution Name *" required>
+    </div>
+    
+    <!-- Contact Details -->
+    <div class="form-row">
+        <div class="form-group">
+            <input type="text" name="contactPerson" placeholder="Contact Person Name *" required>
         </div>
-    </section>
-
+        <div class="form-group">
+            <input type="email" name="contactEmail" placeholder="Email Address *" required>
+        </div>
+    </div>
+    
+    <div class="form-row">
+        <div class="form-group">
+            <input type="tel" name="phone" placeholder="Phone Number">
+        </div>
+        <div class="form-group">
+            <input type="number" name="participants" placeholder="Expected Participants">
+        </div>
+    </div>
+    
+    <!-- Competition Details -->
+    <div class="form-group">
+        <select name="competitionType" required>
+            <option value="">Select Competition Type *</option>
+            <option value="annual">Annual Art Competition</option>
+            <option value="calligraphy">Calligraphy Contest</option>
+            <option value="painting">Painting Competition</option>
+            <option value="digital">Digital Art Contest</option>
+            <option value="sculpture">Sculpture Competition</option>
+            <option value="mixed">Mixed Media Exhibition</option>
+            <option value="thematic">Thematic Art Contest</option>
+            <option value="exhibition">Art Exhibition</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <input type="text" name="theme" placeholder="Competition Theme / Topic *" required>
+    </div>
+    
+    <div class="form-row">
+        <div class="form-group">
+            <input type="date" name="date" placeholder="Competition Date">
+        </div>
+        <div class="form-group">
+            <input type="text" name="ageGroups" placeholder="Age Groups (e.g., 10-15 years)">
+        </div>
+    </div>
+    
+    <!-- Additional Information -->
+    <div class="form-group">
+        <textarea name="details" placeholder="Additional Information (Judges needed, special requirements, budget, etc.)" rows="5"></textarea>
+    </div>
+    
+    <!-- Terms & Submission -->
+    <div class="form-group" style="margin-top: 30px;">
+        <div class="terms-checkbox">
+            <input type="checkbox" id="terms" required>
+            <label for="terms">
+                I agree to the processing of this information for judging coordination purposes
+            </label>
+        </div>
+    </div>
+    
+    <button type="submit" id="submitBtn" class="submit-button">
+        <i class="fas fa-paper-plane"></i> Submit Judging Request
+    </button>
+    
+    <div id="formMessage" style="display: none;"></div>
+</form>
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1556,122 +1602,214 @@
     </footer>
 
     <!-- JavaScript -->
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenu = document.getElementById('mobileMenu');
-        const navLinks = document.getElementById('navLinks');
-        
-        mobileMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileMenu.innerHTML = navLinks.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
+    // Google Apps Script Endpoint (Replace with your URL)
+const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyrFb9EUgu1aVJU-CQlQYkO7ZV9ogjeo6uGJrK7cyEnNT9yN9cuhqPw2rjSgJECFVH9/exec';
+
+// Form Submission Handler
+document.getElementById('judgingRequestForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const form = this;
+    const submitBtn = document.getElementById('submitBtn');
+    const formMessage = document.getElementById('formMessage');
+    const originalBtnText = submitBtn.innerHTML;
+    
+    // Collect form data
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    
+    // Validate
+    if (!validateForm(data)) {
+        return;
+    }
+    
+    // Show loading state
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+    formMessage.style.display = 'none';
+    
+    try {
+        // Send to Google Apps Script
+        const response = await fetch(GAS_ENDPOINT, {
+            method: 'POST',
+            mode: 'no-cors', // Important for GAS
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
         });
         
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if(navLinks.classList.contains('active')) {
-                        navLinks.classList.remove('active');
-                        mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
-                    }
-                }
-            });
-        });
+        // Since we use no-cors, we can't read response directly
+        // Show success message based on assumption
+        showSuccessMessage(data);
         
-        // Form Submission for Judging Request
-        const judgingForm = document.getElementById('judgingRequestForm');
-        if(judgingForm) {
-            judgingForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Get form values
-                const institutionName = this.querySelector('input[placeholder="Institution Name"]').value;
-                const contactPerson = this.querySelector('input[placeholder="Contact Person"]').value;
-                const competitionType = this.querySelectorAll('select')[1].value;
-                
-                // Competition type labels
-                const compLabels = {
-                    'annual': 'Annual Art Competition',
-                    'calligraphy': 'Calligraphy Contest',
-                    'thematic': 'Thematic Art Contest',
-                    'exhibition': 'Art Exhibition',
-                    'other': 'Art Competition'
-                };
-                
-                // Show success message
-                const successMsg = document.createElement('div');
-                successMsg.innerHTML = `
-                    <div style="background: linear-gradient(135deg, var(--primary-blue), var(--accent-teal)); color: white; padding: 25px; 
-                                border-radius: 15px; margin-top: 20px; text-align: center; font-weight: 600; box-shadow: var(--shadow);">
-                        <i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 15px; display: block;"></i>
-                        <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Request Received!</h3>
-                        <p style="opacity: 0.9; line-height: 1.6;">
-                            Thank you ${contactPerson} from ${institutionName}!<br>
-                            Your request for ${compLabels[competitionType] || 'art competition'} judging has been received.
-                        </p>
-                        <p style="margin-top: 15px; font-size: 0.9rem; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.2);">
-                            <i class="fas fa-envelope"></i> A confirmation email has been sent. Our coordinator will contact you within 48 hours.
-                        </p>
-                    </div>
-                `;
-                
-                this.parentNode.insertBefore(successMsg, this.nextSibling);
-                this.reset();
-                
-                // Remove message after 8 seconds
-                setTimeout(() => {
-                    successMsg.remove();
-                }, 8000);
-            });
+        // Reset form
+        form.reset();
+        
+        // Log to console for debugging
+        console.log('Form submitted:', data);
+        
+    } catch (error) {
+        console.error('Error:', error);
+        showErrorMessage();
+    } finally {
+        // Reset button
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+    }
+});
+
+// Form Validation
+function validateForm(data) {
+    const required = ['institutionName', 'contactPerson', 'contactEmail', 'institutionType', 'competitionType', 'theme'];
+    
+    for (const field of required) {
+        if (!data[field] || data[field].trim() === '') {
+            showValidationError(`Please fill in the ${field.replace(/([A-Z])/g, ' $1').toLowerCase()}`);
+            return false;
         }
-        
-        // Gallery item click simulation
-        document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const overlay = this.querySelector('.gallery-overlay');
-                const title = overlay.querySelector('h3').textContent;
-                const details = overlay.querySelector('p').textContent;
-                
-                alert(`${title}\n${details}\n\nThis competition was professionally judged by AL HIKMA Panel.`);
-            });
-        });
-        
-        // Add scroll effect to header
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.05)';
-            }
-        });
-        
-        // Newsletter subscription
-        document.querySelector('.newsletter-form button').addEventListener('click', function() {
-            const emailInput = this.previousElementSibling;
-            if(emailInput.value && emailInput.value.includes('@')) {
-                alert('Thank you for subscribing to our newsletter!');
-                emailInput.value = '';
-            } else {
-                alert('Please enter a valid email address.');
-            }
-        });
-    </script>
-</body>
-</html>
+    }
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(data.contactEmail)) {
+        showValidationError('Please enter a valid email address');
+        return false;
+    }
+    
+    // Terms checkbox
+    if (!document.getElementById('terms').checked) {
+        showValidationError('Please accept the terms to proceed');
+        return false;
+    }
+    
+    return true;
+}
+
+// Success Message
+function showSuccessMessage(data) {
+    const formMessage = document.getElementById('formMessage');
+    const requestId = 'HKM' + Date.now().toString().slice(-9);
+    
+    formMessage.innerHTML = `
+        <div class="success-message">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Request Submitted Successfully!</h3>
+            <div class="success-details">
+                <p><strong>Request ID:</strong> ${requestId}</p>
+                <p><strong>Institution:</strong> ${data.institutionName}</p>
+                <p><strong>Contact Person:</strong> ${data.contactPerson}</p>
+                <p>A confirmation email has been sent to <strong>${data.contactEmail}</strong></p>
+            </div>
+            <div class="next-steps">
+                <h4>What happens next?</h4>
+                <ol>
+                    <li>Our judging coordinator will contact you within 48 hours</li>
+                    <li>We'll discuss your competition requirements in detail</li>
+                    <li>You'll receive a customized judging proposal</li>
+                    <li>We'll handle all logistics for your event</li>
+                </ol>
+            </div>
+            <div class="contact-reminder">
+                <p><i class="fas fa-info-circle"></i> Need immediate assistance? Email: judges@alhikma.org</p>
+            </div>
+        </div>
+    `;
+    
+    formMessage.style.display = 'block';
+    formMessage.style.backgroundColor = '#d4edda';
+    formMessage.style.color = '#155724';
+    formMessage.style.padding = '20px';
+    formMessage.style.borderRadius = '8px';
+    formMessage.style.marginTop = '20px';
+    
+    // Scroll to message
+    formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// Error Messages
+function showValidationError(message) {
+    const formMessage = document.getElementById('formMessage');
+    formMessage.innerHTML = `
+        <div class="error-message">
+            <i class="fas fa-exclamation-circle"></i>
+            ${message}
+        </div>
+    `;
+    formMessage.style.display = 'block';
+    formMessage.style.backgroundColor = '#f8d7da';
+    formMessage.style.color = '#721c24';
+    formMessage.style.padding = '15px';
+    formMessage.style.borderRadius = '5px';
+    formMessage.style.marginTop = '15px';
+}
+
+function showErrorMessage() {
+    const formMessage = document.getElementById('formMessage');
+    formMessage.innerHTML = `
+        <div class="error-message">
+            <i class="fas fa-exclamation-triangle"></i>
+            There was an error submitting your request. Please try again or contact us directly at judges@alhikma.org
+        </div>
+    `;
+    formMessage.style.display = 'block';
+    formMessage.style.backgroundColor = '#f8d7da';
+    formMessage.style.color = '#721c24';
+    formMessage.style.padding = '15px';
+    formMessage.style.borderRadius = '5px';
+    formMessage.style.marginTop = '15px';
+}
+
+// Add this CSS to your page
+const backendCSS = `
+.success-message {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.success-icon {
+    font-size: 3rem;
+    color: #28a745;
+    margin-bottom: 15px;
+}
+
+.success-details {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.next-steps {
+    background: #e6f7ff;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.next-steps ol {
+    margin: 10px 0 0 20px;
+}
+
+.next-steps li {
+    margin-bottom: 8px;
+}
+
+.contact-reminder {
+    background: #fff3cd;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+`;
+
+// Inject CSS
+const style = document.createElement('style');
+style.textContent = backendCSS;
+document.head.appendChild(style);
