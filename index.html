@@ -30,6 +30,8 @@
             --shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.15);
             --success-green: #28a745;
             --error-red: #dc3545;
+            --whatsapp-green: #25D366;
+            --whatsapp-dark: #128C7E;
         }
         
         body {
@@ -221,6 +223,16 @@
             background: white;
             color: var(--primary-blue);
             border-color: white;
+        }
+        
+        .cta-button.whatsapp {
+            background: linear-gradient(90deg, var(--whatsapp-green), var(--whatsapp-dark));
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .cta-button.whatsapp:hover {
+            background: linear-gradient(90deg, var(--whatsapp-dark), var(--whatsapp-green));
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
         }
         
         /* Stats Section */
@@ -704,7 +716,30 @@
             font-size: 1.5rem;
         }
         
-        /* Form Styles */
+        .contact-icon.whatsapp {
+            background: linear-gradient(135deg, var(--whatsapp-green), var(--whatsapp-dark));
+        }
+        
+        .contact-icon.email {
+            background: linear-gradient(135deg, #ff6b35, #ff8c42);
+        }
+        
+        /* WhatsApp Form Styles */
+        .whatsapp-form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+        
+        .whatsapp-form-container h3 {
+            color: var(--primary-dark);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
         .form-group {
             margin-bottom: 25px;
         }
@@ -715,9 +750,9 @@
             gap: 20px;
         }
         
-        .contact-form input,
-        .contact-form textarea,
-        .contact-form select {
+        .whatsapp-form input,
+        .whatsapp-form textarea,
+        .whatsapp-form select {
             width: 100%;
             padding: 18px;
             margin-bottom: 0;
@@ -729,22 +764,22 @@
             background: white;
         }
         
-        .contact-form input:focus,
-        .contact-form textarea:focus,
-        .contact-form select:focus {
-            border-color: var(--primary-blue);
+        .whatsapp-form input:focus,
+        .whatsapp-form textarea:focus,
+        .whatsapp-form select:focus {
+            border-color: var(--whatsapp-green);
             outline: none;
-            box-shadow: 0 0 0 3px rgba(26, 95, 180, 0.1);
+            box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.1);
         }
         
-        .contact-form input.error,
-        .contact-form textarea.error,
-        .contact-form select.error {
+        .whatsapp-form input.error,
+        .whatsapp-form textarea.error,
+        .whatsapp-form select.error {
             border-color: var(--error-red);
         }
         
-        .contact-form button {
-            background: linear-gradient(90deg, var(--primary-blue), var(--accent-teal));
+        .whatsapp-form button {
+            background: linear-gradient(90deg, var(--whatsapp-green), var(--whatsapp-dark));
             color: white;
             border: none;
             padding: 18px 40px;
@@ -754,15 +789,19 @@
             font-weight: 600;
             transition: all 0.3s;
             width: 100%;
-            box-shadow: 0 4px 15px rgba(26, 95, 180, 0.3);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         
-        .contact-form button:hover:not(:disabled) {
+        .whatsapp-form button:hover:not(:disabled) {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(26, 95, 180, 0.4);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
         }
         
-        .contact-form button:disabled {
+        .whatsapp-form button:disabled {
             opacity: 0.7;
             cursor: not-allowed;
         }
@@ -790,61 +829,40 @@
             display: block;
         }
         
-        .success-message {
-            text-align: center;
+        /* WhatsApp Quick Info */
+        .whatsapp-info {
+            background: #f0fff5;
+            border-left: 4px solid var(--whatsapp-green);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
         }
         
-        .success-icon {
-            font-size: 3rem;
-            color: var(--success-green);
+        .whatsapp-info h4 {
+            color: var(--whatsapp-dark);
             margin-bottom: 15px;
-        }
-        
-        .success-details {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            text-align: left;
-        }
-        
-        .next-steps {
-            background: #e6f7ff;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            text-align: left;
-        }
-        
-        .next-steps ol {
-            margin: 10px 0 0 20px;
-        }
-        
-        .next-steps li {
-            margin-bottom: 8px;
-        }
-        
-        .contact-reminder {
-            background: #fff3cd;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
-            text-align: center;
-        }
-        
-        .terms-checkbox {
             display: flex;
             align-items: center;
             gap: 10px;
         }
         
-        .terms-checkbox input {
-            width: auto;
+        .whatsapp-info ul {
+            list-style: none;
+            color: #555;
         }
         
-        .terms-checkbox label {
-            font-size: 0.9rem;
-            color: var(--dark-gray);
+        .whatsapp-info li {
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .whatsapp-info li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--whatsapp-green);
+            font-weight: bold;
         }
         
         /* Footer */
@@ -896,6 +914,10 @@
         .social-links a:hover {
             background: var(--accent-orange);
             transform: translateY(-5px);
+        }
+        
+        .social-links a.whatsapp:hover {
+            background: var(--whatsapp-green);
         }
         
         .footer-section h3 {
@@ -997,6 +1019,51 @@
             color: var(--accent-orange);
         }
         
+        /* Floating WhatsApp Button */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        
+        .floating-whatsapp a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: var(--whatsapp-green);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s;
+            position: relative;
+            font-size: 2rem;
+        }
+        
+        .floating-whatsapp a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+        
+        .floating-whatsapp .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--accent-orange);
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
         /* Animations */
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-30px); }
@@ -1087,6 +1154,17 @@
             .form-row {
                 grid-template-columns: 1fr;
             }
+            
+            .floating-whatsapp {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .floating-whatsapp a {
+                width: 50px;
+                height: 50px;
+                font-size: 1.8rem;
+            }
         }
         
         @media (max-width: 576px) {
@@ -1137,7 +1215,14 @@
                     <li><a href="#team">Judges</a></li>
                     <li><a href="#process">Process</a></li>
                     <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#contact" class="cta-button" style="padding: 12px 30px; margin-left: 20px;">Request Judges</a></li>
+                    <li>
+                        <a href="https://wa.me/919846843138?text=Hello%20AL%20HIKMA%20Judging%20Panel%2C%20I%20would%20like%20to%20request%20judges%20for%20a%20competition." 
+                           target="_blank" 
+                           class="cta-button whatsapp" 
+                           style="padding: 12px 30px; margin-left: 20px;">
+                            <i class="fab fa-whatsapp"></i> WhatsApp Request
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -1156,7 +1241,11 @@
                 </div>
                 
                 <div>
-                    <a href="#contact" class="cta-button">Request Our Judges</a>
+                    <a href="https://wa.me/919846843138?text=Hello%20AL%20HIKMA%20Judging%20Panel%2C%20I%20would%20like%20to%20request%20judges%20for%20a%20competition." 
+                       target="_blank" 
+                       class="cta-button whatsapp">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Request
+                    </a>
                     <a href="#services" class="cta-button secondary">View Services</a>
                 </div>
             </div>
@@ -1516,12 +1605,12 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- WhatsApp Contact Section -->
     <section id="contact" class="contact-section">
         <div class="container">
-            <h2 class="section-title">Request Our Judges</h2>
+            <h2 class="section-title">Request Judges via WhatsApp</h2>
             <div class="section-subtitle">
-                Invite AL HIKMA Judging Panel for your next art competition
+                Get instant response! Send us your competition details on WhatsApp and we'll respond within minutes.
             </div>
             
             <div class="contact-container">
@@ -1529,13 +1618,16 @@
                     <h3>Contact Information</h3>
                     
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-icon whatsapp">
+                            <i class="fab fa-whatsapp"></i>
                         </div>
                         <div>
-                            <h4 style="color: var(--primary-dark); margin-bottom: 5px;">Office Address</h4>
-                            <p>ABC Karuvarakundu<br>
-                            Malappuram, Kerala</p>
+                            <h4 style="color: var(--primary-dark); margin-bottom: 5px;">Primary WhatsApp</h4>
+                            <p>+91 98468 43138</p>
+                            <a href="https://wa.me/919846843138" target="_blank" 
+                               style="color: var(--whatsapp-green); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 8px;">
+                                <i class="fab fa-whatsapp"></i> Open in WhatsApp
+                            </a>
                         </div>
                     </div>
                     
@@ -1544,111 +1636,136 @@
                             <i class="fas fa-phone"></i>
                         </div>
                         <div>
-                            <h4 style="color: var(--primary-dark); margin-bottom: 5px;">Contact Numbers</h4>
-                            <p>Office: 9846843138 <br>
-                            Judging Coordinator: 9846 843138</p>
+                            <h4 style="color: var(--primary-dark); margin-bottom: 5px;">Backup Numbers</h4>
+                            <p>Office: 9846843138</p>
+                            <p>Judging Coordinator: 9846 843138</p>
                         </div>
                     </div>
                     
                     <div class="contact-item">
-                        <div class="contact-icon">
+                        <div class="contact-icon email">
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div>
-                            <h4 style="color: var(--primary-dark); margin-bottom: 5px;">Email Addresses</h4>
-                            <p>Judging Requests: alhikma@gmail.com<br>
-                            General Inquiries: infoalhikma@gmail.com</p>
+                            <h4 style="color: var(--primary-dark); margin-bottom: 5px;">Email (For Documents)</h4>
+                            <p>alhikma@gmail.com</p>
+                            <p>infoalhikma@gmail.com</p>
                         </div>
+                    </div>
+                    
+                    <div class="whatsapp-info">
+                        <h4><i class="fas fa-bolt"></i> Why WhatsApp?</h4>
+                        <ul>
+                            <li>Instant response within 15 minutes</li>
+                            <li>Easy to share photos of venue/previous events</li>
+                            <li>Quick clarification of doubts</li>
+                            <li>Voice notes for detailed explanations</li>
+                            <li>File sharing for documents</li>
+                        </ul>
                     </div>
                 </div>
                 
-                <form id="judgingRequestForm" class="contact-form">
-                    <!-- Institution Details -->
-                    <div class="form-group">
-                        <select name="institutionType" id="institutionType" required>
-                            <option value="">Select Institution Type *</option>
-                            <option value="school">School</option>
-                            <option value="madrasa">Madrasa / Islamic School</option>
-                            <option value="organization">Educational Organization</option>
-                            <option value="community">Community Center</option>
-                            <option value="college">College / University</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
+                <!-- WhatsApp Quick Request Form -->
+                <div class="whatsapp-form-container">
+                    <h3><i class="fab fa-whatsapp" style="color: var(--whatsapp-green);"></i> Quick WhatsApp Request Form</h3>
                     
-                    <div class="form-group">
-                        <input type="text" name="institutionName" id="institutionName" placeholder="Institution Name *" required>
-                    </div>
-                    
-                    <!-- Contact Details -->
-                    <div class="form-row">
+                    <form id="whatsappRequestForm" class="whatsapp-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="waName" placeholder="Your Name *" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="waInstitution" placeholder="Institution Name *" required>
+                            </div>
+                        </div>
+                        
                         <div class="form-group">
-                            <input type="text" name="contactPerson" id="contactPerson" placeholder="Contact Person Name *" required>
+                            <select id="waCompetitionType" required>
+                                <option value="">Select Competition Type *</option>
+                                <option value="School Competition">School Art Competition</option>
+                                <option value="Madrasa Competition">Madrasa Competition</option>
+                                <option value="College Fest">College Fest</option>
+                                <option value="Community Event">Community Event</option>
+                                <option value="Inter-school Competition">Inter-school Competition</option>
+                                <option value="Annual Day/Exhibition">Annual Day/Exhibition</option>
+                            </select>
                         </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="waTheme" placeholder="Competition Theme *" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="date" id="waDate" placeholder="Event Date">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="number" id="waParticipants" placeholder="Expected Participants">
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" id="waPhone" placeholder="Your Phone Number">
+                            </div>
+                        </div>
+                        
                         <div class="form-group">
-                            <input type="email" name="contactEmail" id="contactEmail" placeholder="Email Address *" required>
+                            <textarea id="waDetails" placeholder="Brief description of your competition, special requirements, budget, etc. *" rows="4" required></textarea>
                         </div>
+                        
+                        <button type="submit" id="whatsappSubmitBtn">
+                            <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                        </button>
+                        
+                        <div id="whatsappFormMessage" class="form-message"></div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- WhatsApp Instructions -->
+            <div style="background: white; padding: 40px; border-radius: 15px; box-shadow: var(--shadow); margin-top: 40px;">
+                <h3 style="color: var(--primary-dark); margin-bottom: 25px; text-align: center;">
+                    <i class="fas fa-graduation-cap"></i> Information to Share via WhatsApp
+                </h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
+                    <div style="background: #f9f9f9; padding: 25px; border-radius: 10px;">
+                        <h4 style="color: #1a5fb4; margin-bottom: 15px;">1. Competition Details</h4>
+                        <ul style="color: #666; line-height: 1.7; list-style: none;">
+                            <li style="margin-bottom: 8px;">• Name of competition</li>
+                            <li style="margin-bottom: 8px;">• Date and time</li>
+                            <li style="margin-bottom: 8px;">• Venue address</li>
+                            <li style="margin-bottom: 8px;">• Theme/topic</li>
+                        </ul>
                     </div>
                     
-                    <div class="form-row">
-                        <div class="form-group">
-                            <input type="tel" name="phone" id="phone" placeholder="Phone Number">
-                        </div>
-                        <div class="form-group">
-                            <input type="number" name="participants" id="participants" placeholder="Expected Participants">
-                        </div>
+                    <div style="background: #f9f9f9; padding: 25px; border-radius: 10px;">
+                        <h4 style="color: #1a5fb4; margin-bottom: 15px;">2. Participant Information</h4>
+                        <ul style="color: #666; line-height: 1.7; list-style: none;">
+                            <li style="margin-bottom: 8px;">• Number of participants</li>
+                            <li style="margin-bottom: 8px;">• Age groups</li>
+                            <li style="margin-bottom: 8px;">• Categories (if any)</li>
+                            <li style="margin-bottom: 8px;">• Previous year photos</li>
+                        </ul>
                     </div>
                     
-                    <!-- Competition Details -->
-                    <div class="form-group">
-                        <select name="competitionType" id="competitionType" required>
-                            <option value="">Select Competition Type *</option>
-                            <option value="annual">Annual Art Competition</option>
-                            <option value="calligraphy">Calligraphy Contest</option>
-                            <option value="painting">Painting Competition</option>
-                            <option value="digital">Digital Art Contest</option>
-                            <option value="sculpture">Sculpture Competition</option>
-                            <option value="mixed">Mixed Media Exhibition</option>
-                            <option value="thematic">Thematic Art Contest</option>
-                            <option value="exhibition">Art Exhibition</option>
-                            <option value="other">Other</option>
-                        </select>
+                    <div style="background: #f9f9f9; padding: 25px; border-radius: 10px;">
+                        <h4 style="color: #1a5fb4; margin-bottom: 15px;">3. Judge Requirements</h4>
+                        <ul style="color: #666; line-height: 1.7; list-style: none;">
+                            <li style="margin-bottom: 8px;">• Number of judges needed</li>
+                            <li style="margin-bottom: 8px;">• Special expertise required</li>
+                            <li style="margin-bottom: 8px;">• Time duration</li>
+                            <li style="margin-bottom: 8px;">• Budget/remuneration</li>
+                        </ul>
                     </div>
-                    
-                    <div class="form-group">
-                        <input type="text" name="theme" id="theme" placeholder="Competition Theme / Topic *" required>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <input type="date" name="date" id="date" placeholder="Competition Date">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="ageGroups" id="ageGroups" placeholder="Age Groups (e.g., 10-15 years)">
-                        </div>
-                    </div>
-                    
-                    <!-- Additional Information -->
-                    <div class="form-group">
-                        <textarea name="details" id="details" placeholder="Additional Information (Judges needed, special requirements, budget, etc.)" rows="5"></textarea>
-                    </div>
-                    
-                    <!-- Terms & Submission -->
-                    <div class="form-group">
-                        <div class="terms-checkbox">
-                            <input type="checkbox" id="terms" required>
-                            <label for="terms">
-                                I agree to the processing of this information for judging coordination purposes
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <button type="submit" id="submitBtn">
-                        <i class="fas fa-paper-plane"></i> Submit Judging Request
-                    </button>
-                    
-                    <div id="formMessage" class="form-message"></div>
-                </form>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="https://wa.me/919846843138" target="_blank" 
+                       style="display: inline-flex; align-items: center; gap: 10px; background: var(--whatsapp-green); color: white; padding: 15px 40px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 1.1rem;">
+                        <i class="fab fa-whatsapp"></i> Open WhatsApp Directly
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -1668,6 +1785,7 @@
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/919846843138" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 
@@ -1721,6 +1839,16 @@
         </div>
     </footer>
 
+    <!-- Floating WhatsApp Button -->
+    <div class="floating-whatsapp">
+        <a href="https://wa.me/919846843138" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <div class="badge">
+                <i class="fas fa-bolt"></i>
+            </div>
+        </a>
+    </div>
+
     <!-- JavaScript -->
     <script>
         // Mobile menu toggle
@@ -1748,57 +1876,72 @@
             });
         });
 
-        // Form submission handling
-        document.getElementById('judgingRequestForm').addEventListener('submit', async function(e) {
+        // WhatsApp Form Submission
+        document.getElementById('whatsappRequestForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const form = this;
-            const submitBtn = document.getElementById('submitBtn');
-            const formMessage = document.getElementById('formMessage');
-            const originalBtnText = submitBtn.innerHTML;
+            // Get form values
+            const name = document.getElementById('waName').value.trim();
+            const institution = document.getElementById('waInstitution').value.trim();
+            const competitionType = document.getElementById('waCompetitionType').value;
+            const theme = document.getElementById('waTheme').value.trim();
+            const date = document.getElementById('waDate').value;
+            const participants = document.getElementById('waParticipants').value;
+            const phone = document.getElementById('waPhone').value.trim();
+            const details = document.getElementById('waDetails').value.trim();
             
-            // Validate form
-            if (!validateForm()) {
+            // Validate
+            if (!name || !institution || !competitionType || !theme || !details) {
+                showWhatsAppError('Please fill all required fields (*)');
                 return;
             }
             
-            // Show loading state
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-            formMessage.style.display = 'none';
-            
-            // Collect form data
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
-            
-            try {
-                // Google Apps Script Endpoint (Replace with your actual GAS URL)
-                const GAS_ENDPOINT = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
-                
-                // Send data to Google Apps Script
-                const response = await fetch(GAS_ENDPOINT, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
+            // Format date
+            let formattedDate = 'Not specified';
+            if (date) {
+                const dateObj = new Date(date);
+                formattedDate = dateObj.toLocaleDateString('en-IN', {
+                    weekday: 'long',
+                    day: '2-digit',
+                    month: 'long',
+                    year: 'numeric'
                 });
-                
-                // Show success message (we use no-cors so we can't read response)
-                showSuccessMessage(data);
-                
-                // Reset form
-                form.reset();
-                
-            } catch (error) {
-                console.error('Error:', error);
-                showErrorMessage();
-            } finally {
-                // Reset button
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnText;
             }
+            
+            // Create formatted WhatsApp message
+            const message = `*🎨 AL HIKMA - JUDGE REQUEST 🎨*
+
+*Contact Person:* ${name}
+*Institution:* ${institution}
+*Competition Type:* ${competitionType}
+*Competition Theme:* ${theme}
+*Event Date:* ${formattedDate}
+*Expected Participants:* ${participants || 'Not specified'}
+*Phone:* ${phone || 'Not provided'}
+
+*Competition Details:*
+${details}
+
+_Submitted via AL HIKMA Website_
+_We'll respond within 15 minutes!_`;
+            
+            // Encode for URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Create WhatsApp URL
+            const whatsappUrl = `https://wa.me/919846843138?text=${encodedMessage}`;
+            
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+            
+            // Show success message
+            showWhatsAppSuccess();
+            
+            // Reset form after 2 seconds
+            setTimeout(() => {
+                this.reset();
+                document.getElementById('whatsappFormMessage').style.display = 'none';
+            }, 2000);
         });
 
         // Newsletter subscription
@@ -1813,7 +1956,7 @@
             this.disabled = true;
             this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
             
-            // Simulate subscription (replace with actual API call)
+            // Simulate subscription
             setTimeout(() => {
                 alert('Thank you for subscribing to our newsletter!');
                 document.getElementById('newsletterEmail').value = '';
@@ -1822,91 +1965,25 @@
             }, 1500);
         });
 
-        // Form validation
-        function validateForm() {
-            let isValid = true;
-            const requiredFields = document.querySelectorAll('#judgingRequestForm [required]');
-            
-            // Reset error styles
-            document.querySelectorAll('.contact-form input, .contact-form select, .contact-form textarea').forEach(field => {
-                field.classList.remove('error');
-            });
-            
-            // Check required fields
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    field.classList.add('error');
-                    isValid = false;
-                }
-            });
-            
-            // Check email format
-            const emailField = document.getElementById('contactEmail');
-            if (emailField.value && !validateEmail(emailField.value)) {
-                emailField.classList.add('error');
-                showValidationError('Please enter a valid email address');
-                isValid = false;
-            }
-            
-            // Check terms checkbox
-            const termsCheckbox = document.getElementById('terms');
-            if (!termsCheckbox.checked) {
-                showValidationError('Please accept the terms to proceed');
-                isValid = false;
-            }
-            
-            if (!isValid) {
-                showValidationError('Please fill in all required fields correctly');
-            }
-            
-            return isValid;
-        }
-
         function validateEmail(email) {
             const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return re.test(email);
         }
 
-        function showSuccessMessage(data) {
-            const formMessage = document.getElementById('formMessage');
-            const requestId = 'HKM' + Date.now().toString().slice(-9);
-            
+        function showWhatsAppSuccess() {
+            const formMessage = document.getElementById('whatsappFormMessage');
             formMessage.innerHTML = `
                 <div class="success-message">
-                    <div class="success-icon">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <h3>Request Submitted Successfully!</h3>
-                    <div class="success-details">
-                        <p><strong>Request ID:</strong> ${requestId}</p>
-                        <p><strong>Institution:</strong> ${data.institutionName}</p>
-                        <p><strong>Contact Person:</strong> ${data.contactPerson}</p>
-                        <p>A confirmation email has been sent to <strong>${data.contactEmail}</strong></p>
-                    </div>
-                    <div class="next-steps">
-                        <h4>What happens next?</h4>
-                        <ol>
-                            <li>Our judging coordinator will contact you within 48 hours</li>
-                            <li>We'll discuss your competition requirements in detail</li>
-                            <li>You'll receive a customized judging proposal</li>
-                            <li>We'll handle all logistics for your event</li>
-                        </ol>
-                    </div>
-                    <div class="contact-reminder">
-                        <p><i class="fas fa-info-circle"></i> Need immediate assistance? Email: alhikma@gmail.com</p>
-                    </div>
+                    <i class="fas fa-check-circle"></i>
+                    WhatsApp will open with your pre-filled message. Please click SEND to submit your request!
                 </div>
             `;
-            
             formMessage.className = 'form-message success';
             formMessage.style.display = 'block';
-            
-            // Scroll to message
-            formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
-        function showValidationError(message) {
-            const formMessage = document.getElementById('formMessage');
+        function showWhatsAppError(message) {
+            const formMessage = document.getElementById('whatsappFormMessage');
             formMessage.innerHTML = `
                 <div class="error-message">
                     <i class="fas fa-exclamation-circle"></i>
@@ -1917,50 +1994,12 @@
             formMessage.style.display = 'block';
         }
 
-        function showErrorMessage() {
-            const formMessage = document.getElementById('formMessage');
-            formMessage.innerHTML = `
-                <div class="error-message">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    There was an error submitting your request. Please try again or contact us directly at alhikma@gmail.com
-                </div>
-            `;
-            formMessage.className = 'form-message error';
-            formMessage.style.display = 'block';
-        }
-
-        // Real-time validation
-        document.querySelectorAll('#judgingRequestForm input, #judgingRequestForm select, #judgingRequestForm textarea').forEach(field => {
-            field.addEventListener('blur', function() {
-                if (this.hasAttribute('required') && !this.value.trim()) {
-                    this.classList.add('error');
-                } else {
-                    this.classList.remove('error');
-                }
-                
-                // Email validation on blur
-                if (this.type === 'email' && this.value) {
-                    if (!validateEmail(this.value)) {
-                        this.classList.add('error');
-                    } else {
-                        this.classList.remove('error');
-                    }
-                }
-            });
-            
-            field.addEventListener('input', function() {
-                if (this.value.trim()) {
-                    this.classList.remove('error');
-                }
-            });
-        });
-
-        // Set minimum date to today for competition date
+        // Set minimum date to today
         const today = new Date().toISOString().split('T')[0];
-        document.getElementById('date').min = today;
+        document.getElementById('waDate').min = today;
         
         // Phone number formatting
-        document.getElementById('phone').addEventListener('input', function(e) {
+        document.getElementById('waPhone').addEventListener('input', function(e) {
             let value = e.target.value.replace(/\D/g, '');
             if (value.length > 10) value = value.substring(0, 10);
             
@@ -1971,6 +2010,23 @@
             }
             
             e.target.value = value;
+        });
+
+        // Real-time validation for WhatsApp form
+        document.querySelectorAll('#whatsappRequestForm input, #whatsappRequestForm select, #whatsappRequestForm textarea').forEach(field => {
+            field.addEventListener('blur', function() {
+                if (this.hasAttribute('required') && !this.value.trim()) {
+                    this.style.borderColor = 'var(--error-red)';
+                } else {
+                    this.style.borderColor = '';
+                }
+            });
+            
+            field.addEventListener('input', function() {
+                if (this.value.trim()) {
+                    this.style.borderColor = '';
+                }
+            });
         });
     </script>
 </body>
