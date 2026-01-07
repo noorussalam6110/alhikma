@@ -1,1 +1,1370 @@
-MAINATANANCE
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Judges | AL HIKMA Judging Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-blue: #1a5fb4;
+            --primary-dark: #0a3d7a;
+            --accent-orange: #ff6b35;
+            --accent-teal: #00b4d8;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --dark-gray: #495057;
+            --text-dark: #212529;
+            --text-light: #ffffff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--light-gray);
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-main {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--primary-blue);
+            letter-spacing: -0.5px;
+        }
+        
+        .logo-sub {
+            font-size: 12px;
+            color: var(--accent-orange);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 3px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            padding: 8px 0;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-teal));
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary-blue);
+        }
+        
+        /* Page Hero */
+        .page-hero {
+            background: linear-gradient(135deg, rgba(26, 95, 180, 0.95), rgba(10, 61, 122, 0.95)), 
+                        url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--text-light);
+            padding: 180px 0 100px;
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .page-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .breadcrumb-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            list-style: none;
+        }
+        
+        .breadcrumb-links a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            transition: color 0.3s;
+        }
+        
+        .breadcrumb-links a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .breadcrumb-links .separator {
+            color: var(--accent-orange);
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-teal));
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--dark-gray);
+            max-width: 800px;
+            margin: 40px auto 60px;
+            line-height: 1.6;
+        }
+        
+        /* Judges Grid */
+        .judges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .judge-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .judge-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .judge-header {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .judge-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .judge-card:hover .judge-image {
+            transform: scale(1.05);
+        }
+        
+        .judge-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+        }
+        
+        .judge-basic-info {
+            color: white;
+        }
+        
+        .judge-name {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            color: white;
+        }
+        
+        .judge-title {
+            color: var(--accent-orange);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .judge-body {
+            padding: 30px;
+        }
+        
+        .judge-expertise {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .expertise-tag {
+            background: var(--light-gray);
+            color: var(--primary-blue);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .judge-bio {
+            color: var(--dark-gray);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .judge-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-top: 20px;
+            border-top: 1px solid var(--medium-gray);
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--dark-gray);
+        }
+        
+        .judge-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-teal));
+            color: white;
+            flex: 1;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(26, 95, 180, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+        
+        /* Judge Detail Modal */
+        .judge-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+        
+        .modal-content {
+            background: white;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .modal-header {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-dark);
+            z-index: 10;
+            transition: all 0.3s;
+        }
+        
+        .modal-close:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+        
+        .modal-body {
+            padding: 50px;
+        }
+        
+        .modal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .modal-left h2 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+        
+        .modal-subtitle {
+            color: var(--accent-orange);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        
+        .modal-details {
+            margin-bottom: 30px;
+        }
+        
+        .detail-item {
+            margin-bottom: 20px;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+        
+        .detail-value {
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        .modal-right {
+            background: var(--light-gray);
+            padding: 40px;
+            border-radius: 15px;
+        }
+        
+        .achievements-list {
+            list-style: none;
+        }
+        
+        .achievements-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .achievements-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
+        
+        /* Call to Action */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+        
+        .btn-large {
+            padding: 18px 45px;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 80px 0 40px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .footer-tagline {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent-orange);
+            transform: translateY(-5px);
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-orange);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+        
+        .designer-credit {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .designer-credit i {
+            color: var(--accent-orange);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .judges-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .modal-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 30px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                border-top: 1px solid var(--medium-gray);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .judges-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .judge-actions {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .page-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .modal-body {
+                padding: 30px;
+            }
+            
+            .cta-section h2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="nav-container">
+                <div class="logo-container">
+                    <div class="logo">
+                        <div class="logo-main">AL HIKMA</div>
+                        <div class="logo-sub">PROFESSIONAL JUDGING PANEL</div>
+                    </div>
+                </div>
+                <div class="mobile-menu" id="mobileMenu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#criteria">Criteria</a></li>
+                    <li><a href="judges.html" style="color: var(--primary-blue);">Judges</a></li>
+                    <li><a href="index.html#process">Process</a></li>
+                    <li><a href="index.html#gallery">Gallery</a></li>
+                    <li><a href="index.html#contact" class="btn btn-primary" style="padding: 12px 30px;">Request Judges</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Meet Our Expert Judges</h1>
+            <p>Professionals with decades of experience in art education and competition judging</p>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="separator">/</li>
+                <li><a href="judges.html" style="color: var(--primary-blue); font-weight: 600;">Our Judges</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="main-content">
+        <div class="container">
+            <h2 class="section-title">Our Expert Panel</h2>
+            <p class="section-subtitle">
+                Each judge brings unique expertise and years of experience in evaluating art competitions 
+                for educational institutions. Our panel is carefully selected to ensure diverse perspectives 
+                and professional evaluation standards.
+            </p>
+            
+            <!-- Judges Grid -->
+            <div class="judges-grid" id="judgesContainer">
+                <!-- Judge 1 -->
+                <div class="judge-card">
+                    <div class="judge-header">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dr. Sarah Johnson" class="judge-image">
+                        <div class="judge-overlay">
+                            <div class="judge-basic-info">
+                                <h3 class="judge-name">Dr. Sarah Johnson</h3>
+                                <div class="judge-title">Lead Judge & Art Educator</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="judge-body">
+                        <div class="judge-expertise">
+                            <span class="expertise-tag">Painting</span>
+                            <span class="expertise-tag">Drawing</span>
+                            <span class="expertise-tag">Art Education</span>
+                        </div>
+                        <p class="judge-bio">
+                            PhD in Art Education with 18 years of experience in educational art competition judging. 
+                            Specializes in age-appropriate evaluation and artistic development assessment.
+                        </p>
+                        <div class="judge-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">18</div>
+                                <div class="stat-label">Years Experience</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">300+</div>
+                                <div class="stat-label">Competitions</div>
+                            </div>
+                        </div>
+                        <div class="judge-actions">
+                            <a href="#" class="btn btn-primary view-profile" data-judge="1">
+                                <i class="fas fa-user"></i> View Profile
+                            </a>
+                            <a href="index.html#contact" class="btn btn-secondary">
+                                <i class="fas fa-envelope"></i> Contact
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Judge 2 -->
+                <div class="judge-card">
+                    <div class="judge-header">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Prof. Michael Chen" class="judge-image">
+                        <div class="judge-overlay">
+                            <div class="judge-basic-info">
+                                <h3 class="judge-name">Prof. Michael Chen</h3>
+                                <div class="judge-title">Art Historian & Consultant</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="judge-body">
+                        <div class="judge-expertise">
+                            <span class="expertise-tag">Calligraphy</span>
+                            <span class="expertise-tag">Art History</span>
+                            <span class="expertise-tag">Composition</span>
+                        </div>
+                        <p class="judge-bio">
+                            Professor of Art History with 15 years experience in educational assessment. 
+                            Focuses on thematic relevance and cultural appropriateness in student artwork.
+                        </p>
+                        <div class="judge-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">15</div>
+                                <div class="stat-label">Years Experience</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">250+</div>
+                                <div class="stat-label">Competitions</div>
+                            </div>
+                        </div>
+                        <div class="judge-actions">
+                            <a href="#" class="btn btn-primary view-profile" data-judge="2">
+                                <i class="fas fa-user"></i> View Profile
+                            </a>
+                            <a href="index.html#contact" class="btn btn-secondary">
+                                <i class="fas fa-envelope"></i> Contact
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Judge 3 -->
+                <div class="judge-card">
+                    <div class="judge-header">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dr. Elena Rodriguez" class="judge-image">
+                        <div class="judge-overlay">
+                            <div class="judge-basic-info">
+                                <h3 class="judge-name">Dr. Elena Rodriguez</h3>
+                                <div class="judge-title">Contemporary Art Specialist</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="judge-body">
+                        <div class="judge-expertise">
+                            <span class="expertise-tag">Digital Art</span>
+                            <span class="expertise-tag">Sculpture</span>
+                            <span class="expertise-tag">Mixed Media</span>
+                        </div>
+                        <p class="judge-bio">
+                            MFA in Fine Arts with expertise in contemporary art forms. Professional artist 
+                            with focus on creative expression and technical innovation in modern art.
+                        </p>
+                        <div class="judge-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">12</div>
+                                <div class="stat-label">Years Experience</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">200+</div>
+                                <div class="stat-label">Competitions</div>
+                            </div>
+                        </div>
+                        <div class="judge-actions">
+                            <a href="#" class="btn btn-primary view-profile" data-judge="3">
+                                <i class="fas fa-user"></i> View Profile
+                            </a>
+                            <a href="index.html#contact" class="btn btn-secondary">
+                                <i class="fas fa-envelope"></i> Contact
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Judge 4 -->
+                <div class="judge-card">
+                    <div class="judge-header">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dr. Ahmed Hassan" class="judge-image">
+                        <div class="judge-overlay">
+                            <div class="judge-basic-info">
+                                <h3 class="judge-name">Dr. Ahmed Hassan</h3>
+                                <div class="judge-title">Traditional Arts Expert</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="judge-body">
+                        <div class="judge-expertise">
+                            <span class="expertise-tag">Calligraphy</span>
+                            <span class="expertise-tag">Traditional Arts</span>
+                            <span class="expertise-tag">Cultural Studies</span>
+                        </div>
+                        <p class="judge-bio">
+                            Specialist in traditional Islamic art forms with 14 years of experience in 
+                            madrasa and cultural institution competitions. Expert in cultural appropriateness.
+                        </p>
+                        <div class="judge-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">14</div>
+                                <div class="stat-label">Years Experience</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">180+</div>
+                                <div class="stat-label">Competitions</div>
+                            </div>
+                        </div>
+                        <div class="judge-actions">
+                            <a href="#" class="btn btn-primary view-profile" data-judge="4">
+                                <i class="fas fa-user"></i> View Profile
+                            </a>
+                            <a href="index.html#contact" class="btn btn-secondary">
+                                <i class="fas fa-envelope"></i> Contact
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Judge 5 -->
+                <div class="judge-card">
+                    <div class="judge-header">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Prof. Fatima Al-Mansoori" class="judge-image">
+                        <div class="judge-overlay">
+                            <div class="judge-basic-info">
+                                <h3 class="judge-name">Prof. Fatima Al-Mansoori</h3>
+                                <div class="judge-title">Educational Psychology Expert</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="judge-body">
+                        <div class="judge-expertise">
+                            <span class="expertise-tag">Child Development</span>
+                            <span class="expertise-tag">Educational Psychology</span>
+                            <span class="expertise-tag">Age-Appropriate Evaluation</span>
+                        </div>
+                        <p class="judge-bio">
+                            PhD in Educational Psychology with expertise in child artistic development. 
+                            Specializes in age-appropriate evaluation and constructive feedback techniques.
+                        </p>
+                        <div class="judge-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">16</div>
+                                <div class="stat-label">Years Experience</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">220+</div>
+                                <div class="stat-label">Competitions</div>
+                            </div>
+                        </div>
+                        <div class="judge-actions">
+                            <a href="#" class="btn btn-primary view-profile" data-judge="5">
+                                <i class="fas fa-user"></i> View Profile
+                            </a>
+                            <a href="index.html#contact" class="btn btn-secondary">
+                                <i class="fas fa-envelope"></i> Contact
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Judge 6 -->
+                <div class="judge-card">
+                    <div class="judge-header">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dr. James Wilson" class="judge-image">
+                        <div class="judge-overlay">
+                            <div class="judge-basic-info">
+                                <h3 class="judge-name">Dr. James Wilson</h3>
+                                <div class="judge-title">Sculpture & 3D Arts Specialist</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="judge-body">
+                        <div class="judge-expertise">
+                            <span class="expertise-tag">Sculpture</span>
+                            <span class="expertise-tag">3D Arts</span>
+                            <span class="expertise-tag">Installation Art</span>
+                        </div>
+                        <p class="judge-bio">
+                            Master sculptor and 3D arts specialist with 13 years of competition judging experience. 
+                            Expert in material innovation and spatial composition evaluation.
+                        </p>
+                        <div class="judge-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">13</div>
+                                <div class="stat-label">Years Experience</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">190+</div>
+                                <div class="stat-label">Competitions</div>
+                            </div>
+                        </div>
+                        <div class="judge-actions">
+                            <a href="#" class="btn btn-primary view-profile" data-judge="6">
+                                <i class="fas fa-user"></i> View Profile
+                            </a>
+                            <a href="index.html#contact" class="btn btn-secondary">
+                                <i class="fas fa-envelope"></i> Contact
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Work with Our Experts?</h2>
+            <p>Invite our professional judges to your next art competition. Our panel is ready to provide fair, constructive, and educational evaluation.</p>
+            <a href="index.html#contact" class="btn btn-primary btn-large">
+                <i class="fas fa-calendar-check"></i> Request Judges for Your Competition
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">AL HIKMA</div>
+                    <div class="footer-tagline">
+                        Professional art competition judging for educational institutions. 
+                        Providing fair, constructive, and educational evaluation since 2010.
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#services">Judging Services</a></li>
+                        <li><a href="index.html#criteria">Judging Criteria</a></li>
+                        <li><a href="judges.html">Our Judges</a></li>
+                        <li><a href="index.html#process">Judging Process</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">School Art Competitions</a></li>
+                        <li><a href="#">Madrasa Art Judging</a></li>
+                        <li><a href="#">Educational Events</a></li>
+                        <li><a href="#">Youth Art Exhibitions</a></li>
+                        <li><a href="#">Calligraphy Contests</a></li>
+                        <li><a href="#">Community Art Projects</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 123 Professional Plaza</li>
+                        <li><i class="fas fa-phone" style="margin-right: 10px;"></i> (123) 456-7890</li>
+                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> judges@alhikma.org</li>
+                        <li><i class="fas fa-clock" style="margin-right: 10px;"></i> Mon-Fri: 9AM-6PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 AL HIKMA Professional Judging Panel. All rights reserved.</p>
+                <p style="margin-top: 10px;">Providing professional art competition judging services to educational institutions worldwide</p>
+                
+                <div class="designer-credit">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>Designed by Suhail Kerala</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Judge Detail Modal -->
+    <div class="judge-modal" id="judgeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="" alt="Judge Photo" class="judge-image" id="modalJudgeImage">
+                <div class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-grid">
+                    <div class="modal-left">
+                        <h2 id="modalJudgeName">Dr. Sarah Johnson</h2>
+                        <div class="modal-subtitle" id="modalJudgeTitle">Lead Judge & Art Educator</div>
+                        
+                        <div class="modal-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Education</div>
+                                <div class="detail-value" id="modalEducation">PhD in Art Education, University of Arts</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Years of Experience</div>
+                                <div class="detail-value" id="modalExperience">18 years in educational art competition judging</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Specializations</div>
+                                <div class="detail-value" id="modalSpecializations">Painting, Drawing, Mixed Media, Age-Appropriate Evaluation</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Competitions Judged</div>
+                                <div class="detail-value" id="modalCompetitions">300+ educational art competitions</div>
+                            </div>
+                        </div>
+                        
+                        <div class="judge-expertise" id="modalExpertiseTags">
+                            <span class="expertise-tag">Painting</span>
+                            <span class="expertise-tag">Drawing</span>
+                            <span class="expertise-tag">Art Education</span>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-right">
+                        <h3 style="color: var(--primary-dark); margin-bottom: 25px;">Key Achievements</h3>
+                        <ul class="achievements-list" id="modalAchievements">
+                            <li>Developed age-appropriate evaluation criteria for elementary through high school competitions</li>
+                            <li>Published research on artistic development in educational settings</li>
+                            <li>Lead judge for National School Art Exhibition for 8 consecutive years</li>
+                            <li>Trained over 200 art teachers in competition preparation and judging standards</li>
+                            <li>Recipient of the National Art Education Excellence Award (2021)</li>
+                        </ul>
+                        
+                        <div style="margin-top: 40px;">
+                            <h4 style="color: var(--primary-dark); margin-bottom: 15px;">Available For</h4>
+                            <div class="judge-expertise">
+                                <span class="expertise-tag" style="background: var(--light-gray);">School Competitions</span>
+                                <span class="expertise-tag" style="background: var(--light-gray);">Madrasa Events</span>
+                                <span class="expertise-tag" style="background: var(--light-gray);">Organization Exhibitions</span>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 40px; text-align: center;">
+                            <a href="index.html#contact" class="btn btn-primary" style="width: 100%;">
+                                <i class="fas fa-envelope"></i> Invite This Judge
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenu.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Judge Data
+        const judgesData = {
+            1: {
+                name: "Dr. Sarah Johnson",
+                title: "Lead Judge & Art Educator",
+                image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                education: "PhD in Art Education, University of Fine Arts",
+                experience: "18 years in educational art competition judging",
+                specializations: "Painting, Drawing, Mixed Media, Age-Appropriate Evaluation",
+                competitions: "300+ educational art competitions",
+                expertise: ["Painting", "Drawing", "Art Education", "Age-Appropriate"],
+                achievements: [
+                    "Developed age-appropriate evaluation criteria for elementary through high school competitions",
+                    "Published research on artistic development in educational settings",
+                    "Lead judge for National School Art Exhibition for 8 consecutive years",
+                    "Trained over 200 art teachers in competition preparation and judging standards",
+                    "Recipient of the National Art Education Excellence Award (2021)"
+                ]
+            },
+            2: {
+                name: "Prof. Michael Chen",
+                title: "Art Historian & Consultant",
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                education: "PhD in Art History, Oxford University",
+                experience: "15 years experience in educational assessment",
+                specializations: "Calligraphy, Art History, Composition, Cultural Studies",
+                competitions: "250+ art competitions",
+                expertise: ["Calligraphy", "Art History", "Composition", "Cultural Studies"],
+                achievements: [
+                    "Expert in traditional and contemporary calligraphy evaluation",
+                    "Published 3 books on art history and competition standards",
+                    "Consultant for UNESCO cultural heritage art programs",
+                    "Developed thematic relevance criteria for educational competitions",
+                    "Speaker at International Art Education Conference (2019, 2022)"
+                ]
+            },
+            3: {
+                name: "Dr. Elena Rodriguez",
+                title: "Contemporary Art Specialist",
+                image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                education: "MFA in Fine Arts, Rhode Island School of Design",
+                experience: "12 years of contemporary art judging experience",
+                specializations: "Digital Art, Sculpture, Mixed Media, Installation Art",
+                competitions: "200+ contemporary art competitions",
+                expertise: ["Digital Art", "Sculpture", "Mixed Media", "Installation Art"],
+                achievements: [
+                    "Professional digital artist with international exhibitions",
+                    "Specialist in evaluating technical innovation in contemporary art",
+                    "Juror for International Digital Art Festival for 5 years",
+                    "Developed criteria for mixed media and installation art evaluation",
+                    "Recipient of Contemporary Art Innovation Award (2020)"
+                ]
+            },
+            4: {
+                name: "Dr. Ahmed Hassan",
+                title: "Traditional Arts Expert",
+                image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                education: "PhD in Islamic Arts, Al-Azhar University",
+                experience: "14 years in traditional arts evaluation",
+                specializations: "Calligraphy, Traditional Arts, Cultural Appropriateness",
+                competitions: "180+ madrasa and cultural competitions",
+                expertise: ["Calligraphy", "Traditional Arts", "Cultural Studies", "Madrasa"],
+                achievements: [
+                    "Expert in traditional Islamic art forms and their contemporary applications",
+                    "Developed cultural appropriateness guidelines for educational competitions",
+                    "Lead judge for International Calligraphy Competition for 6 years",
+                    "Published research on traditional art preservation in education",
+                    "Cultural heritage consultant for multiple educational institutions"
+                ]
+            },
+            5: {
+                name: "Prof. Fatima Al-Mansoori",
+                title: "Educational Psychology Expert",
+                image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                education: "PhD in Educational Psychology, Harvard University",
+                experience: "16 years in child artistic development assessment",
+                specializations: "Child Development, Educational Psychology, Constructive Feedback",
+                competitions: "220+ educational competitions",
+                expertise: ["Child Development", "Educational Psychology", "Age-Appropriate", "Feedback"],
+                achievements: [
+                    "Developed constructive feedback system for young artists",
+                    "Research on artistic development across different age groups",
+                    "Trained judges in psychological aspects of competition evaluation",
+                    "Published work on motivation and artistic growth in competitions",
+                    "Consultant for national art education curriculum development"
+                ]
+            },
+            6: {
+                name: "Dr. James Wilson",
+                title: "Sculpture & 3D Arts Specialist",
+                image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                education: "MFA in Sculpture, Royal College of Art",
+                experience: "13 years in 3D arts competition judging",
+                specializations: "Sculpture, 3D Arts, Material Innovation, Spatial Composition",
+                competitions: "190+ sculpture and 3D art competitions",
+                expertise: ["Sculpture", "3D Arts", "Material Innovation", "Spatial Composition"],
+                achievements: [
+                    "Master sculptor with works in national museums",
+                    "Specialist in evaluating material use and innovation",
+                    "Developed safety and material appropriateness guidelines for school competitions",
+                    "Juror for National Sculpture Competition for 7 years",
+                    "Innovator in 3D art competition evaluation criteria"
+                ]
+            }
+        };
+        
+        // Modal Functionality
+        const modal = document.getElementById('judgeModal');
+        const modalClose = document.getElementById('modalClose');
+        const viewProfileButtons = document.querySelectorAll('.view-profile');
+        
+        viewProfileButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const judgeId = button.getAttribute('data-judge');
+                const judgeData = judgesData[judgeId];
+                
+                // Populate modal with judge data
+                document.getElementById('modalJudgeName').textContent = judgeData.name;
+                document.getElementById('modalJudgeTitle').textContent = judgeData.title;
+                document.getElementById('modalJudgeImage').src = judgeData.image;
+                document.getElementById('modalEducation').textContent = judgeData.education;
+                document.getElementById('modalExperience').textContent = judgeData.experience;
+                document.getElementById('modalSpecializations').textContent = judgeData.specializations;
+                document.getElementById('modalCompetitions').textContent = judgeData.competitions;
+                
+                // Update expertise tags
+                const expertiseTagsContainer = document.getElementById('modalExpertiseTags');
+                expertiseTagsContainer.innerHTML = '';
+                judgeData.expertise.forEach(tag => {
+                    const span = document.createElement('span');
+                    span.className = 'expertise-tag';
+                    span.textContent = tag;
+                    expertiseTagsContainer.appendChild(span);
+                });
+                
+                // Update achievements
+                const achievementsList = document.getElementById('modalAchievements');
+                achievementsList.innerHTML = '';
+                judgeData.achievements.forEach(achievement => {
+                    const li = document.createElement('li');
+                    li.textContent = achievement;
+                    achievementsList.appendChild(li);
+                });
+                
+                // Show modal
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Close modal
+        modalClose.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.05)';
+            }
+        });
+    </script>
+</body>
+</html>
