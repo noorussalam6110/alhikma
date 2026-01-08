@@ -1649,7 +1649,7 @@
             
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="School Art Competition" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="jamia nooriya" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Jamiya Nooriyya Arabic College Fest</h3>
                         <p>Funoon Fista</p>
@@ -1657,7 +1657,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1565688534245-05d6b584a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Calligraphy Competition" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1565688534245-05d6b584a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Asmi" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Asmi Fest</h3>
                         <p>Art and Cultural Competition</p>
@@ -1665,7 +1665,7 @@
                 </div>
                 
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1542744095-fcf48d80ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Art Exhibition" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1542744095-fcf48d80ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="School kalothsav" loading="lazy">
                     <div class="gallery-overlay">
                         <h3>Annual Art Exhibition</h3>
                         <p>Student Art Competition</p>
@@ -1726,11 +1726,9 @@
                     <div class="whatsapp-info">
                         <h4><i class="fas fa-bolt"></i> Why WhatsApp?</h4>
                         <ul>
-                            <li>Instant response within 15 minutes</li>
                             <li>Easy to share photos of venue/previous events</li>
                             <li>Quick clarification of doubts</li>
                             <li>Voice notes for detailed explanations</li>
-                            <li>File sharing for documents</li>
                         </ul>
                     </div>
                 </div>
@@ -1780,7 +1778,7 @@
                         </div>
                         
                         <div class="form-group">
-                            <textarea id="waDetails" placeholder="Brief description of your competition, special requirements, budget, etc. *" rows="4" required></textarea>
+                            <textarea id="waDetails" placeholder="Brief description of your competition, special requirements, etc. *" rows="4" required></textarea>
                         </div>
                         
                         <button type="submit" id="whatsappSubmitBtn">
@@ -1956,7 +1954,7 @@
             const competitionType = document.getElementById('waCompetitionType').value;
             const theme = document.getElementById('waTheme').value.trim();
             const date = document.getElementById('waDate').value;
-            const participants = document.getElementById('waParticipants').value;
+            const participants = document.getElementById('waJudges').value;
             const phone = document.getElementById('waPhone').value.trim();
             const details = document.getElementById('waDetails').value.trim();
             
@@ -1986,15 +1984,13 @@
 *Competition Type:* ${competitionType}
 *Competition Theme:* ${theme}
 *Event Date:* ${formattedDate}
-*Expected Participants:* ${participants || 'Not specified'}
+*Judges Needed:* ${Judges || 'Not specified'}
 *Phone:* ${phone || 'Not provided'}
 
 *Competition Details:*
 ${details}
 
-_Submitted via AL HIKMA Website_
-_We'll respond within 15 minutes!_`;
-            
+_Submitted via AL HIKMA Website_            
             // Encode for URL
             const encodedMessage = encodeURIComponent(message);
             
