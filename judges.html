@@ -19,6 +19,7 @@
             --primary-dark: #0a3d7a;
             --accent-orange: #ff6b35;
             --accent-teal: #00b4d8;
+            --whatsapp-green: #25D366;
             --light-gray: #f8f9fa;
             --medium-gray: #e9ecef;
             --dark-gray: #495057;
@@ -358,6 +359,8 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            border: none;
+            cursor: pointer;
         }
         
         .btn-primary {
@@ -380,6 +383,74 @@
         .btn-secondary:hover {
             background: var(--primary-blue);
             color: white;
+        }
+        
+        /* WhatsApp Button */
+        .btn-whatsapp {
+            background: linear-gradient(90deg, var(--whatsapp-green), #128C7E);
+            color: white;
+            flex: 1;
+        }
+        
+        .btn-whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+            background: linear-gradient(90deg, #1bd366, #0d8b6f);
+        }
+        
+        .btn-whatsapp-small {
+            background: var(--whatsapp-green);
+            color: white;
+            padding: 10px 20px;
+        }
+        
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        
+        .whatsapp-float-btn {
+            background: var(--whatsapp-green);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .whatsapp-float-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+        }
+        
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
         }
         
         /* Judge Detail Modal */
@@ -504,6 +575,12 @@
             left: 0;
             color: var(--accent-orange);
             font-weight: bold;
+        }
+        
+        .modal-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
         }
         
         /* Call to Action */
@@ -652,6 +729,10 @@
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
+            
+            .judge-actions {
+                flex-wrap: wrap;
+            }
         }
         
         @media (max-width: 768px) {
@@ -695,6 +776,19 @@
             .judge-actions {
                 flex-direction: column;
             }
+            
+            .modal-actions {
+                flex-direction: column;
+            }
+            
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .whatsapp-tooltip {
+                display: none;
+            }
         }
         
         @media (max-width: 576px) {
@@ -712,6 +806,12 @@
             
             .cta-section h2 {
                 font-size: 2.2rem;
+            }
+            
+            .whatsapp-float-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
             }
         }
     </style>
@@ -810,8 +910,8 @@
                             <a href="#" class="btn btn-primary view-profile" data-judge="1">
                                 <i class="fas fa-user"></i> View Profile
                             </a>
-                            <a href="index.html#contact" class="btn btn-secondary">
-                                <i class="fas fa-envelope"></i> Contact
+                            <a href="#" class="btn btn-whatsapp whatsapp-enquiry" data-judge="1">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
                             </a>
                         </div>
                     </div>
@@ -852,8 +952,8 @@
                             <a href="#" class="btn btn-primary view-profile" data-judge="2">
                                 <i class="fas fa-user"></i> View Profile
                             </a>
-                            <a href="index.html#contact" class="btn btn-secondary">
-                                <i class="fas fa-envelope"></i> Contact
+                            <a href="#" class="btn btn-whatsapp whatsapp-enquiry" data-judge="2">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
                             </a>
                         </div>
                     </div>
@@ -894,8 +994,8 @@
                             <a href="#" class="btn btn-primary view-profile" data-judge="3">
                                 <i class="fas fa-user"></i> View Profile
                             </a>
-                            <a href="index.html#contact" class="btn btn-secondary">
-                                <i class="fas fa-envelope"></i> Contact
+                            <a href="#" class="btn btn-whatsapp whatsapp-enquiry" data-judge="3">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
                             </a>
                         </div>
                     </div>
@@ -936,8 +1036,8 @@
                             <a href="#" class="btn btn-primary view-profile" data-judge="4">
                                 <i class="fas fa-user"></i> View Profile
                             </a>
-                            <a href="index.html#contact" class="btn btn-secondary">
-                                <i class="fas fa-envelope"></i> Contact
+                            <a href="#" class="btn btn-whatsapp whatsapp-enquiry" data-judge="4">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
                             </a>
                         </div>
                     </div>
@@ -978,8 +1078,8 @@
                             <a href="#" class="btn btn-primary view-profile" data-judge="5">
                                 <i class="fas fa-user"></i> View Profile
                             </a>
-                            <a href="index.html#contact" class="btn btn-secondary">
-                                <i class="fas fa-envelope"></i> Contact
+                            <a href="#" class="btn btn-whatsapp whatsapp-enquiry" data-judge="5">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
                             </a>
                         </div>
                     </div>
@@ -1020,8 +1120,8 @@
                             <a href="#" class="btn btn-primary view-profile" data-judge="6">
                                 <i class="fas fa-user"></i> View Profile
                             </a>
-                            <a href="index.html#contact" class="btn btn-secondary">
-                                <i class="fas fa-envelope"></i> Contact
+                            <a href="#" class="btn btn-whatsapp whatsapp-enquiry" data-judge="6">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
                             </a>
                         </div>
                     </div>
@@ -1089,7 +1189,7 @@
                         <li><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 123 Professional Plaza</li>
                         <li><i class="fas fa-phone" style="margin-right: 10px;"></i> (123) 456-7890</li>
                         <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> judges@alhikma.org</li>
-                        <li><i class="fas fa-clock" style="margin-right: 10px;"></i> Mon-Fri: 9AM-6PM</li>
+                        <li><i class="fab fa-whatsapp" style="margin-right: 10px; color: var(--whatsapp-green);"></i> +91 98468 43138</li>
                     </ul>
                 </div>
             </div>
@@ -1105,6 +1205,16 @@
             </div>
         </div>
     </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/919846843138?text=Hello%20AL%20HIKMA%20Judging%20Panel%2C%20I%20am%20interested%20in%20your%20judging%20services%20for%20our%20art%20competition.%20Please%20provide%20more%20information." target="_blank" class="whatsapp-float-btn">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <div class="whatsapp-tooltip">
+            Quick Enquiry via WhatsApp
+        </div>
+    </div>
 
     <!-- Judge Detail Modal -->
     <div class="judge-modal" id="judgeModal">
@@ -1166,9 +1276,12 @@
                             </div>
                         </div>
                         
-                        <div style="margin-top: 40px; text-align: center;">
-                            <a href="index.html#contact" class="btn btn-primary" style="width: 100%;">
-                                <i class="fas fa-envelope"></i> Invite This Judge
+                        <div class="modal-actions">
+                            <a href="#" class="btn btn-primary" id="modalWhatsappBtn" style="flex: 1;">
+                                <i class="fab fa-whatsapp"></i> WhatsApp Enquiry
+                            </a>
+                            <a href="index.html#contact" class="btn btn-secondary" style="flex: 1;">
+                                <i class="fas fa-envelope"></i> Contact Form
                             </a>
                         </div>
                     </div>
@@ -1296,6 +1409,49 @@
             }
         };
         
+        // WhatsApp Enquiry Functionality
+        const whatsappButtons = document.querySelectorAll('.whatsapp-enquiry');
+        const modalWhatsappBtn = document.getElementById('modalWhatsappBtn');
+        const phoneNumber = "919846843138"; // International format for WhatsApp
+        
+        // Function to generate WhatsApp message
+        function generateWhatsAppMessage(judgeName, judgeTitle) {
+            const message = `Hello AL HIKMA Judging Panel,
+
+I am interested in contacting ${judgeName} (${judgeTitle}) for our art competition.
+
+Please provide:
+1. Availability for judging
+2. Fee structure
+3. Booking process
+4. Any specific requirements
+
+Looking forward to your response.
+
+Best regards,
+[Your Name]
+[Your Organization/School]`;
+            
+            return encodeURIComponent(message);
+        }
+        
+        // Function to open WhatsApp
+        function openWhatsApp(judgeId) {
+            const judgeData = judgesData[judgeId];
+            const message = generateWhatsAppMessage(judgeData.name, judgeData.title);
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        }
+        
+        // Add click event to all WhatsApp buttons
+        whatsappButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const judgeId = button.getAttribute('data-judge');
+                openWhatsApp(judgeId);
+            });
+        });
+        
         // Modal Functionality
         const modal = document.getElementById('judgeModal');
         const modalClose = document.getElementById('modalClose');
@@ -1335,10 +1491,20 @@
                     achievementsList.appendChild(li);
                 });
                 
+                // Update WhatsApp button in modal
+                modalWhatsappBtn.setAttribute('data-judge', judgeId);
+                
                 // Show modal
                 modal.style.display = 'block';
                 document.body.style.overflow = 'hidden';
             });
+        });
+        
+        // Modal WhatsApp button
+        modalWhatsappBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const judgeId = modalWhatsappBtn.getAttribute('data-judge');
+            openWhatsApp(judgeId);
         });
         
         // Close modal
