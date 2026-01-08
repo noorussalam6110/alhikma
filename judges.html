@@ -6,6 +6,8 @@
     <title>Our Judges | AL HIKMA Judging Panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add Malayalam Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;500;600;700&family=Manjari:wght@400;700&family=Chilanka&display=swap" rel="stylesheet">
     <style>
         /* Reset and Base Styles */
         * {
@@ -39,6 +41,22 @@
         h1, h2, h3, h4 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
+        }
+        
+        /* Malayalam Font Classes */
+        .malayalam-font {
+            font-family: 'Noto Sans Malayalam', 'Manjari', 'Chilanka', sans-serif;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+        
+        .judge-bio-malayalam {
+            font-family: 'Noto Sans Malayalam', 'Manjari', 'Chilanka', sans-serif;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--dark-gray);
+            text-align: justify;
+            margin-bottom: 20px;
         }
         
         /* Header & Navigation */
@@ -300,7 +318,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .expertise-tag {
@@ -551,6 +569,12 @@
         .detail-value {
             color: var(--dark-gray);
             line-height: 1.6;
+        }
+        
+        .detail-value.malayalam {
+            font-family: 'Noto Sans Malayalam', 'Manjari', 'Chilanka', sans-serif;
+            line-height: 1.8;
+            text-align: justify;
         }
         
         .modal-right {
@@ -892,10 +916,11 @@
                             <span class="expertise-tag">Drawing</span>
                             <span class="expertise-tag">Art Education</span>
                         </div>
-                        <p class="judge-bio">
-                            PhD in Art Education with 18 years of experience in educational art competition judging. 
-                            Specializes in age-appropriate evaluation and artistic development assessment.
+                        
+                        <p class="judge-bio judge-bio-malayalam">
+                            കലാശിക്ഷണത്തിൽ പിഎച്ച്.ഡി ഉള്ള ഡോ. സാറാ ജോൺസൺ വിദ്യാഭ്യാസ കലാ മത്സര വിധിയായി 18 വർഷത്തെ പരിചയം നേടിയിട്ടുണ്ട്. പ്രായത്തിനനുയോജ്യമായ വിലയിരുത്തലിലും കലാത്മക വികസന വിലയിരുത്തലിലും പ്രത്യേകത പുലർത്തുന്നു. 300-ൽ അധികം വിദ്യാഭ്യാസ കലാ മത്സരങ്ങളിൽ വിധിയായി പ്രവർത്തിച്ചിട്ടുള്ള അവർ ദേശീയതലത്തിലുള്ള വിവിധ സ്കൂൾ, കോളേജ് മത്സരങ്ങളിൽ മുഖ്യ വിധിയായി സേവനമനുഷ്ഠിച്ചിട്ടുണ്ട്.
                         </p>
+                        
                         <div class="judge-stats">
                             <div class="stat-item">
                                 <div class="stat-number">18</div>
@@ -934,10 +959,11 @@
                             <span class="expertise-tag">Art History</span>
                             <span class="expertise-tag">Composition</span>
                         </div>
-                        <p class="judge-bio">
-                            Professor of Art History with 15 years experience in educational assessment. 
-                            Focuses on thematic relevance and cultural appropriateness in student artwork.
+                        
+                        <p class="judge-bio judge-bio-malayalam">
+                            കലാചരിത്ര പ്രൊഫസറായ പ്രൊഫ. മൈക്കൽ ചെന് വിദ്യാഭ്യാസ വിലയിരുത്തലിൽ 15 വർഷത്തെ പരിചയമുണ്ട്. വിദ്യാർത്ഥി കലാസൃഷ്ടികളിലെ ആശയപരമായ പ്രസക്തിയും സാംസ്കാരിക ഉചിതത്വവും കണ്ടെത്തുന്നതിൽ ശ്രദ്ധ കേന്ദ്രീകരിക്കുന്നു. ഓക്സ്ഫോർഡ് യൂണിവേഴ്സിറ്റിയിൽ നിന്ന് കലാചരിത്രത്തിൽ പിഎച്ച്.ഡി നേടിയ അദ്ദേഹം പരമ്പരാഗതവും സമകാലികവുമായ കാലിഗ്രാഫി വിലയിരുത്തലിൽ വിദഗ്ദ്ധനാണ്.
                         </p>
+                        
                         <div class="judge-stats">
                             <div class="stat-item">
                                 <div class="stat-number">15</div>
@@ -976,10 +1002,11 @@
                             <span class="expertise-tag">Sculpture</span>
                             <span class="expertise-tag">Mixed Media</span>
                         </div>
-                        <p class="judge-bio">
-                            MFA in Fine Arts with expertise in contemporary art forms. Professional artist 
-                            with focus on creative expression and technical innovation in modern art.
+                        
+                        <p class="judge-bio judge-bio-malayalam">
+                            സമകാലിക കലാ രൂപങ്ങളിൽ എം.എഫ്.എ ഉള്ള ഡോ. എലേന റോഡ്രിഗസ് ഒരു പ്രൊഫഷണൽ കലാകാരിയാണ്. സൃഷ്ടിപരമായ പ്രകടനവും ആധുനിക കലയിലെ സാങ്കേതിക നവീകരണവും ഊന്നിപ്പറയുന്നു. റോഡ് ഐലൻഡ് സ്കൂൾ ഓഫ് ഡിസൈനിൽ നിന്ന് ഫൈൻ ആർട്സിൽ എം.എഫ്.എ നേടിയ അവർ ഡിജിറ്റൽ ആർട്ട്, ശിൽപകല, മിക്സഡ് മീഡിയ എന്നിവയിൽ വിദഗ്ദ്ധയാണ്.
                         </p>
+                        
                         <div class="judge-stats">
                             <div class="stat-item">
                                 <div class="stat-number">12</div>
@@ -1018,10 +1045,11 @@
                             <span class="expertise-tag">Traditional Arts</span>
                             <span class="expertise-tag">Cultural Studies</span>
                         </div>
-                        <p class="judge-bio">
-                            Specialist in traditional Islamic art forms with 14 years of experience in 
-                            madrasa and cultural institution competitions. Expert in cultural appropriateness.
+                        
+                        <p class="judge-bio judge-bio-malayalam">
+                            പരമ്പരാഗത ഇസ്ലാമിക കലാരൂപങ്ങളിലെ വിദഗ്ദ്ധനായ ഡോ. അഹമ്മദ് ഹസന് മദ്രസ, സാംസ്കാരിക സ്ഥാപന മത്സരങ്ങളിൽ 14 വർഷത്തെ അനുഭവമുണ്ട്. സാംസ്കാരിക ഉചിതത്വത്തിലും പരമ്പരാഗത കലാരൂപങ്ങളുടെ സംരക്ഷണത്തിലും വിദഗ്ദ്ധൻ. അൽ-അസ്ഹർ യൂണിവേഴ്സിറ്റിയിൽ നിന്ന് ഇസ്ലാമിക കലകളിൽ പിഎച്ച്.ഡി നേടിയിട്ടുണ്ട്.
                         </p>
+                        
                         <div class="judge-stats">
                             <div class="stat-item">
                                 <div class="stat-number">14</div>
@@ -1060,10 +1088,11 @@
                             <span class="expertise-tag">Educational Psychology</span>
                             <span class="expertise-tag">Age-Appropriate Evaluation</span>
                         </div>
-                        <p class="judge-bio">
-                            PhD in Educational Psychology with expertise in child artistic development. 
-                            Specializes in age-appropriate evaluation and constructive feedback techniques.
+                        
+                        <p class="judge-bio judge-bio-malayalam">
+                            ബാല കലാത്മക വികസനത്തിൽ പിഎച്ച്.ഡി ഉള്ള പ്രൊഫ. ഫാത്തിമ അൽ-മൻസൂരി വിദ്യാഭ്യാസ സൈക്കോളജി വിദഗ്ദ്ധയാണ്. പ്രായത്തിനനുയോജ്യമായ വിലയിരുത്തലിലും രചനാത്മക ഫീഡ്ബാക്ക് രീതികളിലും പ്രത്യേകത പുലർത്തുന്നു. ഹാർവാർഡ് യൂണിവേഴ്സിറ്റിയിൽ നിന്ന് വിദ്യാഭ്യാസ സൈക്കോളജിയിൽ പിഎച്ച്.ഡി നേടിയിട്ടുണ്ട്.
                         </p>
+                        
                         <div class="judge-stats">
                             <div class="stat-item">
                                 <div class="stat-number">16</div>
@@ -1102,10 +1131,11 @@
                             <span class="expertise-tag">3D Arts</span>
                             <span class="expertise-tag">Installation Art</span>
                         </div>
-                        <p class="judge-bio">
-                            Master sculptor and 3D arts specialist with 13 years of competition judging experience. 
-                            Expert in material innovation and spatial composition evaluation.
+                        
+                        <p class="judge-bio judge-bio-malayalam">
+                            മാസ്റ്റർ ശിൽപിയും ത്രിമാന കലാ വിദഗ്ദ്ധനുമായ ഡോ. ജേംസ് വിൽസണ് മത്സര വിധിയായി 13 വർഷത്തെ അനുഭവമുണ്ട്. മെറ്റീരിയൽ നവീകരണത്തിലും സ്പേഷ്യൽ കോമ്പോസിഷൻ വിലയിരുത്തലിലും വിദഗ്ദ്ധൻ. റോയൽ കോളേജ് ഓഫ് ആർട്ടിൽ നിന്ന് ശിൽപകലയിൽ എം.എഫ്.എ നേടിയിട്ടുണ്ട്.
                         </p>
+                        
                         <div class="judge-stats">
                             <div class="stat-item">
                                 <div class="stat-number">13</div>
@@ -1234,7 +1264,7 @@
                         <div class="modal-details">
                             <div class="detail-item">
                                 <div class="detail-label">Education</div>
-                                <div class="detail-value" id="modalEducation">PhD in Art Education, University of Arts</div>
+                                <div class="detail-value" id="modalEducation">PhD in Art Education, University of Fine Arts</div>
                             </div>
                             <div class="detail-item">
                                 <div class="detail-label">Years of Experience</div>
@@ -1303,7 +1333,7 @@
                 : '<i class="fas fa-bars"></i>';
         });
         
-        // Judge Data
+        // Judge Data (English only for modal, Malayalam for bio)
         const judgesData = {
             1: {
                 name: "Dr. Sarah Johnson",
@@ -1414,7 +1444,7 @@
         const modalWhatsappBtn = document.getElementById('modalWhatsappBtn');
         const phoneNumber = "919846843138"; // International format for WhatsApp
         
-        // Function to generate WhatsApp message
+        // Function to generate WhatsApp message in English (since page is in English)
         function generateWhatsAppMessage(judgeName, judgeTitle) {
             const message = `Hello AL HIKMA Judging Panel,
 
