@@ -1504,6 +1504,11 @@
                             <input type="date" class="form-control" id="date" name="date">
                         </div>
                         
+                        <!-- NEW FIELD ADDED HERE -->
+                        <div class="form-group">
+                            <input type="number" class="form-control" id="judges" name="judges" placeholder="Judges Needed" min="1" max="10">
+                        </div>
+                        
                         <div class="form-group">
                             <textarea class="form-control" id="details" name="details" placeholder="Competition Details *" rows="4" required></textarea>
                         </div>
@@ -1675,6 +1680,7 @@
                     const institution = document.getElementById('institution').value.trim();
                     const type = document.getElementById('type').value;
                     const date = document.getElementById('date').value;
+                    const judges = document.getElementById('judges').value.trim(); // New field
                     const details = document.getElementById('details').value.trim();
                     
                     // Validate
@@ -1702,6 +1708,7 @@
 *Institution:* ${institution}
 *Competition Type:* ${type}
 *Event Date:* ${formattedDate}
+*Judges Needed:* ${judges || 'Not specified'}
 
 *Competition Details:*
 ${details}
