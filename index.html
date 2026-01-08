@@ -570,6 +570,44 @@
             line-height: 1.6;
         }
         
+        /* Team Button Container - Alignment Fix */
+        .team-button-container {
+            text-align: center;
+            margin-top: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+        
+        .team-full-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(90deg, var(--accent-orange), #ff8c42);
+            color: white;
+            padding: 18px 45px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+        
+        .team-full-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4);
+            background: linear-gradient(90deg, #ff8c42, var(--accent-orange));
+        }
+        
+        .team-description {
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 800px;
+            line-height: 1.6;
+            text-align: center;
+        }
+        
         /* Process Section */
         .process-section {
             background: white;
@@ -1207,6 +1245,11 @@
                 display: block;
                 margin: 15px auto;
             }
+            
+            .team-full-button {
+                padding: 16px 35px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -1525,9 +1568,12 @@
                 </div>
             </div>
             
-            <div style="text-align: center; margin-top: 60px;">
-                <h3 style="color: white; font-size: 1.8rem; margin-bottom: 30px;">Our Full Team</h3>
-                <p style="color: rgba(255, 255, 255, 0.8); max-width: 800px; margin: 0 auto;">
+            <!-- Corrected Alignment: Proper container with flexbox -->
+            <div class="team-button-container">
+                <a href="judges.html" class="team-full-button">
+                    <i class="fas fa-users"></i> View Our Full Team of Judges
+                </a>
+                <p class="team-description">
                     In addition to our team leaders, we have a team of 15+ experienced judges specializing in different art forms, 
                     ensuring comprehensive coverage for all types of competitions. Each team is trained in our standardized 
                     judging methodology to maintain consistency and fairness across all events.
