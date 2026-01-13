@@ -7,94 +7,484 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <style>
+    :root {
+      --primary-blue: #0b5ed7;
+      --secondary-blue: #74b9ff;
+      --accent-gold: #ffd700;
+    }
+    
     body {
-      background: linear-gradient(135deg, #0b5ed7, #74b9ff);
-      height: 100vh;
+      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+      min-height: 100vh;
       margin: 0;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
       text-align: center;
-      overflow: hidden;
+      padding: 20px;
+      position: relative;
+    }
+
+    .maintenance-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 600px;
     }
 
     .maintenance-box {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 40px 50px;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 40px;
       border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-      backdrop-filter: blur(8px);
-      animation: fadeIn 1.5s ease forwards;
-      max-width: 500px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+      animation: fadeIn 1s ease forwards;
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    .maintenance-box i {
-      font-size: 60px;
-      color: #ffd700;
-      margin-bottom: 20px;
-      animation: spin 3s linear infinite;
+    .logo {
+      margin-bottom: 25px;
+    }
+    
+    .logo h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .logo span {
+      color: var(--accent-gold);
+    }
+
+    .maintenance-icon {
+      font-size: 70px;
+      color: var(--accent-gold);
+      margin: 20px 0;
+      animation: gentleSpin 6s linear infinite;
     }
 
     .maintenance-box h2 {
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      font-size: 2rem;
     }
 
     .maintenance-box p {
-      font-size: 15px;
-      color: #e8f0ff;
-      margin-bottom: 30px;
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.95);
+      margin-bottom: 25px;
+      line-height: 1.6;
     }
 
-    .back-btn {
-      background: #fff;
-      color: #0b5ed7;
+    /* Status Update Section */
+    .status-update {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 15px;
+      border-radius: 12px;
+      margin: 20px 0;
+      border-left: 4px solid var(--accent-gold);
+    }
+    
+    .status-title {
       font-weight: 600;
-      padding: 10px 25px;
-      border-radius: 25px;
-      text-decoration: none;
-      transition: all 0.3s ease;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+      font-size: 1.1rem;
     }
-    .back-btn:hover {
-      background: #ffd700;
-      color: #0b5ed7;
-      transform: scale(1.05);
+    
+    .status-text {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .update-time {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 5px;
     }
 
+    /* Working Hours */
+    .working-hours {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+    
+    .hours-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: rgba(255, 255, 255, 0.95);
+    }
+    
+    .hours-text {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    /* Contact Info */
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin: 25px 0;
+    }
+    
+    .contact-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 12px 20px;
+      border-radius: 25px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: white;
+    }
+    
+    .contact-item:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
+    }
+    
+    .contact-item i {
+      color: var(--accent-gold);
+    }
+    
+    /* Action Buttons */
+    .action-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+    
+    .btn {
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    
+    .btn-primary {
+      background: white;
+      color: var(--primary-blue);
+    }
+    
+    .btn-primary:hover {
+      background: var(--accent-gold);
+      color: var(--primary-blue);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    }
+    
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
+    }
+
+    /* Footer */
     footer {
-      position: absolute;
-      bottom: 15px;
+      margin-top: 40px;
       font-size: 14px;
-      color: rgba(255,255,255,0.8);
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      width: 100%;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .copyright {
+      margin-bottom: 10px;
+    }
+    
+    .designer-info {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.6);
     }
 
     /* Animations */
-    @keyframes spin {
-      0% { transform: rotate(0); }
+    @keyframes gentleSpin {
+      0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+    
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .maintenance-box {
+        padding: 30px 20px;
+      }
+      
+      .logo h1 {
+        font-size: 2rem;
+      }
+      
+      .maintenance-box h2 {
+        font-size: 1.7rem;
+      }
+      
+      .contact-info {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .contact-item {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+      
+      .action-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .maintenance-box {
+        padding: 25px 15px;
+      }
+      
+      .maintenance-box h2 {
+        font-size: 1.5rem;
+      }
+      
+      .maintenance-box p {
+        font-size: 15px;
+      }
     }
   </style>
 </head>
 <body>
-
-  <div class="maintenance-box">
-    <i class="fa-solid fa-gear"></i>
-    <h2>Under Maintenance</h2>
-    <p>We’re currently improving this section of the Al Hikma website.<br>
-       Please check back soon for updates.</p>
-    <a href="index.html" class="back-btn"><i class="fa fa-home"></i> Back to Home</a>
+  <div class="maintenance-container">
+    <div class="maintenance-box">
+      <div class="logo">
+        <h1>Al<span>Hikma</span></h1>
+      </div>
+      
+      <div class="maintenance-icon">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+      </div>
+      
+      <h2>Website Under Maintenance</h2>
+      
+      <p>We're currently performing scheduled maintenance to improve your experience on Al Hikma. Our team is working diligently to complete the updates as quickly as possible.</p>
+      
+      <div class="status-update">
+        <div class="status-title">
+          <i class="fas fa-info-circle"></i> Current Status
+        </div>
+        <div class="status-text">
+          Server upgrades in progress • Database optimization • Security enhancements
+        </div>
+        <div class="update-time">
+          Last updated: <span id="currentTime">Just now</span>
+        </div>
+      </div>
+      
+      <div class="working-hours">
+        <div class="hours-title">
+          <i class="fas fa-clock"></i> Expected Completion
+        </div>
+        <div class="hours-text">
+          We expect to be back online by <strong>Tomorrow, 10:00 AM</strong>
+        </div>
+      </div>
+      
+      <div class="contact-info">
+        <a href="tel:7034678818" class="contact-item">
+          <i class="fas fa-phone"></i>
+          <span>7034678818</span>
+        </a>
+        <a href="mailto:support@alhikma.com" class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <span>support@alhikma.com</span>
+        </a>
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Kerala, India</span>
+        </div>
+      </div>
+      
+      <div class="action-buttons">
+        <a href="#" class="btn btn-primary" onclick="refreshPage()">
+          <i class="fas fa-sync-alt"></i>
+          <span>Check Status</span>
+        </a>
+        <button class="btn btn-secondary" onclick="showNotification()">
+          <i class="fas fa-bell"></i>
+          <span>Notify Me</span>
+        </button>
+      </div>
+      
+      <div class="mt-4" style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.8);">
+        <i class="fas fa-lightbulb"></i> In the meantime, you can follow us on social media for updates.
+      </div>
+    </div>
+    
+    <footer>
+      <div class="copyright">
+        © <span id="currentYear"></span> Al Hikma. All rights reserved.
+      </div>
+      <div class="designer-info">
+        Designed by Suhail Kerala • Contact: 7034678818
+      </div>
+    </footer>
   </div>
 
-  <footer>
-    © 2026 Al Hikma • All Rights Reserved • Designed By Suhail Kerala • 7034678818
-  </footer>
-
+  <script>
+    // Set current year in footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    
+    // Update current time
+    function updateTime() {
+      const now = new Date();
+      const options = { 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        hour12: true,
+        month: 'short', 
+        day: 'numeric' 
+      };
+      document.getElementById('currentTime').textContent = now.toLocaleTimeString('en-US', options);
+    }
+    
+    // Initial time update and set interval
+    updateTime();
+    setInterval(updateTime, 60000); // Update every minute
+    
+    // Refresh page function
+    function refreshPage() {
+      const btn = document.querySelector('.btn-primary');
+      const originalText = btn.innerHTML;
+      
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Checking...</span>';
+      btn.disabled = true;
+      
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        
+        // Show a temporary message
+        const statusText = document.querySelector('.status-text');
+        const originalStatus = statusText.textContent;
+        statusText.innerHTML = '<i class="fas fa-check-circle" style="color: #4CAF50;"></i> Maintenance is still in progress. Thank you for your patience.';
+        statusText.style.color = '#4CAF50';
+        
+        setTimeout(() => {
+          statusText.textContent = originalStatus;
+          statusText.style.color = '';
+        }, 3000);
+      }, 1500);
+    }
+    
+    // Notify me function
+    function showNotification() {
+      const btn = document.querySelector('.btn-secondary');
+      const originalText = btn.innerHTML;
+      
+      btn.innerHTML = '<i class="fas fa-check"></i><span>Notification Set</span>';
+      btn.disabled = true;
+      
+      // Create a notification message
+      const notification = document.createElement('div');
+      notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        z-index: 1000;
+        animation: fadeIn 0.3s ease;
+        border-left: 4px solid var(--accent-gold);
+      `;
+      notification.innerHTML = `
+        <div><strong>Notification Set!</strong></div>
+        <div style="font-size: 0.9rem; margin-top: 5px;">We'll notify you when the site is back online.</div>
+      `;
+      
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      }, 3000);
+      
+      setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transition = 'opacity 0.5s ease';
+        setTimeout(() => {
+          if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+          }
+        }, 500);
+      }, 4000);
+    }
+    
+    // Add a simple visitor counter
+    let visitCount = localStorage.getItem('alhikmaVisitCount') || 0;
+    visitCount = parseInt(visitCount) + 1;
+    localStorage.setItem('alhikmaVisitCount', visitCount);
+    
+    console.log(`Thank you for visiting Al Hikma. Maintenance page views: ${visitCount}`);
+    
+    // Handle potential offline scenario
+    window.addEventListener('offline', function() {
+      const statusText = document.querySelector('.status-text');
+      statusText.innerHTML = '<i class="fas fa-wifi-slash"></i> You appear to be offline. Please check your connection.';
+      statusText.style.color = '#ff6b6b';
+    });
+    
+    window.addEventListener('online', function() {
+      const statusText = document.querySelector('.status-text');
+      statusText.textContent = 'Server upgrades in progress • Database optimization • Security enhancements';
+      statusText.style.color = '';
+    });
+  </script>
 </body>
 </html>
