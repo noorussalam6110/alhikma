@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="AL HIKMA Art Competition Judging Panel - Expert evaluation for educational institutions, schools, and madrasas">
-    <meta name="keywords" content="art competition judging, school art competitions, madrasa judging, educational art events, professional judges">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="AL HIKMA Art Competition Judging Panel - Expert evaluation for educational institutions, schools, and madrasas" />
+    <meta name="keywords" content="art competition judging, school art competitions, madrasa judging, educational art events, professional judges" />
     <title>AL HIKMA | Art Competition Judges</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet" />
     <style>
+        /* ─── Root Variables ─── */
         :root {
             --primary: #1a5fb4;
             --primary-dark: #0a3d7a;
@@ -24,12 +25,10 @@
             --dark-gray: #4a5568;
             --success: #38a169;
             --warning: #d69e2e;
-            
             --gradient-primary: linear-gradient(135deg, #1a5fb4 0%, #2c8cff 50%, #0a3d7a 100%);
             --gradient-secondary: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
             --gradient-accent: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
             --gradient-dark: linear-gradient(135deg, #0f1419 0%, #1e2a3a 100%);
-            
             --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
             --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
             --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
@@ -38,50 +37,60 @@
             --border-radius-lg: 14px;
             --border-radius-xl: 20px;
             --transition: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            --bg-body: linear-gradient(135deg, #0a0e14 0%, #131a25 30%, #1c2738 70%, #2d3748 100%);
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --border-card: rgba(255, 255, 255, 0.08);
+            --text-body: #ffffff;
+            --text-muted: #f1f5f9;
         }
 
+        /* ─── Reset & Base ─── */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         html {
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            font-size: 14px; /* Base font size for mobile */
+            font-size: 14px;
         }
-
         @media (min-width: 768px) {
             html {
                 font-size: 16px;
             }
         }
-
         body {
             font-family: 'Roboto', sans-serif;
-            color: var(--light);
+            color: var(--text-body);
             line-height: 1.6;
             overflow-x: hidden;
             min-height: 100vh;
-            background: linear-gradient(135deg, #0a0e14 0%, #131a25 30%, #1c2738 70%, #2d3748 100%);
+            background: var(--bg-body);
             background-attachment: fixed;
             -webkit-tap-highlight-color: transparent;
             -webkit-text-size-adjust: 100%;
         }
-
-        /* Prevent horizontal scroll on mobile */
-        img, video, iframe {
+        img,
+        video,
+        iframe {
             max-width: 100%;
             height: auto;
         }
-
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 600;
             line-height: 1.3;
             letter-spacing: -0.01em;
+        }
+        a {
+            text-decoration: none;
         }
 
         .container {
@@ -91,7 +100,109 @@
             padding: 0 20px;
         }
 
-        /* Mobile-First Navigation */
+        /* ─── Scrollbar ─── */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        /* ─── Scroll Progress ─── */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--gradient-primary);
+            z-index: 1001;
+            transition: width 0.1s ease;
+        }
+
+        /* ─── Theme Toggle ─── */
+        .theme-toggle {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            z-index: 998;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--light);
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .theme-toggle:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+        @media (min-width: 768px) {
+            .theme-toggle {
+                bottom: 100px;
+                right: 40px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+
+        /* ─── Back to Top ─── */
+        .back-to-top {
+            position: fixed;
+            bottom: 140px;
+            right: 20px;
+            z-index: 997;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            border: none;
+            color: white;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 6px 20px rgba(26, 95, 180, 0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        .back-to-top:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(26, 95, 180, 0.4);
+        }
+        @media (min-width: 768px) {
+            .back-to-top {
+                bottom: 160px;
+                right: 40px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+
+        /* ─── Header ─── */
         header {
             position: fixed;
             top: 0;
@@ -105,12 +216,10 @@
             padding: 12px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
-
         header.scrolled {
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             padding: 8px 0;
         }
-
         .nav-container {
             display: flex;
             justify-content: space-between;
@@ -118,7 +227,6 @@
             width: 100%;
             padding: 0 16px;
         }
-
         @media (min-width: 768px) {
             .nav-container {
                 max-width: 1280px;
@@ -126,47 +234,41 @@
                 padding: 0 24px;
             }
         }
-
         .logo-container {
             display: flex;
             align-items: center;
             gap: 8px;
             flex-shrink: 0;
         }
-
         @media (min-width: 768px) {
             .logo-container {
                 gap: 12px;
             }
         }
-
         .logo {
             display: flex;
             align-items: center;
             gap: 8px;
             text-decoration: none;
         }
-
         @media (min-width: 768px) {
             .logo {
                 gap: 12px;
             }
         }
-
         .logo-img {
             height: 36px;
             width: auto;
             object-fit: contain;
             transition: var(--transition);
         }
-
         @media (min-width: 768px) {
             .logo-img {
                 height: 48px;
             }
         }
 
-        /* Mobile Navigation Menu */
+        /* Mobile Nav */
         .nav-links {
             display: none;
             position: fixed;
@@ -184,17 +286,14 @@
             max-height: calc(100vh - 70px);
             overflow-y: auto;
         }
-
         .nav-links.active {
             display: flex;
             flex-direction: column;
             gap: 4px;
         }
-
         .nav-links li {
             width: 100%;
         }
-
         .nav-links a {
             display: flex;
             align-items: center;
@@ -208,22 +307,18 @@
             transition: var(--transition);
             font-family: 'Source Sans Pro', sans-serif;
         }
-
         .nav-links a i {
             font-size: 16px;
             width: 20px;
             text-align: center;
             color: var(--primary-light);
         }
-
         .nav-links a:hover,
         .nav-links a.active {
             color: var(--light);
             background: rgba(26, 95, 180, 0.15);
             border: 1px solid rgba(26, 95, 180, 0.3);
         }
-
-        /* Desktop Navigation */
         @media (min-width: 768px) {
             .nav-links {
                 display: flex;
@@ -237,7 +332,6 @@
                 overflow-y: visible;
                 box-shadow: none;
             }
-
             .nav-links a {
                 padding: 10px 20px;
                 font-size: 14px;
@@ -245,13 +339,11 @@
             }
         }
 
-        /* CTA Button */
         .nav-cta {
             display: flex;
             align-items: center;
             gap: 12px;
         }
-
         .whatsapp-cta {
             display: flex;
             align-items: center;
@@ -268,7 +360,6 @@
             font-family: 'Source Sans Pro', sans-serif;
             white-space: nowrap;
         }
-
         @media (min-width: 768px) {
             .whatsapp-cta {
                 padding: 12px 24px;
@@ -276,13 +367,11 @@
                 gap: 10px;
             }
         }
-
         .whatsapp-cta:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(26, 95, 180, 0.3);
         }
 
-        /* Mobile Menu Button */
         .mobile-menu-btn {
             display: flex;
             width: 40px;
@@ -297,65 +386,40 @@
             justify-content: center;
             font-size: 16px;
         }
-
         @media (min-width: 768px) {
             .mobile-menu-btn {
                 display: none;
             }
         }
-
         .mobile-menu-btn.active i {
             transform: rotate(90deg);
         }
 
-        /* Hero Section - Mobile Optimized */
+        /* ─── Hero ─── */
         .hero {
             min-height: 100vh;
-            min-height: -webkit-fill-available; /* For mobile browsers */
+            min-height: -webkit-fill-available;
             display: flex;
             align-items: center;
             padding: 100px 0 60px;
             position: relative;
             overflow: hidden;
         }
-
         @media (min-width: 768px) {
             .hero {
                 padding: 160px 0 80px;
             }
         }
-
-       /* In the .hero::before selector */
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, 
-        rgba(10, 14, 20, 0.4) 0%,      /* Reduced from 0.85 */
-        rgba(26, 32, 44, 0.45) 50%,   /* Reduced from 0.9 */
-        rgba(44, 82, 130, 0.4) 100%); /* Reduced from 0.8 */
-    z-index: 1;
-}
-
-/* In the .hero-bg::before selector */
-.hero-bg::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        url('https://i.ibb.co/gLWVnmCg/Whats-App-Image-2026-01-10-at-9-25-50-PM.jpg') 
-        center/cover no-repeat;
-    filter: brightness(0.9) saturate(1.2); /* Increased from 0.8 to 0.9 */
-    transform: scale(1.1);
-    animation: zoomInOut 20s ease-in-out infinite alternate;
-}
-
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10, 14, 20, 0.4) 0%, rgba(26, 32, 44, 0.45) 50%, rgba(44, 82, 130, 0.4) 100%);
+            z-index: 1;
+        }
         .hero-bg {
             position: absolute;
             top: 0;
@@ -365,7 +429,6 @@
             z-index: 0;
             overflow: hidden;
         }
-
         .hero-bg::before {
             content: '';
             position: absolute;
@@ -373,14 +436,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                url('https://i.ibb.co/67mjw3d2/Pngtree-islamic-background-1986570.png') 
-                center/cover no-repeat;
-            filter: brightness(0.8) saturate(1.2);
+            background: url('https://i.ibb.co/67mjw3d2/Pngtree-islamic-background-1986570.png') center/cover no-repeat;
+            filter: brightness(0.9) saturate(1.2);
             transform: scale(1.1);
             animation: zoomInOut 20s ease-in-out infinite alternate;
         }
-
         @keyframes zoomInOut {
             0% {
                 transform: scale(1.1);
@@ -389,11 +449,21 @@
                 transform: scale(1.15);
             }
         }
-
         @media (max-width: 480px) {
             .hero-bg::before {
-                animation: none; /* Reduce animation on very small devices */
+                animation: none;
             }
+        }
+
+        /* Hero Particles (canvas overlay) */
+        #particles-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
         }
 
         .hero-content {
@@ -402,7 +472,6 @@
             width: 100%;
             text-align: center;
         }
-
         @media (min-width: 768px) {
             .hero-content {
                 text-align: left;
@@ -427,8 +496,8 @@
             font-family: 'Source Sans Pro', sans-serif;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            animation: fadeInDown 0.8s ease;
         }
-
         @media (min-width: 768px) {
             .hero-badge {
                 padding: 10px 24px;
@@ -443,14 +512,13 @@
             color: var(--light);
             font-weight: 700;
             line-height: 1.2;
+            animation: fadeInUp 0.8s ease 0.1s both;
         }
-
         @media (min-width: 480px) {
             .hero h1 {
                 font-size: 38px;
             }
         }
-
         @media (min-width: 768px) {
             .hero h1 {
                 font-size: 52px;
@@ -458,13 +526,11 @@
                 line-height: 1.2;
             }
         }
-
         .hero h1 span {
             color: var(--primary-light);
             position: relative;
             display: inline-block;
         }
-
         .hero h1 span::after {
             content: '';
             position: absolute;
@@ -484,14 +550,13 @@
             font-weight: 400;
             line-height: 1.6;
             font-family: 'Roboto', sans-serif;
+            animation: fadeInUp 0.8s ease 0.2s both;
         }
-
         @media (min-width: 480px) {
             .hero-tagline {
                 font-size: 16px;
             }
         }
-
         @media (min-width: 768px) {
             .hero-tagline {
                 font-size: 18px;
@@ -506,14 +571,13 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 12px;
             margin: 32px 0;
+            animation: fadeInUp 0.8s ease 0.3s both;
         }
-
         @media (min-width: 480px) {
             .hero-stats {
                 gap: 16px;
             }
         }
-
         @media (min-width: 768px) {
             .hero-stats {
                 grid-template-columns: repeat(4, 1fr);
@@ -535,19 +599,16 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
         }
-
         @media (min-width: 768px) {
             .stat-item {
                 padding: 24px;
             }
         }
-
         .stat-item:hover {
             background: rgba(255, 255, 255, 0.05);
             border-color: rgba(26, 95, 180, 0.3);
             transform: translateY(-4px);
         }
-
         .stat-number {
             font-size: 28px;
             font-weight: 700;
@@ -555,14 +616,12 @@
             margin-bottom: 6px;
             font-family: 'Montserrat', sans-serif;
         }
-
         @media (min-width: 768px) {
             .stat-number {
                 font-size: 36px;
                 margin-bottom: 8px;
             }
         }
-
         .stat-label {
             font-size: 11px;
             color: var(--medium-gray);
@@ -571,7 +630,6 @@
             letter-spacing: 1px;
             font-family: 'Source Sans Pro', sans-serif;
         }
-
         @media (min-width: 768px) {
             .stat-label {
                 font-size: 13px;
@@ -585,8 +643,8 @@
             width: 100%;
             max-width: 400px;
             margin: 0 auto;
+            animation: fadeInUp 0.8s ease 0.4s both;
         }
-
         @media (min-width: 480px) {
             .hero-buttons {
                 flex-direction: row;
@@ -595,7 +653,6 @@
                 max-width: none;
             }
         }
-
         @media (min-width: 768px) {
             .hero-buttons {
                 flex-direction: row;
@@ -606,7 +663,7 @@
             }
         }
 
-        /* Buttons - Mobile Optimized */
+        /* ─── Buttons ─── */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -626,14 +683,12 @@
             width: 100%;
             text-align: center;
         }
-
         @media (min-width: 480px) {
             .btn {
                 width: auto;
                 min-width: 200px;
             }
         }
-
         @media (min-width: 768px) {
             .btn {
                 padding: 14px 32px;
@@ -641,51 +696,42 @@
                 gap: 10px;
             }
         }
-
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
         }
-
         .btn-primary {
             background: var(--gradient-primary);
             color: white;
             box-shadow: 0 6px 20px rgba(26, 95, 180, 0.2);
         }
-
         .btn-primary:hover {
             background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
             box-shadow: 0 10px 25px rgba(26, 95, 180, 0.3);
         }
-
         .btn-secondary {
             background: transparent;
             border-color: rgba(255, 255, 255, 0.15);
             color: var(--light);
         }
-
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.05);
             border-color: var(--primary-light);
         }
-
         .btn-whatsapp {
             background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
             color: white;
             font-weight: 600;
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.2);
         }
-
         .btn-whatsapp:hover {
             background: linear-gradient(135deg, #128C7E 0%, #0d6e5e 100%);
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
         }
-
         .btn-lg {
             padding: 16px 32px;
             font-size: 15px;
         }
-
         @media (min-width: 768px) {
             .btn-lg {
                 padding: 16px 40px;
@@ -693,12 +739,11 @@
             }
         }
 
-        /* Sections - Mobile Optimized */
+        /* ─── Sections ─── */
         section {
             padding: 60px 0;
             position: relative;
         }
-
         @media (min-width: 768px) {
             section {
                 padding: 100px 0;
@@ -709,13 +754,11 @@
             text-align: center;
             margin-bottom: 40px;
         }
-
         @media (min-width: 768px) {
             .section-header {
                 margin-bottom: 70px;
             }
         }
-
         .section-subtitle {
             display: inline-block;
             color: var(--primary-light);
@@ -730,7 +773,6 @@
             border: 1px solid rgba(26, 95, 180, 0.2);
             font-family: 'Source Sans Pro', sans-serif;
         }
-
         @media (min-width: 768px) {
             .section-subtitle {
                 font-size: 13px;
@@ -738,20 +780,17 @@
                 padding: 8px 20px;
             }
         }
-
         .section-title {
             font-size: 28px;
             margin-bottom: 20px;
             color: var(--light);
             line-height: 1.3;
         }
-
         @media (min-width: 480px) {
             .section-title {
                 font-size: 32px;
             }
         }
-
         @media (min-width: 768px) {
             .section-title {
                 font-size: 42px;
@@ -761,14 +800,12 @@
                 margin-right: auto;
             }
         }
-
         .section-description {
             font-size: 15px;
             color: var(--light-gray);
             line-height: 1.6;
             font-family: 'Roboto', sans-serif;
         }
-
         @media (min-width: 768px) {
             .section-description {
                 font-size: 18px;
@@ -778,7 +815,7 @@
             }
         }
 
-        /* Cards - Mobile Optimized */
+        /* ─── Cards ─── */
         .card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -787,13 +824,11 @@
             transition: var(--transition);
             height: 100%;
         }
-
         @media (min-width: 768px) {
             .card {
                 padding: 32px;
             }
         }
-
         .card:hover {
             border-color: rgba(26, 95, 180, 0.3);
             box-shadow: var(--shadow-xl);
@@ -814,7 +849,6 @@
             margin-bottom: 20px;
             box-shadow: 0 8px 20px rgba(26, 95, 180, 0.2);
         }
-
         @media (min-width: 768px) {
             .card-icon {
                 width: 64px;
@@ -838,7 +872,6 @@
             margin-bottom: 20px;
             box-shadow: 0 6px 15px rgba(26, 95, 180, 0.2);
         }
-
         @media (min-width: 768px) {
             .card-number {
                 width: 48px;
@@ -853,76 +886,81 @@
             margin-bottom: 12px;
             color: var(--light);
         }
-
         @media (min-width: 768px) {
             .card h3 {
                 font-size: 22px;
                 margin-bottom: 16px;
             }
         }
-
         .card p {
             color: var(--light-gray);
             font-size: 15px;
             line-height: 1.6;
             font-family: 'Roboto', sans-serif;
         }
-
         @media (min-width: 768px) {
             .card p {
                 font-size: 16px;
             }
         }
 
-        /* Grid Layouts - Mobile First */
+        /* ─── Grid ─── */
         .grid {
             display: grid;
             gap: 20px;
         }
-
         @media (min-width: 480px) {
             .grid {
                 gap: 24px;
             }
         }
-
         @media (min-width: 768px) {
             .grid {
                 gap: 30px;
             }
         }
-
-        .grid-2 { grid-template-columns: 1fr; }
-        .grid-3 { grid-template-columns: 1fr; }
-        .grid-4 { grid-template-columns: 1fr; }
-
+        .grid-2 {
+            grid-template-columns: 1fr;
+        }
+        .grid-3 {
+            grid-template-columns: 1fr;
+        }
+        .grid-4 {
+            grid-template-columns: 1fr;
+        }
         @media (min-width: 768px) {
-            .grid-2 { grid-template-columns: repeat(2, 1fr); }
-            .grid-3 { grid-template-columns: repeat(2, 1fr); }
-            .grid-4 { grid-template-columns: repeat(2, 1fr); }
+            .grid-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
-
         @media (min-width: 1024px) {
-            .grid-3 { grid-template-columns: repeat(3, 1fr); }
-            .grid-4 { grid-template-columns: repeat(4, 1fr); }
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .grid-4 {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
 
-        /* Team Section */
+        /* ─── Team ─── */
         .team-section {
             background: linear-gradient(135deg, var(--dark-light) 0%, var(--dark) 100%);
         }
-
         .team-card {
             text-align: center;
             padding: 24px;
         }
-
         @media (min-width: 768px) {
             .team-card {
                 padding: 32px;
             }
         }
-
         .team-avatar {
             width: 120px;
             height: 120px;
@@ -933,7 +971,6 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
             transition: var(--transition);
         }
-
         @media (min-width: 768px) {
             .team-avatar {
                 width: 140px;
@@ -941,31 +978,26 @@
                 margin-bottom: 24px;
             }
         }
-
         .team-card:hover .team-avatar {
             transform: scale(1.05);
             border-color: var(--primary);
         }
-
         .team-avatar img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-
         .team-name {
             font-size: 20px;
             color: var(--light);
             margin-bottom: 6px;
         }
-
         @media (min-width: 768px) {
             .team-name {
                 font-size: 22px;
                 margin-bottom: 8px;
             }
         }
-
         .team-role {
             color: var(--primary-light);
             font-weight: 600;
@@ -975,7 +1007,6 @@
             margin-bottom: 16px;
             font-family: 'Source Sans Pro', sans-serif;
         }
-
         @media (min-width: 768px) {
             .team-role {
                 font-size: 14px;
@@ -983,20 +1014,18 @@
             }
         }
 
-        /* Process Timeline - Mobile Optimized */
+        /* ─── Process Timeline ─── */
         .process-timeline {
             position: relative;
             max-width: 900px;
             margin: 0 auto;
             padding: 30px 0;
         }
-
         @media (min-width: 768px) {
             .process-timeline {
                 padding: 40px 0;
             }
         }
-
         .process-timeline::before {
             content: '';
             position: absolute;
@@ -1006,14 +1035,12 @@
             height: 100%;
             background: linear-gradient(to bottom, transparent, var(--primary), transparent);
         }
-
         @media (min-width: 768px) {
             .process-timeline::before {
                 left: 50%;
                 transform: translateX(-50%);
             }
         }
-
         .process-step {
             position: relative;
             margin-bottom: 30px;
@@ -1022,7 +1049,6 @@
             padding: 0 0 0 50px;
             text-align: left;
         }
-
         @media (min-width: 768px) {
             .process-step {
                 width: calc(50% - 40px);
@@ -1030,11 +1056,9 @@
                 padding: 0 70px 0 0;
                 text-align: right;
             }
-
             .process-step:nth-child(odd) {
                 margin-left: auto;
             }
-
             .process-step:nth-child(even) {
                 margin-right: auto;
                 margin-left: 0;
@@ -1042,7 +1066,6 @@
                 text-align: left;
             }
         }
-
         .step-number {
             position: absolute;
             top: 0;
@@ -1060,7 +1083,6 @@
             border: 6px solid var(--dark);
             box-shadow: 0 6px 15px rgba(26, 95, 180, 0.3);
         }
-
         @media (min-width: 768px) {
             .step-number {
                 width: 48px;
@@ -1069,14 +1091,337 @@
                 left: auto;
                 right: -24px;
             }
-
             .process-step:nth-child(even) .step-number {
                 left: -24px;
                 right: auto;
             }
         }
 
-        /* Contact Form - Mobile Optimized */
+        /* ─── Testimonials ─── */
+        .testimonials-section {
+            background: var(--dark-light);
+        }
+        .testimonial-slider {
+            position: relative;
+            overflow: hidden;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            will-change: transform;
+        }
+        .testimonial-slide {
+            flex: 0 0 100%;
+            padding: 0 10px;
+        }
+        @media (min-width: 768px) {
+            .testimonial-slide {
+                padding: 0 20px;
+            }
+        }
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--border-radius-lg);
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        @media (min-width: 768px) {
+            .testimonial-card {
+                padding: 40px 50px;
+            }
+        }
+        .testimonial-card .quote-icon {
+            font-size: 32px;
+            color: var(--primary-light);
+            opacity: 0.4;
+            margin-bottom: 16px;
+        }
+        .testimonial-card blockquote {
+            font-size: 16px;
+            color: var(--light-gray);
+            line-height: 1.7;
+            font-style: italic;
+            font-family: 'Roboto', sans-serif;
+        }
+        @media (min-width: 768px) {
+            .testimonial-card blockquote {
+                font-size: 18px;
+            }
+        }
+        .testimonial-card .client-name {
+            font-weight: 600;
+            color: var(--light);
+            margin-top: 16px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .testimonial-card .client-role {
+            font-size: 13px;
+            color: var(--medium-gray);
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-top: 30px;
+        }
+        .slider-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--light);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .slider-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+        .slider-dots {
+            display: flex;
+            gap: 8px;
+        }
+        .slider-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 0;
+        }
+        .slider-dot.active {
+            background: var(--primary-light);
+            transform: scale(1.2);
+        }
+        .slider-dot:hover {
+            background: var(--primary-light);
+        }
+
+        /* ─── FAQ Accordion ─── */
+        .faq-section {
+            background: var(--dark);
+        }
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .faq-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .faq-item:hover {
+            border-color: rgba(26, 95, 180, 0.2);
+        }
+        .faq-question {
+            width: 100%;
+            padding: 18px 20px;
+            background: transparent;
+            border: none;
+            color: var(--light);
+            font-size: 15px;
+            font-weight: 600;
+            font-family: 'Source Sans Pro', sans-serif;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            text-align: left;
+            transition: var(--transition);
+        }
+        @media (min-width: 768px) {
+            .faq-question {
+                padding: 20px 28px;
+                font-size: 16px;
+            }
+        }
+        .faq-question:hover {
+            color: var(--primary-light);
+        }
+        .faq-question .faq-icon {
+            flex-shrink: 0;
+            font-size: 14px;
+            color: var(--primary-light);
+            transition: var(--transition);
+        }
+        .faq-item.active .faq-question .faq-icon {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 20px;
+            color: var(--light-gray);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        @media (min-width: 768px) {
+            .faq-answer {
+                font-size: 15px;
+                padding: 0 28px;
+            }
+        }
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 20px 20px;
+        }
+        @media (min-width: 768px) {
+            .faq-item.active .faq-answer {
+                padding: 0 28px 24px;
+            }
+        }
+
+        /* ─── Gallery ─── */
+        .gallery-section {
+            background: var(--dark-light);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        @media (min-width: 480px) {
+            .gallery-grid {
+                gap: 16px;
+            }
+        }
+        @media (min-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+        }
+        .gallery-item {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 1 / 1;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .gallery-item:hover img {
+            transform: scale(1.06);
+        }
+        .gallery-item .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 60%);
+            opacity: 0;
+            transition: var(--transition);
+            display: flex;
+            align-items: flex-end;
+            padding: 16px;
+        }
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        .gallery-item .gallery-overlay span {
+            color: white;
+            font-weight: 500;
+            font-size: 13px;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        /* ─── Newsletter ─── */
+        .newsletter-section {
+            background: var(--dark);
+        }
+        .newsletter-box {
+            background: var(--gradient-primary);
+            border-radius: var(--border-radius-xl);
+            padding: 40px 24px;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(26, 95, 180, 0.2);
+        }
+        @media (min-width: 768px) {
+            .newsletter-box {
+                padding: 60px 50px;
+            }
+        }
+        .newsletter-box h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: white;
+        }
+        @media (min-width: 768px) {
+            .newsletter-box h3 {
+                font-size: 30px;
+            }
+        }
+        .newsletter-box p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 24px;
+            font-size: 15px;
+        }
+        @media (min-width: 768px) {
+            .newsletter-box p {
+                font-size: 17px;
+            }
+        }
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        @media (min-width: 480px) {
+            .newsletter-form {
+                flex-direction: row;
+            }
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px 18px;
+            border-radius: var(--border-radius);
+            border: none;
+            background: rgba(255, 255, 255, 0.12);
+            color: white;
+            font-size: 15px;
+            font-family: 'Roboto', sans-serif;
+            outline: none;
+            transition: var(--transition);
+            min-width: 0;
+        }
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .newsletter-form input:focus {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .newsletter-form .btn {
+            flex-shrink: 0;
+        }
+
+        /* ─── Contact ─── */
         .contact-form {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1084,24 +1429,20 @@
             padding: 24px;
             margin-top: 40px;
         }
-
         @media (min-width: 768px) {
             .contact-form {
                 padding: 40px;
                 margin-top: 50px;
             }
         }
-
         .form-group {
             margin-bottom: 20px;
         }
-
         @media (min-width: 768px) {
             .form-group {
                 margin-bottom: 24px;
             }
         }
-
         .form-control {
             width: 100%;
             padding: 14px 16px;
@@ -1114,93 +1455,70 @@
             font-family: 'Roboto', sans-serif;
             -webkit-appearance: none;
         }
-
         @media (min-width: 768px) {
             .form-control {
                 padding: 16px 20px;
                 font-size: 16px;
             }
         }
-
         .form-control:focus {
             outline: none;
             border-color: var(--primary-light);
             box-shadow: 0 0 0 3px rgba(26, 95, 180, 0.1);
         }
-
         .form-control::placeholder {
             color: var(--dark-gray);
         }
-
         textarea.form-control {
             min-height: 120px;
             resize: vertical;
         }
-
         @media (min-width: 768px) {
             textarea.form-control {
                 min-height: 140px;
             }
         }
 
-        /* Contact Info - Mobile Optimized */
-        .contact-info .card h3 {
-            margin-bottom: 24px;
-        }
-
-        @media (min-width: 768px) {
-            .contact-info .card h3 {
-                margin-bottom: 32px;
-            }
-        }
-
-        /* Footer - Mobile Optimized */
+        /* ─── Footer ─── */
         footer {
             background: linear-gradient(135deg, var(--dark-light) 0%, var(--dark) 100%);
             padding: 60px 0 40px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
-
         @media (min-width: 768px) {
             footer {
                 padding: 100px 0 50px;
             }
         }
-
         .footer-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 40px;
             margin-bottom: 40px;
         }
-
         @media (min-width: 768px) {
             .footer-grid {
                 gap: 50px;
                 margin-bottom: 70px;
             }
         }
-
         @media (min-width: 1024px) {
             .footer-grid {
                 grid-template-columns: 2fr 1fr 1fr 1fr;
             }
         }
-
         .footer-logo-img {
             height: 50px;
             width: auto;
             margin-bottom: 20px;
             object-fit: contain;
         }
-
         @media (min-width: 768px) {
             .footer-logo-img {
                 height: 60px;
                 margin-bottom: 24px;
             }
         }
-
         .footer-title {
             font-size: 18px;
             font-weight: 600;
@@ -1209,14 +1527,12 @@
             position: relative;
             padding-bottom: 12px;
         }
-
         @media (min-width: 768px) {
             .footer-title {
                 font-size: 20px;
                 margin-bottom: 28px;
             }
         }
-
         .footer-title::after {
             content: '';
             position: absolute;
@@ -1226,21 +1542,17 @@
             height: 3px;
             background: var(--gradient-primary);
         }
-
         .footer-links {
             list-style: none;
         }
-
         .footer-links li {
             margin-bottom: 12px;
         }
-
         @media (min-width: 768px) {
             .footer-links li {
                 margin-bottom: 14px;
             }
         }
-
         .footer-links a {
             color: var(--light-gray);
             text-decoration: none;
@@ -1251,24 +1563,20 @@
             gap: 8px;
             font-family: 'Roboto', sans-serif;
         }
-
         @media (min-width: 768px) {
             .footer-links a {
                 font-size: 15px;
                 gap: 10px;
             }
         }
-
         .footer-links a:hover {
             color: var(--light);
             padding-left: 8px;
         }
-
         .footer-links a i {
             color: var(--primary-light);
             font-size: 11px;
         }
-
         @media (min-width: 768px) {
             .footer-links a i {
                 font-size: 12px;
@@ -1281,14 +1589,12 @@
             gap: 10px;
             margin-top: 20px;
         }
-
         @media (min-width: 768px) {
             .social-links {
                 gap: 12px;
                 margin-top: 30px;
             }
         }
-
         .social-links a {
             width: 40px;
             height: 40px;
@@ -1302,14 +1608,12 @@
             transition: var(--transition);
             text-decoration: none;
         }
-
         @media (min-width: 768px) {
             .social-links a {
                 width: 44px;
                 height: 44px;
             }
         }
-
         .social-links a:hover {
             background: var(--primary);
             border-color: var(--primary);
@@ -1324,7 +1628,6 @@
             font-size: 13px;
             font-family: 'Roboto', sans-serif;
         }
-
         @media (min-width: 768px) {
             .copyright {
                 padding-top: 50px;
@@ -1332,21 +1635,19 @@
             }
         }
 
-        /* Floating Button - Mobile Optimized */
+        /* ─── Floating WhatsApp ─── */
         .floating-action {
             position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 999;
         }
-
         @media (min-width: 768px) {
             .floating-action {
                 bottom: 40px;
                 right: 40px;
             }
         }
-
         .floating-whatsapp {
             width: 56px;
             height: 56px;
@@ -1361,7 +1662,6 @@
             transition: var(--transition);
             text-decoration: none;
         }
-
         @media (min-width: 768px) {
             .floating-whatsapp {
                 width: 64px;
@@ -1369,25 +1669,77 @@
                 font-size: 24px;
             }
         }
-
         .floating-whatsapp:hover {
             transform: scale(1.1);
             box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
         }
 
-        /* Scroll Progress */
-        .scroll-progress {
+        /* ─── Toast Notification ─── */
+        .toast {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background: var(--gradient-primary);
-            z-index: 1001;
-            transition: width 0.1s ease;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 14px 24px;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-xl);
+            max-width: 90%;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+        }
+        .toast i {
+            margin-right: 10px;
+            color: var(--success);
         }
 
-        /* Touch-friendly improvements */
+        /* ─── Animations ─── */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── Touch-friendly ─── */
         @media (hover: none) and (pointer: coarse) {
             .btn:hover,
             .card:hover,
@@ -1395,38 +1747,37 @@
             .team-card:hover .team-avatar,
             .social-links a:hover,
             .floating-whatsapp:hover,
-            .nav-links a:hover {
+            .nav-links a:hover,
+            .gallery-item:hover img,
+            .gallery-item:hover .gallery-overlay {
                 transform: none !important;
+                opacity: 1 !important;
             }
-            
             .btn:active,
             .card:active,
             .stat-item:active,
             .social-links a:active,
             .floating-whatsapp:active,
-            .nav-links a:active {
+            .nav-links a:active,
+            .gallery-item:active img {
                 transform: scale(0.98) !important;
             }
         }
 
-        /* Prevent text size adjustment on mobile */
         @media screen and (max-width: 768px) {
             input,
             select,
             textarea {
-                font-size: 16px !important; /* Prevents zoom on iOS */
+                font-size: 16px !important;
             }
         }
 
-        /* Hide scrollbar but allow scrolling */
         .nav-links::-webkit-scrollbar {
             width: 4px;
         }
-
         .nav-links::-webkit-scrollbar-track {
             background: rgba(255, 255, 255, 0.05);
         }
-
         .nav-links::-webkit-scrollbar-thumb {
             background: var(--primary);
             border-radius: 2px;
@@ -1434,116 +1785,110 @@
     </style>
 </head>
 <body>
-    <!-- Scroll Progress Bar -->
+
+    <!-- ─── Scroll Progress ─── -->
     <div class="scroll-progress" id="scrollProgress"></div>
 
-    <!-- Navigation -->
+    <!-- ─── Toast ─── -->
+    <div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastMessage">Success!</span></div>
+
+    <!-- ─── Header ─── -->
     <header id="header">
         <nav class="nav-container">
             <div class="logo-container">
                 <a href="#home" class="logo">
-                    <img src="https://i.ibb.co/84TMzq7M/alhikam.png" alt="AL HIKMA Professional Judging" class="logo-img">
+                    <img src="https://i.ibb.co/84TMzq7M/alhikam.png" alt="AL HIKMA Professional Judging" class="logo-img" />
                 </a>
             </div>
-
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home" class="active"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
                 <li><a href="#services"><i class="fas fa-briefcase"></i> Services</a></li>
                 <li><a href="#criteria"><i class="fas fa-clipboard-list"></i> Criteria</a></li>
-                <li><a href="#"><i class="fas fa-users"></i> Team</a></li>
-                <li><a href="#process"><i class="fas fa-tasks"></i> Process</a></li>
+                <li><a href="#team"><i class="fas fa-users"></i> Team</a></li>
+                <li><a href="#testimonials"><i class="fas fa-star"></i> Testimonials</a></li>
+                <li><a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
                 <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
-
             <div class="nav-cta">
                 <a href="https://wa.me/919846843138" target="_blank" class="whatsapp-cta">
-                    <i class="fab fa-whatsapp"></i>
-                    <span>WhatsApp</span>
+                    <i class="fab fa-whatsapp"></i> <span>WhatsApp</span>
                 </a>
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </nav>
     </header>
 
-    <!-- Hero Section with Background Photo -->
+    <!-- ─── Theme Toggle ─── -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- ─── Back to Top ─── -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- ─── Hero ─── -->
     <section class="hero" id="home">
-        <!-- Background Image Container -->
         <div class="hero-bg"></div>
-        
+        <canvas id="particles-canvas"></canvas>
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <i class="fas fa-star"></i>
-                    <span>Judging Services</span>
-                </div>
-                
+                <div class="hero-badge"><i class="fas fa-star"></i> <span>Judging Services</span></div>
                 <h1>Expert <span>Art Competition</span> Judgement</h1>
-                
                 <p class="hero-tagline">
-                    AL HIKMA provides professional judging services for art competitions in schools, 
-                    madrasas, and educational organizations. Our expert panel ensures fair, 
+                    AL HIKMA provides professional judging services for art competitions in schools,
+                    madrasas, and educational organizations. Our expert panel ensures fair,
                     constructive, and educational evaluation of student artwork.
                 </p>
-
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <div class="stat-number">300+</div>
+                        <div class="stat-number" data-count="300">0</div>
                         <div class="stat-label">Competitions</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">150+</div>
+                        <div class="stat-number" data-count="150">0</div>
                         <div class="stat-label">Institutions</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">12+</div>
+                        <div class="stat-number" data-count="12">0</div>
                         <div class="stat-label">Years Experience</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">25k+</div>
-                        <div class="stat-label">Artworks Judged</div>
+                        <div class="stat-number" data-count="25">0</div>
+                        <div class="stat-label">Artworks Judged (k)</div>
                     </div>
                 </div>
-
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary btn-lg">
-                        <i class="fas fa-calendar-check"></i> Request Judges
-                    </a>
-                    <a href="https://wa.me/919846843138" target="_blank" class="btn btn-whatsapp btn-lg">
-                        <i class="fab fa-whatsapp"></i> Quick Inquiry
-                    </a>
+                    <a href="#contact" class="btn btn-primary btn-lg"><i class="fas fa-calendar-check"></i> Request Judges</a>
+                    <a href="https://wa.me/919846843138" target="_blank" class="btn btn-whatsapp btn-lg"><i class="fab fa-whatsapp"></i> Quick Inquiry</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- ─── About ─── -->
     <section id="about">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <div class="section-subtitle">About AL HIKMA</div>
                 <h2 class="section-title">Professional Excellence in Art Judging</h2>
                 <p class="section-description">
-                    We specialize in professional art competition judging for educational institutions, 
+                    We specialize in professional art competition judging for educational institutions,
                     combining artistic expertise with educational insight to provide fair and constructive evaluation.
                 </p>
             </div>
-
             <div class="grid grid-2">
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
+                <div class="card reveal">
+                    <div class="card-icon"><i class="fas fa-award"></i></div>
                     <h3>Trusted Expertise</h3>
                     <p>12+ years of professional judging experience across 300+ competitions. Our team brings extensive knowledge in both traditional and contemporary art forms.</p>
                 </div>
-
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
+                <div class="card reveal">
+                    <div class="card-icon"><i class="fas fa-handshake"></i></div>
                     <h3>Our Commitment</h3>
                     <p>We are committed to providing fair, transparent, and constructive judging that helps young artists develop their skills while recognizing excellence in creative expression.</p>
                 </div>
@@ -1551,168 +1896,88 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" style="background: var(--dark-light);">
+    <!-- ─── Services ─── -->
+    <section id="services" style="background:var(--dark-light);">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <div class="section-subtitle">Our Services</div>
                 <h2 class="section-title">Comprehensive Judging Solutions</h2>
-                <p class="section-description">
-                    We provide comprehensive judging services for various types of art competitions 
-                    in educational settings
-                </p>
+                <p class="section-description">We provide comprehensive judging services for various types of art competitions in educational settings</p>
             </div>
-
             <div class="grid grid-3">
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-school"></i>
-                    </div>
+                <div class="card reveal">
+                    <div class="card-icon"><i class="fas fa-school"></i></div>
                     <h3>School Competitions</h3>
-                    <p>Professional judging for school art competitions, exhibitions, 
-                       and annual art events across all age groups.</p>
-                    <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
-                        <h4 style="font-size: 13px; color: var(--primary-light); margin-bottom: 10px;">INCLUDES:</h4>
-                        <p style="font-size: 13px; color: var(--light-gray); line-height: 1.6;">
-                            • Sargotsav<br>
-                            • Inter-school Art Events<br>
-                            • School Kalothsav<br>
-                            • Annual Exhibitions
-                        </p>
+                    <p>Professional judging for school art competitions, exhibitions, and annual art events across all age groups.</p>
+                    <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1);">
+                        <h4 style="font-size:13px;color:var(--primary-light);margin-bottom:10px;">INCLUDES:</h4>
+                        <p style="font-size:13px;color:var(--light-gray);line-height:1.6;">• Sargotsav<br>• Inter-school Art Events<br>• School Kalothsav<br>• Annual Exhibitions</p>
                     </div>
                 </div>
-
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
+                <div class="card reveal">
+                    <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
                     <h3>Madrasa Competitions</h3>
-                    <p>Specialized judging for traditional educational institutions, 
-                       focusing on culturally appropriate art forms and themes.</p>
-                    <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
-                        <h4 style="font-size: 13px; color: var(--primary-light); margin-bottom: 10px;">INCLUDES:</h4>
-                        <p style="font-size: 13px; color: var(--light-gray); line-height: 1.6;">
-                            • Mappilappattu<br>
-                            • Duff Mutt<br>
-                            • Kolkkali<br>
-                            • Quran Recitation
-                        </p>
+                    <p>Specialized judging for traditional educational institutions, focusing on culturally appropriate art forms and themes.</p>
+                    <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1);">
+                        <h4 style="font-size:13px;color:var(--primary-light);margin-bottom:10px;">INCLUDES:</h4>
+                        <p style="font-size:13px;color:var(--light-gray);line-height:1.6;">• Mappilappattu<br>• Duff Mutt<br>• Kolkkali<br>• Quran Recitation</p>
                     </div>
                 </div>
-
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
+                <div class="card reveal">
+                    <div class="card-icon"><i class="fas fa-users"></i></div>
                     <h3>Organization Events</h3>
-                    <p>Judging for educational organizations, community centers, 
-                       and cultural events with educational focus.</p>
-                    <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
-                        <h4 style="font-size: 13px; color: var(--primary-light); margin-bottom: 10px;">INCLUDES:</h4>
-                        <p style="font-size: 13px; color: var(--light-gray); line-height: 1.6;">
-                            • SKSSF Sargalayam<br>
-                            • Community Exhibitions<br>
-                            • Youth Art Competitions<br>
-                            • Cultural Festivals
-                        </p>
+                    <p>Judging for educational organizations, community centers, and cultural events with educational focus.</p>
+                    <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1);">
+                        <h4 style="font-size:13px;color:var(--primary-light);margin-bottom:10px;">INCLUDES:</h4>
+                        <p style="font-size:13px;color:var(--light-gray);line-height:1.6;">• SKSSF Sargalayam<br>• Community Exhibitions<br>• Youth Art Competitions<br>• Cultural Festivals</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Criteria Section -->
+    <!-- ─── Criteria ─── -->
     <section id="criteria">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <div class="section-subtitle">Our Criteria</div>
                 <h2 class="section-title">Comprehensive Evaluation Framework</h2>
-                <p class="section-description">
-                    Our comprehensive evaluation criteria ensure fair and constructive assessment 
-                    of all artwork entries
-                </p>
+                <p class="section-description">Our comprehensive evaluation criteria ensure fair and constructive assessment of all artwork entries</p>
             </div>
-
             <div class="grid grid-3">
-                <div class="card">
-                    <div class="card-number">1</div>
-                    <h3>Technical Skill</h3>
-                    <p>Assessment of artistic technique, craftsmanship, and proficiency 
-                       with chosen medium and materials.</p>
-                </div>
-
-                <div class="card">
-                    <div class="card-number">2</div>
-                    <h3>Creativity & Originality</h3>
-                    <p>Evaluation of originality, innovative approach, and unique 
-                       creative expression in the artwork.</p>
-                </div>
-
-                <div class="card">
-                    <div class="card-number">3</div>
-                    <h3>Composition & Design</h3>
-                    <p>Analysis of visual organization, balance, harmony, and 
-                       effective use of design principles.</p>
-                </div>
-
-                <div class="card">
-                    <div class="card-number">4</div>
-                    <h3>Thematic Relevance</h3>
-                    <p>How effectively the artwork addresses the competition 
-                       theme and communicates intended concepts.</p>
-                </div>
-
-                <div class="card">
-                    <div class="card-number">5</div>
-                    <h3>Emotional Impact</h3>
-                    <p>Ability to evoke appropriate emotional response, 
-                       reflection, or intellectual engagement.</p>
-                </div>
-
-                <div class="card">
-                    <div class="card-number">6</div>
-                    <h3>Educational Value</h3>
-                    <p>Assessment of learning demonstrated and appropriate 
-                       content for educational setting.</p>
-                </div>
+                <div class="card reveal"><div class="card-number">1</div><h3>Technical Skill</h3><p>Assessment of artistic technique, craftsmanship, and proficiency with chosen medium and materials.</p></div>
+                <div class="card reveal"><div class="card-number">2</div><h3>Creativity &amp; Originality</h3><p>Evaluation of originality, innovative approach, and unique creative expression in the artwork.</p></div>
+                <div class="card reveal"><div class="card-number">3</div><h3>Composition &amp; Design</h3><p>Analysis of visual organization, balance, harmony, and effective use of design principles.</p></div>
+                <div class="card reveal"><div class="card-number">4</div><h3>Thematic Relevance</h3><p>How effectively the artwork addresses the competition theme and communicates intended concepts.</p></div>
+                <div class="card reveal"><div class="card-number">5</div><h3>Emotional Impact</h3><p>Ability to evoke appropriate emotional response, reflection, or intellectual engagement.</p></div>
+                <div class="card reveal"><div class="card-number">6</div><h3>Educational Value</h3><p>Assessment of learning demonstrated and appropriate content for educational setting.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- Team Section -->
+    <!-- ─── Team ─── -->
     <section id="team" class="team-section">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <div class="section-subtitle">Our Team</div>
                 <h2 class="section-title">Expert Leadership Team</h2>
-                <p class="section-description">
-                    Meet our experienced team leaders who guide our judging panels and ensure excellence in every competition
-                </p>
+                <p class="section-description">Meet our experienced team leaders who guide our judging panels and ensure excellence in every competition</p>
             </div>
-
             <div class="grid grid-3">
-                <div class="team-card">
-                    <div class="team-avatar">
-                        <img src="https://i.ibb.co/gL9xMTvj/Whats-App-Image-2026-01-10-at-1-18-20-PM.jpg" alt="Naushadali Edappatta" loading="lazy">
-                    </div>
+                <div class="team-card reveal">
+                    <div class="team-avatar"><img src="https://i.ibb.co/gL9xMTvj/Whats-App-Image-2026-01-10-at-1-18-20-PM.jpg" alt="Naushadali Edappatta" loading="lazy" /></div>
                     <h3 class="team-name">Naushadali Edappatta</h3>
                     <div class="team-role">Team Leader</div>
                     <p>15+ years of experience in judging educational art competitions. Specializes in traditional art forms and cultural performances.</p>
                 </div>
-
-                <div class="team-card">
-                    <div class="team-avatar">
-                        <img src="https://i.ibb.co/xqc3tjR6/ASHRAFI.jpg" alt="Ashrafi" loading="lazy">
-                    </div>
+                <div class="team-card reveal">
+                    <div class="team-avatar"><img src="https://i.ibb.co/xqc3tjR6/ASHRAFI.jpg" alt="Salam Ashrafi" loading="lazy" /></div>
                     <h3 class="team-name">Salam Ashrafi</h3>
                     <div class="team-role">Deputy Leader</div>
                     <p>12+ years experience in educational assessment and art evaluation. Focuses on student development and educational impact.</p>
                 </div>
-
-                <div class="team-card">
-                    <div class="team-avatar">
-                        <img src="https://i.ibb.co/p6v4gzjP/Whats-App-Image-2026-01-08-at-10-55-31-AM.jpg" alt="Dr Basith Wafi" loading="lazy">
-                    </div>
+                <div class="team-card reveal">
+                    <div class="team-avatar"><img src="https://i.ibb.co/p6v4gzjP/Whats-App-Image-2026-01-08-at-10-55-31-AM.jpg" alt="Basith Mahiri" loading="lazy" /></div>
                     <h3 class="team-name">Basith Mahiri</h3>
                     <div class="team-role">Deputy Leader</div>
                     <p>Focuses on student development and educational impact with special expertise in modern art forms and contemporary techniques.</p>
@@ -1721,130 +1986,163 @@
         </div>
     </section>
 
-    <!-- Process Section -->
-    <section id="process">
+    <!-- ─── Testimonials ─── -->
+    <section id="testimonials" class="testimonials-section">
         <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">Our Process</div>
-                <h2 class="section-title">Systematic Evaluation Process</h2>
-                <p class="section-description">
-                    A systematic, transparent approach to ensure fair evaluation of all entries
-                </p>
+            <div class="section-header reveal">
+                <div class="section-subtitle">Testimonials</div>
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-description">Hear from educational institutions and organizations we've partnered with</p>
             </div>
-
-            <div class="process-timeline">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <div class="card">
-                        <h3 class="step-title">Initial Submission Review</h3>
-                        <p>All entries are received and organized anonymously to ensure 
-                           impartial evaluation from the beginning.</p>
+            <div class="testimonial-slider reveal" id="testimonialSlider">
+                <div class="testimonial-track" id="testimonialTrack">
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <blockquote>AL HIKMA's judging panel was exceptional. Their feedback helped our students grow and inspired them to pursue art with renewed passion. Highly recommended!</blockquote>
+                            <div class="client-name">— Abdul Rasheed</div>
+                            <div class="client-role">Principal, Al-Huda School</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <blockquote>We've worked with AL HIKMA for five years now. Their professionalism and deep understanding of educational art is unmatched. Our annual competitions are now the highlight of our calendar.</blockquote>
+                            <div class="client-name">— Shahina Hashim</div>
+                            <div class="client-role">Event Coordinator, SKSSF</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <blockquote>The judges were incredibly thorough and fair. They took time to provide constructive feedback to every participant. Truly a world-class service.</blockquote>
+                            <div class="client-name">— Dr. Hafiz Ismail</div>
+                            <div class="client-role">Director, Islamic Arts Academy</div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <div class="card">
-                        <h3 class="step-title">Criteria-Based Assessment</h3>
-                        <p>Each artwork is evaluated by multiple judges using our 
-                           standardized criteria scoring system.</p>
-                    </div>
-                </div>
-
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <div class="card">
-                        <h3 class="step-title">Panel Deliberation</h3>
-                        <p>Judges discuss all entries, compare evaluations, and reach 
-                           consensus on rankings and awards.</p>
-                    </div>
-                </div>
-
-                <div class="process-step">
-                    <div class="step-number">4</div>
-                    <div class="card">
-                        <h3 class="step-title">Feedback Development</h3>
-                        <p>Constructive feedback is prepared for all participants to 
-                           support artistic growth and development.</p>
-                    </div>
-                </div>
-
-                <div class="process-step">
-                    <div class="step-number">5</div>
-                    <div class="card">
-                        <h3 class="step-title">Results & Recognition</h3>
-                        <p>Final results are announced with clear explanations of 
-                           selection criteria and artistic merit.</p>
-                    </div>
+                <div class="slider-controls">
+                    <button class="slider-btn" id="prevTestimonial" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+                    <div class="slider-dots" id="sliderDots"></div>
+                    <button class="slider-btn" id="nextTestimonial" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" style="background: var(--dark-light);">
+    <!-- ─── Process ─── -->
+    <section id="process">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
+                <div class="section-subtitle">Our Process</div>
+                <h2 class="section-title">Systematic Evaluation Process</h2>
+                <p class="section-description">A systematic, transparent approach to ensure fair evaluation of all entries</p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step reveal"><div class="step-number">1</div><div class="card"><h3>Initial Submission Review</h3><p>All entries are received and organized anonymously to ensure impartial evaluation from the beginning.</p></div></div>
+                <div class="process-step reveal"><div class="step-number">2</div><div class="card"><h3>Criteria-Based Assessment</h3><p>Each artwork is evaluated by multiple judges using our standardized criteria scoring system.</p></div></div>
+                <div class="process-step reveal"><div class="step-number">3</div><div class="card"><h3>Panel Deliberation</h3><p>Judges discuss all entries, compare evaluations, and reach consensus on rankings and awards.</p></div></div>
+                <div class="process-step reveal"><div class="step-number">4</div><div class="card"><h3>Feedback Development</h3><p>Constructive feedback is prepared for all participants to support artistic growth and development.</p></div></div>
+                <div class="process-step reveal"><div class="step-number">5</div><div class="card"><h3>Results &amp; Recognition</h3><p>Final results are announced with clear explanations of selection criteria and artistic merit.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FAQ ─── -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-subtitle">FAQ</div>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-description">Quick answers to common questions about our judging services</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item reveal">
+                    <button class="faq-question"><span>What types of art competitions do you judge?</span><span class="faq-icon"><i class="fas fa-chevron-down"></i></span></button>
+                    <div class="faq-answer">We judge all forms of visual and performing arts competitions including painting, drawing, sculpture, photography, digital art, calligraphy, and cultural performances like Mappilappattu, Duff Mutt, and Kolkkali.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question"><span>How many judges do you provide for an event?</span><span class="faq-icon"><i class="fas fa-chevron-down"></i></span></button>
+                    <div class="faq-answer">The number depends on the scale of your competition. We typically provide 3-5 judges for small events and up to 8-10 for large competitions. We can customize based on your requirements.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question"><span>Do you provide feedback to participants?</span><span class="faq-icon"><i class="fas fa-chevron-down"></i></span></button>
+                    <div class="faq-answer">Yes! We believe in constructive evaluation. We provide detailed feedback sheets for all participants highlighting strengths and areas for improvement.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question"><span>How far in advance should we book?</span><span class="faq-icon"><i class="fas fa-chevron-down"></i></span></button>
+                    <div class="faq-answer">We recommend booking at least 2-3 weeks in advance to ensure judge availability. However, we can accommodate last-minute requests based on our team's availability.</div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question"><span>Do you offer online judging services?</span><span class="faq-icon"><i class="fas fa-chevron-down"></i></span></button>
+                    <div class="faq-answer">Yes, we provide remote judging services for competitions conducted online or in hybrid formats. We use secure platforms for submission review and feedback delivery.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Gallery ─── -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-subtitle">Gallery</div>
+                <h2 class="section-title">Moments from Past Competitions</h2>
+                <p class="section-description">A glimpse into the vibrant art competitions we've had the privilege to judge</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal"><img src="https://i.ibb.co/KFpDMsnD/IMG-20260103-WA0020.jpg" alt="Competition judging in progress" loading="lazy" /><div class="gallery-overlay"><span>📸 Judging Session</span></div></div>
+                <div class="gallery-item reveal"><img src="https://i.ibb.co/PML0Mtr9/IMG-20260103-WA0016.jpg" alt="Artwork display at competition" loading="lazy" /><div class="gallery-overlay"><span>🎨 Art Exhibition</span></div></div>
+                <div class="gallery-item reveal"><img src="https://i.ibb.co/jy6bQYks/IMG-20260103-WA0015.jpg" alt="Award ceremony" loading="lazy" /><div class="gallery-overlay"><span>🏆 Award Ceremony</span></div></div>
+                <div class="gallery-item reveal"><img src="https://i.ibb.co/yqWSpStQ/IMG-20260103-WA0014.jpg" alt="Team photo with participants" loading="lazy" /><div class="gallery-overlay"><span>👥 Team with Participants</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Newsletter ─── -->
+    <section id="newsletter" class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-box reveal">
+                <h3><i class="fas fa-envelope-open-text" style="margin-right:10px;"></i> Stay Updated</h3>
+                <p>Subscribe to receive updates about our services, upcoming events, and art competition insights.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Enter your email address" required />
+                    <button type="submit" class="btn btn-secondary" style="border-color:rgba(255,255,255,0.3);color:white;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Contact ─── -->
+    <section id="contact" style="background:var(--dark-light);">
+        <div class="container">
+            <div class="section-header reveal">
                 <div class="section-subtitle">Contact Us</div>
                 <h2 class="section-title">Request Judges</h2>
-                <p class="section-description">
-                    Get instant response! Share your competition details and we'll respond within minutes.
-                </p>
+                <p class="section-description">Get instant response! Share your competition details and we'll respond within minutes.</p>
             </div>
-
             <div class="grid grid-2">
-                <div class="contact-info">
+                <div class="contact-info reveal">
                     <div class="card">
-                        <h3 style="margin-bottom: 24px;">Contact Information</h3>
-                        
-                        <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px;">
-                            <div style="width: 44px; height: 44px; background: var(--gradient-primary); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; font-size: 18px; color: white;">
-                                <i class="fab fa-whatsapp"></i>
-                            </div>
-                            <div>
-                                <h4 style="margin-bottom: 6px; font-size: 15px; color: var(--light);">Primary WhatsApp</h4>
-                                <p style="font-size: 16px; font-weight: 600; color: var(--light);">+91 98468 43138</p>
-                                <a href="https://wa.me/919846843138" target="_blank" style="color: var(--primary-light); text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; font-size: 13px;">
-                                    <i class="fab fa-whatsapp"></i> Open in WhatsApp
-                                </a>
-                            </div>
+                        <h3 style="margin-bottom:24px;">Contact Information</h3>
+                        <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:24px;">
+                            <div style="width:44px;height:44px;background:var(--gradient-primary);border-radius:var(--border-radius);display:flex;align-items:center;justify-content:center;font-size:18px;color:white;"><i class="fab fa-whatsapp"></i></div>
+                            <div><h4 style="margin-bottom:6px;font-size:15px;color:var(--light);">Primary WhatsApp</h4><p style="font-size:16px;font-weight:600;color:var(--light);">+91 98468 43138</p><a href="https://wa.me/919846843138" target="_blank" style="color:var(--primary-light);text-decoration:none;font-weight:500;display:inline-flex;align-items:center;gap:6px;font-size:13px;"><i class="fab fa-whatsapp"></i> Open in WhatsApp</a></div>
                         </div>
-
-                        <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px;">
-                            <div style="width: 44px; height: 44px; background: var(--gradient-primary); border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; font-size: 18px; color: white;">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h4 style="margin-bottom: 6px; font-size: 15px; color: var(--light);">Email Address</h4>
-                                <p style="color: var(--light-gray); font-size: 14px;">alhikma@gmail.com</p>
-                                <p style="color: var(--light-gray); font-size: 14px;">infoalhikma@gmail.com</p>
-                            </div>
+                        <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:24px;">
+                            <div style="width:44px;height:44px;background:var(--gradient-primary);border-radius:var(--border-radius);display:flex;align-items:center;justify-content:center;font-size:18px;color:white;"><i class="fas fa-envelope"></i></div>
+                            <div><h4 style="margin-bottom:6px;font-size:15px;color:var(--light);">Email Address</h4><p style="color:var(--light-gray);font-size:14px;">alhikma@gmail.com</p><p style="color:var(--light-gray);font-size:14px;">infoalhikma@gmail.com</p></div>
                         </div>
-
-                        <div style="background: rgba(26, 95, 180, 0.1); border-radius: var(--border-radius); padding: 16px; border: 1px solid rgba(26, 95, 180, 0.2);">
-                            <h4 style="margin-bottom: 10px; color: var(--primary-light); font-size: 15px;">
-                                <i class="fas fa-bolt"></i> Quick Response
-                            </h4>
-                            <p style="color: var(--light-gray); font-size: 13px; line-height: 1.6;">
-                                We respond to WhatsApp messages within 15 minutes during business hours. 
-                                Perfect for last-minute requests and urgent inquiries.
-                            </p>
+                        <div style="background:rgba(26,95,180,0.1);border-radius:var(--border-radius);padding:16px;border:1px solid rgba(26,95,180,0.2);">
+                            <h4 style="margin-bottom:10px;color:var(--primary-light);font-size:15px;"><i class="fas fa-bolt"></i> Quick Response</h4>
+                            <p style="color:var(--light-gray);font-size:13px;line-height:1.6;">We respond to WhatsApp messages within 15 minutes during business hours. Perfect for last-minute requests and urgent inquiries.</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="contact-form">
-                    <h3 style="margin-bottom: 24px;">Quick Inquiry Form</h3>
-                    
+                <div class="contact-form reveal">
+                    <h3 style="margin-bottom:24px;">Quick Inquiry Form</h3>
                     <form id="inquiryForm">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name *" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="institution" name="institution" placeholder="Institution Name *" required>
-                        </div>
-                        
+                        <div class="form-group"><input type="text" class="form-control" id="name" name="name" placeholder="Your Name *" required /></div>
+                        <div class="form-group"><input type="text" class="form-control" id="institution" name="institution" placeholder="Institution Name *" required /></div>
                         <div class="form-group">
                             <select class="form-control" id="type" name="type" required>
                                 <option value="">Competition Type *</option>
@@ -1854,50 +2152,32 @@
                                 <option value="Community Event">Community Event</option>
                             </select>
                         </div>
-                        
-                        <div class="form-group">
-                            <input type="date" class="form-control" id="date" name="date">
-                        </div>
-                        
-                        <div class="form-group">
-                            <input type="number" class="form-control" id="judges" name="judges" placeholder="Judges Needed" min="1" max="10">
-                        </div>
-                        
-                        <div class="form-group">
-                            <textarea class="form-control" id="details" name="details" placeholder="Competition Details *" rows="4" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">
-                            <i class="fab fa-whatsapp"></i> Send via WhatsApp
-                        </button>
+                        <div class="form-group"><input type="date" class="form-control" id="date" name="date" /></div>
+                        <div class="form-group"><input type="number" class="form-control" id="judges" name="judges" placeholder="Judges Needed" min="1" max="10" /></div>
+                        <div class="form-group"><textarea class="form-control" id="details" name="details" placeholder="Competition Details *" rows="4" required></textarea></div>
+                        <button type="submit" class="btn btn-primary" style="width:100%;"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ─── Footer ─── -->
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <img src="https://i.ibb.co/bgQ1j81h/alhikma-logo.png" alt="AL HIKMA Professional Judging" class="footer-logo-img">
-                    <p style="margin-bottom: 20px; color: var(--light-gray); line-height: 1.6; font-size: 14px;">
-                        Professional art competition judging for educational institutions. 
-                        Providing fair, constructive, and educational evaluation since 2010.
-                    </p>
+                    <img src="https://i.ibb.co/bgQ1j81h/alhikma-logo.png" alt="AL HIKMA Professional Judging" class="footer-logo-img" />
+                    <p style="margin-bottom:20px;color:var(--light-gray);line-height:1.6;font-size:14px;">Professional art competition judging for educational institutions. Providing fair, constructive, and educational evaluation since 2010.</p>
                     <div class="social-links">
                         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                         <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
                         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="https://wa.me/919846843138" target="_blank" class="whatsapp" aria-label="WhatsApp">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
+                        <a href="https://wa.me/919846843138" target="_blank" class="whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
-
                 <div class="footer-col">
                     <h4 class="footer-title">Quick Links</h4>
                     <ul class="footer-links">
@@ -1908,7 +2188,6 @@
                         <li><a href="#team"><i class="fas fa-chevron-right"></i> Team Leaders</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-col">
                     <h4 class="footer-title">Our Services</h4>
                     <ul class="footer-links">
@@ -1919,7 +2198,6 @@
                         <li><a href="#services"><i class="fas fa-chevron-right"></i> Cultural Festivals</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-col">
                     <h4 class="footer-title">Contact Info</h4>
                     <ul class="footer-links">
@@ -1929,73 +2207,63 @@
                     </ul>
                 </div>
             </div>
-
             <div class="copyright">
                 <p>&copy; 2026 AL HIKMA Judging Panel. All rights reserved.</p>
-                <p style="margin-top: 8px; font-size: 12px;">
-                    Designed by Suhail Kerala . 7034678818
-                </p>
+                <p style="margin-top:8px;font-size:12px;">Designed by Suhail Kerala . 7034678818</p>
             </div>
         </div>
     </footer>
 
-    <!-- Floating WhatsApp Button -->
+    <!-- ─── Floating WhatsApp ─── -->
     <div class="floating-action">
-        <a href="https://wa.me/919846843138" target="_blank" class="floating-whatsapp" aria-label="Chat on WhatsApp">
-            <i class="fab fa-whatsapp"></i>
-        </a>
+        <a href="https://wa.me/919846843138" target="_blank" class="floating-whatsapp" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
     </div>
 
+    <!-- ─── JavaScript ─── -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+
+            // ── DOM refs ──
             const header = document.getElementById('header');
             const scrollProgress = document.getElementById('scrollProgress');
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const navLinks = document.getElementById('navLinks');
             const navLinksItems = document.querySelectorAll('.nav-links a');
+            const backToTop = document.getElementById('backToTop');
+            const themeToggle = document.getElementById('themeToggle');
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
 
-            // Scroll effects
-            function updateScrollProgress() {
+            // ── Scroll Progress & Header ──
+            function updateScroll() {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                 const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-                
-                // Scroll progress bar
-                if (scrollProgress) {
-                    scrollProgress.style.width = (scrollTop / docHeight) * 100 + '%';
-                }
-                
-                // Header scroll effect
-                if (header) {
-                    if (scrollTop > 50) {
-                        header.classList.add('scrolled');
-                    } else {
-                        header.classList.remove('scrolled');
-                    }
-                }
+                if (scrollProgress) scrollProgress.style.width = (scrollTop / docHeight) * 100 + '%';
+                if (header) header.classList.toggle('scrolled', scrollTop > 50);
+                if (backToTop) backToTop.classList.toggle('visible', scrollTop > 300);
+            }
+            window.addEventListener('scroll', updateScroll);
+
+            // ── Back to Top ──
+            if (backToTop) {
+                backToTop.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
             }
 
-            window.addEventListener('scroll', updateScrollProgress);
-
-            // Mobile menu toggle with improved touch handling
+            // ── Mobile Menu ──
+            let isMenuOpen = false;
             if (mobileMenuBtn && navLinks) {
-                let isMenuOpen = false;
-                
                 mobileMenuBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     isMenuOpen = !isMenuOpen;
                     navLinks.classList.toggle('active');
                     mobileMenuBtn.classList.toggle('active');
-                    
-                    if (isMenuOpen) {
-                        document.body.style.overflow = 'hidden';
-                        mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
-                    } else {
-                        document.body.style.overflow = '';
-                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                    }
+                    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+                    mobileMenuBtn.innerHTML = isMenuOpen ? '<i class="fas fa-times"></i>' :
+                        '<i class="fas fa-bars"></i>';
                 });
 
-                // Close menu when clicking on a link
                 navLinksItems.forEach(link => {
                     link.addEventListener('click', () => {
                         if (window.innerWidth <= 768) {
@@ -2008,11 +2276,8 @@
                     });
                 });
 
-                // Close menu when clicking outside
                 document.addEventListener('click', (e) => {
-                    if (isMenuOpen && 
-                        !navLinks.contains(e.target) && 
-                        !mobileMenuBtn.contains(e.target)) {
+                    if (isMenuOpen && !navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
                         navLinks.classList.remove('active');
                         mobileMenuBtn.classList.remove('active');
                         document.body.style.overflow = '';
@@ -2021,7 +2286,6 @@
                     }
                 });
 
-                // Close menu on escape key
                 document.addEventListener('keydown', (e) => {
                     if (e.key === 'Escape' && isMenuOpen) {
                         navLinks.classList.remove('active');
@@ -2033,156 +2297,330 @@
                 });
             }
 
-            // Set active navigation link
+            // ── Active nav link ──
             const sections = document.querySelectorAll('section');
-
             function setActiveLink() {
                 let current = '';
                 const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-                
                 sections.forEach(section => {
-                    const sectionTop = section.offsetTop - 100;
-                    const sectionHeight = section.clientHeight;
-                    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    const top = section.offsetTop - 100;
+                    const h = section.clientHeight;
+                    if (scrollY >= top && scrollY < top + h) {
                         current = section.getAttribute('id');
                     }
                 });
-
                 navLinksItems.forEach(link => {
-                    link.classList.remove('active');
-                    const href = link.getAttribute('href');
-                    if (href === `#${current}` || (current === 'home' && href === '#home')) {
-                        link.classList.add('active');
+                    link.classList.toggle('active', link.getAttribute('href') === `#${current}` || (current ===
+                        'home' && link.getAttribute('href') === '#home'));
+                });
+            }
+            window.addEventListener('scroll', setActiveLink);
+            setActiveLink();
+
+            // ── Theme Toggle ──
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    const isDark = document.documentElement.style.getPropertyValue('--bg-body').includes(
+                    '0a0e14');
+                    if (isDark) {
+                        // Light theme (simplified: invert some colors)
+                        document.documentElement.style.setProperty('--bg-body',
+                            'linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 50%, #bcccdc 100%)');
+                        document.documentElement.style.setProperty('--text-body', '#0f1419');
+                        document.documentElement.style.setProperty('--text-muted', '#1e2a3a');
+                        document.documentElement.style.setProperty('--bg-card', 'rgba(255,255,255,0.7)');
+                        document.documentElement.style.setProperty('--border-card', 'rgba(0,0,0,0.08)');
+                        document.documentElement.style.setProperty('--dark', '#f0f4f8');
+                        document.documentElement.style.setProperty('--dark-light', '#d9e2ec');
+                        document.querySelector('.theme-toggle i').className = 'fas fa-sun';
+                    } else {
+                        document.documentElement.style.setProperty('--bg-body',
+                            'linear-gradient(135deg, #0a0e14 0%, #131a25 30%, #1c2738 70%, #2d3748 100%)');
+                        document.documentElement.style.setProperty('--text-body', '#ffffff');
+                        document.documentElement.style.setProperty('--text-muted', '#f1f5f9');
+                        document.documentElement.style.setProperty('--bg-card', 'rgba(255,255,255,0.03)');
+                        document.documentElement.style.setProperty('--border-card', 'rgba(255,255,255,0.08)');
+                        document.documentElement.style.setProperty('--dark', '#0f1419');
+                        document.documentElement.style.setProperty('--dark-light', '#1e2a3a');
+                        document.querySelector('.theme-toggle i').className = 'fas fa-moon';
                     }
+                    showToast('Theme toggled successfully!');
                 });
             }
 
-            window.addEventListener('scroll', setActiveLink);
-            
-            // Set initial active link
-            setActiveLink();
+            // ── Toast ──
+            function showToast(msg) {
+                if (!toast) return;
+                toastMessage.textContent = msg;
+                toast.classList.add('show');
+                clearTimeout(toast._timer);
+                toast._timer = setTimeout(() => toast.classList.remove('show'), 3000);
+            }
 
-            // Form submission
+            // ── Testimonial Slider ──
+            const track = document.getElementById('testimonialTrack');
+            const slides = track ? track.querySelectorAll('.testimonial-slide') : [];
+            const dots = document.getElementById('sliderDots');
+            let currentSlide = 0;
+            let autoPlayInterval;
+
+            if (slides.length > 0) {
+                // Create dots
+                slides.forEach((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+                    dot.setAttribute('data-index', i);
+                    dot.addEventListener('click', () => goToSlide(i));
+                    dots.appendChild(dot);
+                });
+
+                function goToSlide(index) {
+                    currentSlide = Math.max(0, Math.min(index, slides.length - 1));
+                    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+                    dots.querySelectorAll('.slider-dot').forEach((d, i) => {
+                        d.classList.toggle('active', i === currentSlide);
+                    });
+                }
+
+                function nextSlide() { goToSlide(currentSlide + 1); }
+
+                function prevSlide() { goToSlide(currentSlide - 1); }
+
+                document.getElementById('nextTestimonial')?.addEventListener('click', () => { clearInterval(
+                        autoPlayInterval);
+                    nextSlide();
+                    startAutoPlay(); });
+                document.getElementById('prevTestimonial')?.addEventListener('click', () => { clearInterval(
+                        autoPlayInterval);
+                    prevSlide();
+                    startAutoPlay(); });
+
+                function startAutoPlay() {
+                    clearInterval(autoPlayInterval);
+                    autoPlayInterval = setInterval(() => {
+                        goToSlide((currentSlide + 1) % slides.length);
+                    }, 6000);
+                }
+                startAutoPlay();
+
+                // Pause on hover
+                const slider = document.getElementById('testimonialSlider');
+                slider?.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+                slider?.addEventListener('mouseleave', startAutoPlay);
+            }
+
+            // ── FAQ Accordion ──
+            document.querySelectorAll('.faq-question').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const item = btn.closest('.faq-item');
+                    const isActive = item.classList.contains('active');
+                    // Close others
+                    document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+                    if (!isActive) item.classList.add('active');
+                });
+            });
+
+            // ── Scroll Reveal ──
+            const revealEls = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+            revealEls.forEach(el => revealObserver.observe(el));
+
+            // ── Animated Stats ──
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const statObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const target = parseInt(el.getAttribute('data-count') || el.textContent.replace(
+                        /[^0-9]/g, ''));
+                        if (isNaN(target)) return;
+                        let current = 0;
+                        const increment = Math.max(1, target / 40);
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                el.textContent = target + (el.getAttribute('data-count') ? '+' : '');
+                                clearInterval(timer);
+                            } else {
+                                el.textContent = Math.floor(current) + '+';
+                            }
+                        }, 30);
+                        statObserver.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.3 });
+            statNumbers.forEach(el => statObserver.observe(el));
+
+            // ── Form Submission ──
             const inquiryForm = document.getElementById('inquiryForm');
             if (inquiryForm) {
                 inquiryForm.addEventListener('submit', (e) => {
                     e.preventDefault();
-                    
                     const name = document.getElementById('name').value.trim();
                     const institution = document.getElementById('institution').value.trim();
                     const type = document.getElementById('type').value;
                     const date = document.getElementById('date').value;
                     const judges = document.getElementById('judges').value.trim();
                     const details = document.getElementById('details').value.trim();
-                    
+
                     if (!name || !institution || !type || !details) {
-                        alert('Please fill all required fields (*)');
+                        showToast('Please fill all required fields (*)');
                         return;
                     }
-                    
+
                     let formattedDate = 'Not specified';
                     if (date) {
-                        const dateObj = new Date(date);
-                        formattedDate = dateObj.toLocaleDateString('en-IN', {
-                            weekday: 'long',
-                            day: '2-digit',
-                            month: 'long',
-                            year: 'numeric'
-                        });
+                        const d = new Date(date);
+                        formattedDate = d.toLocaleDateString('en-IN', { weekday: 'long', day: '2-digit',
+                            month: 'long', year: 'numeric' });
                     }
-                    
-                    const message = `*AL HIKMA - Judge Request*
 
-*Contact Person:* ${name}
-*Institution:* ${institution}
-*Competition Type:* ${type}
-*Event Date:* ${formattedDate}
-*Judges Needed:* ${judges || 'Not specified'}
-
-*Competition Details:*
-${details}
-
-_Submitted via AL HIKMA Professional Website_
-_We expect a quick reply!_`;
-                    
-                    const encodedMessage = encodeURIComponent(message);
-                    window.open(`https://wa.me/919846843138?text=${encodedMessage}`, '_blank');
-                    
+                    const message =
+                        `*AL HIKMA - Judge Request*\n\n*Contact Person:* ${name}\n*Institution:* ${institution}\n*Competition Type:* ${type}\n*Event Date:* ${formattedDate}\n*Judges Needed:* ${judges || 'Not specified'}\n\n*Competition Details:*\n${details}\n\n_Submitted via AL HIKMA Professional Website_`;
+                    window.open(`https://wa.me/919846843138?text=${encodeURIComponent(message)}`, '_blank');
                     inquiryForm.reset();
+                    showToast('Message sent via WhatsApp!');
                 });
             }
 
-            // Set minimum date to today
+            // ── Newsletter ──
+            const newsletterForm = document.getElementById('newsletterForm');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const input = newsletterForm.querySelector('input[type="email"]');
+                    if (input && input.value.trim()) {
+                        showToast(`✅ Subscribed: ${input.value.trim()}`);
+                        input.value = '';
+                    } else {
+                        showToast('Please enter a valid email address.');
+                    }
+                });
+            }
+
+            // ── Date min ──
             const dateInput = document.getElementById('date');
             if (dateInput) {
-                const today = new Date().toISOString().split('T')[0];
-                dateInput.min = today;
+                dateInput.min = new Date().toISOString().split('T')[0];
             }
 
-            // Animate stats
-            const statNumbers = document.querySelectorAll('.stat-number');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const stat = entry.target;
-                        const text = stat.textContent;
-                        const hasPlus = text.includes('+');
-                        const numberPart = hasPlus ? text.replace('+', '') : text;
-                        const finalValue = parseInt(numberPart);
-                        
-                        if (isNaN(finalValue)) return;
-                        
-                        let current = 0;
-                        const increment = finalValue / 30;
-                        const timer = setInterval(() => {
-                            current += increment;
-                            if (current >= finalValue) {
-                                stat.textContent = finalValue + (hasPlus ? '+' : '');
-                                clearInterval(timer);
-                            } else {
-                                stat.textContent = Math.floor(current) + (hasPlus ? '+' : '');
-                            }
-                        }, 30);
-                        
-                        observer.unobserve(stat);
+            // ── Particle Canvas ──
+            const canvas = document.getElementById('particles-canvas');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                let w, h, particles = [];
+
+                function resize() {
+                    const rect = canvas.parentElement.getBoundingClientRect();
+                    canvas.width = rect.width;
+                    canvas.height = rect.height;
+                    w = canvas.width;
+                    h = canvas.height;
+                }
+                resize();
+                window.addEventListener('resize', resize);
+
+                class Particle {
+                    constructor() { this.reset(); }
+                    reset() {
+                        this.x = Math.random() * w;
+                        this.y = Math.random() * h;
+                        this.size = Math.random() * 2.5 + 1;
+                        this.speedX = (Math.random() - 0.5) * 0.3;
+                        this.speedY = (Math.random() - 0.5) * 0.3;
+                        this.opacity = Math.random() * 0.4 + 0.1;
                     }
+                    update() {
+                        this.x += this.speedX;
+                        this.y += this.speedY;
+                        if (this.x < 0 || this.x > w) this.speedX *= -1;
+                        if (this.y < 0 || this.y > h) this.speedY *= -1;
+                    }
+                    draw() {
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(44, 140, 255, ${this.opacity})`;
+                        ctx.fill();
+                    }
+                }
+
+                const count = Math.min(80, Math.floor((w * h) / 12000));
+                for (let i = 0; i < count; i++) particles.push(new Particle());
+
+                function connectParticles() {
+                    for (let i = 0; i < particles.length; i++) {
+                        for (let j = i + 1; j < particles.length; j++) {
+                            const dx = particles[i].x - particles[j].x;
+                            const dy = particles[i].y - particles[j].y;
+                            const dist = Math.sqrt(dx * dx + dy * dy);
+                            if (dist < 120) {
+                                ctx.beginPath();
+                                ctx.moveTo(particles[i].x, particles[i].y);
+                                ctx.lineTo(particles[j].x, particles[j].y);
+                                ctx.strokeStyle = `rgba(44, 140, 255, ${0.08 * (1 - dist / 120)})`;
+                                ctx.lineWidth = 0.8;
+                                ctx.stroke();
+                            }
+                        }
+                    }
+                }
+
+                function animateParticles() {
+                    ctx.clearRect(0, 0, w, h);
+                    particles.forEach(p => { p.update();
+                        p.draw(); });
+                    connectParticles();
+                    requestAnimationFrame(animateParticles);
+                }
+
+                // Only animate if not on very low-end devices
+                if (window.innerWidth > 480) {
+                    animateParticles();
+                } else {
+                    // fallback: just draw static dots
+                    particles.forEach(p => p.draw());
+                }
+
+                // Redraw on resize
+                window.addEventListener('resize', () => {
+                    resize();
+                    // reposition particles within new bounds
+                    particles.forEach(p => {
+                        p.x = Math.min(p.x, w);
+                        p.y = Math.min(p.y, h);
+                    });
                 });
-            }, { 
-                threshold: 0.3,
-                rootMargin: '0px 0px -50px 0px'
-            });
+            }
 
-            statNumbers.forEach(stat => observer.observe(stat));
-
-            // Handle window resize
+            // ── Handle resize for nav ──
             function handleResize() {
                 if (window.innerWidth > 768) {
-                    if (navLinks) {
-                        navLinks.classList.remove('active');
-                        navLinks.style.display = '';
-                    }
-                    if (mobileMenuBtn) {
-                        mobileMenuBtn.classList.remove('active');
-                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                    }
+                    if (navLinks) { navLinks.classList.remove('active');
+                        navLinks.style.display = ''; }
+                    if (mobileMenuBtn) { mobileMenuBtn.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>'; }
                     document.body.style.overflow = '';
+                    isMenuOpen = false;
                 }
             }
-
             window.addEventListener('resize', handleResize);
 
-            // Prevent zoom on double-tap for mobile (iOS specific)
+            // ── Prevent zoom on double-tap (iOS) ──
             let lastTouchEnd = 0;
-            document.addEventListener('touchend', (event) => {
+            document.addEventListener('touchend', (e) => {
                 const now = Date.now();
-                if (now - lastTouchEnd <= 300) {
-                    event.preventDefault();
-                }
+                if (now - lastTouchEnd <= 300) e.preventDefault();
                 lastTouchEnd = now;
             }, false);
 
-            // Initialize
-            updateScrollProgress();
+            // ── Init ──
+            updateScroll();
             handleResize();
         });
     </script>
